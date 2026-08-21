@@ -11,6 +11,7 @@ Semantic Evolution v0.1 **runtime + spec pin** is on `main`:
 - p5-01 ASP sidecar [Noema #461](https://github.com/Zero-State-LLC/Noema/pull/461)
 - p5-02 ASI drift [Noema #462](https://github.com/Zero-State-LLC/Noema/pull/462)
 - p5-03 image / hearsay quarantine / cascading-risk [Noema #463](https://github.com/Zero-State-LLC/Noema/pull/463)
+- p5-03 follow-up: `second_order` written from ATTEST/TRADE/ORG apply [Noema #464](https://github.com/Zero-State-LLC/Noema/pull/464)
 - Specs pin [Noema-Specs #231](https://github.com/Zero-State-LLC/Noema-Specs/pull/231)
 
 Privileged `image_score` is not a WATCH scalar (GC3-S0). No new verbs. Production Worker is still `edcd7e93` until the next deploy; do not reseed to pick this up.
