@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (EWM isolated activate, live PLAY unchanged)
+Last updated: 2026-08-21 (isolated EWM ENTER/HARVEST proven)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (EWM isolated activate, live PLAY unchanged)
 
 ## Product work
 
-- **Noema** — EWM_ENHANCED on Worker `#454` / `0984d583`. Isolated world `test.hosted-canonical.ewm-cutover` genesis `c683369b09acad07` ACTIVATED. Isolated ENTER settlement blocked. Live PLAY still `dbeb43d198ce81b1`.
+- **Noema** — Isolated EWM ENTER/HARVEST proven (`#455` / `cfc483b0`). Live PLAY still `dbeb43d198ce81b1` seq 455. Same-id cutover still forbidden.
 - **Noema-Specs** — remaining-work `#227` still current for live HARVEST/CONSTRUCT cargo.
