@@ -4,26 +4,33 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-Noema unique unmerged work is on `main` and production.
+Leftover unique Noema work is **adapted onto current surfaces** and live.
 
-- Runtime: https://github.com/Zero-State-LLC/Noema/pull/446 merged (`038fc25`)
-- Client: https://github.com/scrimshawlife-ctrl/noema-client/pull/13 merged; GitHub release `v0.1.10` (PyPI publish on release)
-- Production Worker `noema-gateway` version `d6a5abf1-1dd8-46ab-9e91-089ce7e98708` (2026-08-21T04:53:38Z)
-- Live `/ready`: ACTIVE, `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`, `Cache-Control: no-store`
+- Runtime: https://github.com/Zero-State-LLC/Noema/pull/447 merged
+- Client: https://github.com/scrimshawlife-ctrl/noema-client/pull/14 merged; release `v0.1.11`
+- Production Worker `noema-gateway` version `0c6e470f-5ceb-4556-adf0-0c56e3283f93`
+- Live `/ready`: ACTIVE `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`
+- Watch HTML now has `watch-here-open` / `watch-here-sheet`
 
-## What was kept (not abandoned)
+## Adapted (not abandoned)
 
-Closed PRs claimed a merge they did not do:
+Stale branches were **not** merged as-is. Unique intent was rewritten onto today's architecture:
 
-- Noema #445 (`e2e-play-fixes-2026-08`) — salvage-cache harvest seed. Branch was 157 commits behind; merging it wholesale would have reverted RFC-0121 successor genesis, Feature D, and structured affordances. Unique seed was ported onto successor Civic Exchange only.
-- Client #12 — INSPECT label resolution, MESSAGE `player.` recipients, CLI `act ENTER_WORLD` without observe. Branch dropped 0.1.9 LOOK-field maps; those were kept.
-- `jcode/noema-improvements` — JSON 400 INVALID_REQUEST, Cache-Control no-store, operator-env 0600. Ported without committing wrangler-generated `worker-configuration.d.ts`.
+| Leftover | Adapt |
+|---|---|
+| #445 salvage-cache on live play | `ensureSuccessorMaterialsCache` on successor DO load. Frozen `world-01` untouched. |
+| PLAY phone Here sheet (`play.ts`) | PLAY HTML is gone (RFC-0120). Same sheet now on **Watch**: map stays, Recently is the sheet. |
+| Client `message hermes hi` | 0.1.11 splits handle vs text so `player.` prefixing works. |
+| GC1-S2 plan/design docs | Landed (runtime already hosted). |
+| graft AGENTS.md | Landed; `graft/` stays gitignored. |
 
-Stale feature branches remain as history. Do not merge them as-is.
+Already on `main` from earlier squash/packets: device enrollment, tenant tester, two-door CONNECT, Phosphor, RFC-0120 identity, cargo, admin brief, `/ready` play_blocked, Deep Time fixtures, operator-env 0600, INVALID_REQUEST.
 
-## Live world
+## Deliberately not restored
 
-`entity.salvage-cache` is in **new** successor genesis, not injected into the already-cutover DO. Frozen first world unchanged. No reseed.
+- Invented harvest from INFRASTRUCTURE labels (explicit `stock_resource` instead)
+- Hosted PLAY inhabit chamber HTML
+- Client org/contest/access fail-open defaults
 
 ## Prabu
 
@@ -32,6 +39,5 @@ Still needs to clone `agent-context`, run `install.sh`, and comment on https://g
 ## Do not
 
 - Commit `~/.grok/memory` or OpenClaw/Claude session files
-- Re-enable org-wide code-security defaults without `admin:org`
-- Merge stale Noema branches (`e2e-play-fixes-2026-08`, `jcode/noema-improvements`, squash leftovers) onto `main`
-- Reseed `genesis.ef578f4ffceeccd0` or the live successor DO
+- Merge stale Noema branches as-is
+- Reseed `genesis.ef578f4ffceeccd0` or point PLAY at `world-01`

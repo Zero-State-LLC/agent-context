@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21
+Last updated: 2026-08-21 (adapt leftover unique work)
 
 ## In flight (org)
 
@@ -9,5 +9,5 @@ Last updated: 2026-08-21
 
 ## Product work
 
-- **Noema** — reconcile packet shipped. Runtime `#446` on `main` (`038fc25`); Worker `noema-gateway` `d6a5abf1-1dd8-46ab-9e91-089ce7e98708` on production; live `/ready` ACTIVE on `world.perihelion-reach-2`. Client `0.1.10` merged + tagged (`v0.1.10`). Closed #445/#12 were not actually on main; unique work was ported without reverting later packets. Stale branches stay as history.
-- **Noema-Specs** — RFC-0115 already on `main`; no unique unmerged spec packet required for this reconcile.
+- **Noema** — leftover unique work adapted, not squash-merged. `#446` + `#447` on `main`. Worker `0c6e470f-5ceb-4556-adf0-0c56e3283f93`. Live successor fills salvage-cache on DO load. Watch phone Here sheet shipped. Client `0.1.11`. Stale branches remain history.
+- **Noema-Specs** — RFC-0115 already on `main`. GC1-S2 runtime docs landed in the Noema repo.

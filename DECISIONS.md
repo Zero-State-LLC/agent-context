@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-08-21 — Adapt leftover unique work onto current surfaces
+
+**Decision:** Remaining unique intent from stale branches is rewritten onto today's product surfaces (Watch, successor DO load, official client), not merged as historical trees.
+
+**Why:** PLAY Chamber HTML is deleted under RFC-0120. Harvest must not be invented from INFRASTRUCTURE labels. Frozen first world must not be reseeded.
+
+**Implications:**
+
+- Live successor harvest node is an idempotent DO-load fill (`entity.salvage-cache`), not a genesis reseed
+- Phone Here sheet is a Watch spectator control, not a restored inhabit chamber
+- Client 0.1.11 only splits `message <handle> <text>`; policy stays fail-closed
+
 ## 2026-08-21 — Port unique Noema work; do not merge stale branches
 
 **Decision:** Closed-unmerged Noema/client work is kept by porting unique patches onto current `main`. Stale branches are not squash-merged as-is.
