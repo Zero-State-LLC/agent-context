@@ -24,7 +24,9 @@ gh repo clone Zero-State-LLC/agent-context ~/agent-context
 
 Then `git pull` in `~/agent-context` at the start of a working day. After a session that changed team status, update the files here and `git push`.
 
-`install.sh` only **symlinks** the shared rule and skill into your local Grok / Claude / Cursor dirs. It does not copy personal memory.
+`install.sh` only **symlinks** the shared rule and skill into your local Grok / Claude / Cursor dirs (`alwaysApply` on the Cursor `.mdc`). It does not copy personal memory.
+
+Cursor Cloud VMs do not inherit `~/.cursor`. Clone this repo (or `gh repo clone Zero-State-LLC/agent-context ~/agent-context`) and read `HANDOFF.md` at session start.
 
 ## What stays private
 

@@ -1,5 +1,16 @@
 # Decisions
 
+## 2026-08-21 — PLAY identity is perihelion-reach-3
+
+**Decision:** Live PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Do not ENTER, activate, or same-id EWM `world.perihelion-reach-2`. Frozen first world remains `world-01` / `genesis.ef578f4ffceeccd0`.
+
+**Why:** RFC-0122 flipped the hosted default with two deploys (admit+activate, then `DEFAULT_WORLD_ID`). An earlier note in this file said dual-agent debugging starts on reach-2; that world is retired for PLAY.
+
+**Implications:**
+
+- Isolated maint-evolve probes use `test.*` world ids only
+- Same-id activate on reach-2 is 409/403 and must not be forced
+
 ## 2026-08-21 — Partner Agents may admin-bypass required reviews
 
 **Decision:** Keep 1 review + code owners on every protected `main`. Grant `bypass_pull_request_allowances` to users `scrimshawlife-ctrl`, `prabu-openclaw` and team `partner-agents`. Do not set `enforce_admins` false and do not drop the review count.

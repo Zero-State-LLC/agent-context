@@ -4,14 +4,14 @@ You are working in the Zero State LLC shared context repo, or you have the `zero
 
 ## Load
 
-At the start of a session that needs org or partner context, read:
+At the start of a session that needs org or partner context (Cursor, Claude, Grok, Codex, OpenClaw — same files):
 
 1. `HANDOFF.md` — latest state another agent or person left
 2. `STATUS.md` — what is in flight
 3. `DECISIONS.md` — only if the task depends on a prior choice
 4. `TEAM.md` — only if you need who-owns-what
 
-If this clone is not the cwd, those files live at `~/agent-context/` (or `$ZERO_STATE_CONTEXT`).
+If this clone is not the cwd, those files live at `~/agent-context/` (or `$ZERO_STATE_CONTEXT`). Pull `--ff-only` before trusting a local copy.
 
 ## Write
 

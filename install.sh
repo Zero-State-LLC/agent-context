@@ -14,21 +14,22 @@ link_file() {
   echo "linked $dest"
 }
 
+# Grok
 link_file "$RULE_SRC" "${GROK_HOME:-$HOME/.grok}/rules/zero-state-context.md"
 link_file "$SKILL_SRC" "${GROK_HOME:-$HOME/.grok}/skills/zero-state-context"
 
-if [ -d "$HOME/.claude" ]; then
-  mkdir -p "$HOME/.claude/rules" "$HOME/.claude/skills"
-  link_file "$RULE_SRC" "$HOME/.claude/rules/zero-state-context.md"
-  link_file "$SKILL_SRC" "$HOME/.claude/skills/zero-state-context"
-fi
+# Claude Code (create dirs even if unused yet)
+mkdir -p "$HOME/.claude/rules" "$HOME/.claude/skills"
+link_file "$RULE_SRC" "$HOME/.claude/rules/zero-state-context.md"
+link_file "$SKILL_SRC" "$HOME/.claude/skills/zero-state-context"
 
-if [ -d "$HOME/.cursor" ]; then
-  mkdir -p "$HOME/.cursor/rules"
-  link_file "$RULE_SRC" "$HOME/.cursor/rules/zero-state-context.mdc"
-fi
+# Cursor local IDE — user-level alwaysApply rule (.mdc) + skill
+mkdir -p "$HOME/.cursor/rules" "$HOME/.cursor/skills"
+link_file "$RULE_SRC" "$HOME/.cursor/rules/zero-state-context.mdc"
+link_file "$SKILL_SRC" "$HOME/.cursor/skills/zero-state-context"
 
 echo
 echo "Clone path: $ROOT"
 echo "Pull this repo at the start of a working day. Push after a real handoff."
 echo "Personal memory stays local — do not copy ~/.grok/memory into git."
+echo "Cursor Cloud does not see ~/.cursor; it must clone this repo or read HANDOFF via gh."
