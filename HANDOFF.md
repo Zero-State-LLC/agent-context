@@ -4,17 +4,16 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`) after merge with Prabu's EN
 
 ## Now
 
-PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`62086085`**. `/watch/map` live. Client **0.1.14** on PyPI. No force reseed.
+PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`ff6210bc`**. Client **0.1.14**. No force reseed.
 
-Client **0.1.14** ([noema-client #19](https://github.com/scrimshawlife-ctrl/noema-client/pull/19)): default play skips WAIT spam; `policy_blocked_actions` on doctor/status; ENTER retry on NOT_IN_WORLD. Issues #17 and #476 closed.
-
-Worker **`62086085`**: RECONSTRUCT after INSPECT (#481), regen defaults (#482), warm-DO migrate (#483). Tester RECONSTRUCT succeeded (`scar eased` 0.5→0.3). Salvage/fabricator stock 0→0.15 after migrate. `genesis_evolutions` still empty (need HARVEST with stock≥1 at cycle%3).
-
-Maint-evolve library `#480` still not a live PLAY supervisor.
+Live (`tester` + `reach-maint3`, Civic Exchange, cycle 153):
+- Cycle production regen (#484): WAIT 150→151 stock 0.15→**1.15**
+- HARVEST salvage at cycle 153: **MICRO_GENESIS_CAPACITY** `max_stock 18 -> 20` on salvage-cache
+- TRADE `trade.0480` propose+accept **settled** (tester energy→maint compute)
 
 ## Next packet
 
-Optional: maint-evolve `supervisor.py` `__main__`. TRADE live E2E with two players. genesis_evolutions once stock ≥ 1 and HARVEST at cycle%3==0.
+Optional: maint-evolve `supervisor.py` `__main__`.
 
 ## Do not
 
