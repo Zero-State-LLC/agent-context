@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (Worker 5c796d6e; live Civic Exchange scar 0.5)
+Last updated: 2026-08-21 (client 0.1.13 on PyPI; PLAY 5c796d6e)
 
 ## In flight (org)
 
@@ -12,5 +12,5 @@ Last updated: 2026-08-21 (Worker 5c796d6e; live Civic Exchange scar 0.5)
 ## Product work
 
 - **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `5c796d6e`. Deep Time persist live: Civic Exchange public scar 0.5 on LOOK and `/watch/map`. RFC-0122.
-- **noema-client** — 0.1.13 `#16` forwards Semantic/Deep Time LOOK fields.
+- **noema-client** — 0.1.13 on PyPI. LOOK forwards Semantic/Deep Time fields. Hosted pin `noema-client==0.1.13`.
 - **Noema-Specs** — WATCH mapping `#235` merged. Remaining live packet is Prabu ENTER.

@@ -4,15 +4,13 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`5c796d6e-34f7-45f7-81fb-eb760804f5e1`**. No force reseed.
+PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`5c796d6e`**. Civic Exchange public scar 0.5. `/watch/map` live. No force reseed.
 
-Deep Time persist fix is live ([Noema #473](https://github.com/Zero-State-LLC/Noema/pull/473)). Civic Exchange has a public economic scar (`strength` 0.5) after fabricator HARVEST×3. LOOK and `/v1/watch/map` both show it (`scar_activity` 0.5, residue on Civic Exchange). No reputation leak.
-
-Official client 0.1.13: [noema-client #16](https://github.com/scrimshawlife-ctrl/noema-client/pull/16).
+Official client **0.1.13** is on PyPI (`pip install noema-client==0.1.13`). GitHub release [v0.1.13](https://github.com/scrimshawlife-ctrl/noema-client/releases/tag/v0.1.13). Hosted pin `official_client` updated.
 
 ## Next packet
 
-Prabu ENTER via `/connect`. Optional PyPI 0.1.13.
+Prabu ENTER via `/connect` (his agent). Nothing else blocking product inhabit.
 
 ## Do not
 
