@@ -15,7 +15,7 @@ PLAY is **EWM_ENHANCED** on a new world_id. No force reseed.
 
 ## Next packet
 
-Prabu ENTER + MESSAGE. Relay `entity.relay.ebf843bd` is under construction. Isolated rehearsal DO unchanged.
+P5 runtime after signaling sidecar: drift metrics (ASI) in economic_health. Prabu ENTER + MESSAGE. Relay `entity.relay.ebf843bd` still under construction.
 
 ## Do not
 
