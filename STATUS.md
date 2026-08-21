@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (WATCH map #471 on main; PLAY still d1dc5a9f)
 
 ## Product work
 
-- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `d1dc5a9f`. Dual-agent MESSAGE live. Deep Time `#469`/`#470` on `main` (not deployed). RFC-0122. reach-2 not reseeding.
-- **Noema-Specs** — Semantic Evolution v0.1 pin `#231`/`#233`. Remaining live packet is Prabu ENTER (his `/connect`).
+- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `d1dc5a9f`. Deep Time `#469`/`#470` and WATCH map `#471` on `main` (not deployed). Lightweight `/watch` unchanged. RFC-0122.
+- **Noema-Specs** — WATCH mapping `#235` merged. Remaining live packet is Prabu ENTER + optional deploy of `main`.
