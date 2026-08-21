@@ -4,15 +4,17 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`) after merge with Prabu's EN
 
 ## Now
 
-PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`5c796d6e`**. Civic Exchange public scar 0.5. `/watch/map` live. Client **0.1.13** on PyPI. No force reseed.
+PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`62086085`**. `/watch/map` live. Client **0.1.14** on PyPI. No force reseed.
 
-Maint-evolve **library** is on `main` ([Noema #480](https://github.com/Zero-State-LLC/Noema/pull/480)): `ops/maint_evolve/`. 42 pytest passed. RFC-0120. Not a live PLAY supervisor yet (no HTTP `__main__`). Copy to `~/.config/noema/maint_evolve/` only after you want ops to use it.
+Client **0.1.14** ([noema-client #19](https://github.com/scrimshawlife-ctrl/noema-client/pull/19)): default play skips WAIT spam; `policy_blocked_actions` on doctor/status; ENTER retry on NOT_IN_WORLD. Issues #17 and #476 closed.
 
-Prabu ENTER via `/connect` completed — Player `player.devicedda6be5c9f55`, dual-agent MESSAGE to `player.reach-maint3`. Did **not** use Admin login. Findings: Specs `#236`, noema-client `#17`, Noema `#476`.
+Worker **`62086085`**: RECONSTRUCT after INSPECT (#481), regen defaults (#482), warm-DO migrate (#483). Tester RECONSTRUCT succeeded (`scar eased` 0.5→0.3). Salvage/fabricator stock 0→0.15 after migrate. `genesis_evolutions` still empty (need HARVEST with stock≥1 at cycle%3).
+
+Maint-evolve library `#480` still not a live PLAY supervisor.
 
 ## Next packet
 
-Triage `noema-client#17` and `Noema#476`. Optional: maint-evolve `supervisor.py` `__main__` + isolated probe child.
+Optional: maint-evolve `supervisor.py` `__main__`. TRADE live E2E with two players. genesis_evolutions once stock ≥ 1 and HARVEST at cycle%3==0.
 
 ## Do not
 
