@@ -4,20 +4,21 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-Live successor play ran. Docs pins name the successor.
+EWM_ENHANCED is **on the Worker**, not on live PLAY.
 
-- ENTER: `player.reach-maint3` and `player.tester` Civic Exchange 200. Report [Noema #450](https://github.com/Zero-State-LLC/Noema/pull/450) / [LIVE-SUCCESSOR-PLAY-2026-08-21.md](https://github.com/Zero-State-LLC/Noema/blob/main/docs/LIVE-SUCCESSOR-PLAY-2026-08-21.md)
-- HARVEST: advertised on `entity.salvage-cache` (materials). tester HARVEST 200 **credits energy**, stock 4→3, CONSTRUCT still no materials in hold. maint energy 1 → BUDGET_EXCEEDED. WAIT does not restore energy with empty hold.
-- Honesty pins: [Noema #451](https://github.com/Zero-State-LLC/Noema/pull/451) `hosted_live` = `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`. Frozen first world historical.
-- Specs remaining-work: [Noema-Specs #227](https://github.com/Zero-State-LLC/Noema-Specs/pull/227)
-- **Prabu's agent has not ENTER'd.**
+- [#454](https://github.com/Zero-State-LLC/Noema/pull/454) merged+deployed (`0984d583-ca8e-415b-9b6c-370db0a978a5`). Rebased #453 onto current main (did not revert RFC-0121 / materials HARVEST). #453 closed.
+- Isolated genesis **activated**: `test.hosted-canonical.ewm-cutover` / `genesis.c683369b09acad07` / EWM_ENHANCED / salvage-cache materials×8 regen 1.15 / three archetypes / production node. Preview `live_world_unchanged`.
+- Isolated ENTER is blocked: `NONCONTIGUOUS_SEQUENCE` on `/v1/operator/test-world/command`.
+- Live PLAY unchanged: `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1` cycle 2 seq 455 ACTIVE HEALTHY.
 
 ## Next packet
 
-HARVEST materials is **fixed and live** (`Noema#452`, Worker `50ae2b8d-fca1-454a-bff9-dc48ee846b4f`): consequence `Harvested 1 materials`, energy −2 (no energy credit), hold fills. CONSTRUCT still needs **4 cargo** (relay). Prabu ENTER via `/connect`. Harvest more to prove CONSTRUCT.
+1. Fix isolated test-world settlement (NONCONTIGUOUS_SEQUENCE) so ENTER/HARVEST can prove regen.
+2. Do **not** force-activate EWM onto live reach-2 (409 ALREADY_ACTIVATED; force 403). Live promotion needs a new `world_id` RFC.
 
 ## Do not
 
-- Invent harvest from INFRASTRUCTURE labels
 - Reseed `genesis.ef578f4ffceeccd0` or PLAY `world-01`
+- `force:true` genesis on production
+- Treat canned `verify_ewm_test_activation.py` as a test-DO proof
 - Treat Admin JWT as a Player token

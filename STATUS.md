@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (live successor play + honesty pins)
+Last updated: 2026-08-21 (EWM isolated activate, live PLAY unchanged)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (live successor play + honesty pins)
 
 ## Product work
 
-- **Noema** — Live ENTER Civic Exchange (`reach-maint3`, `tester`). HARVEST of salvage-cache credits **energy**, not materials hold. Honesty pins `#451`. Next: harvest-resource bug.
-- **Noema-Specs** — remaining-work `#227` records that live defect. Prabu ENTER still open.
+- **Noema** — EWM_ENHANCED on Worker `#454` / `0984d583`. Isolated world `test.hosted-canonical.ewm-cutover` genesis `c683369b09acad07` ACTIVATED. Isolated ENTER settlement blocked. Live PLAY still `dbeb43d198ce81b1`.
+- **Noema-Specs** — remaining-work `#227` still current for live HARVEST/CONSTRUCT cargo.
