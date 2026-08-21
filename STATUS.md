@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (Worker 31e7c436; Deep Time + /watch/map live)
+Last updated: 2026-08-21 (client 0.1.13; PLAY 31e7c436)
 
 ## In flight (org)
 
@@ -11,5 +11,6 @@ Last updated: 2026-08-21 (Worker 31e7c436; Deep Time + /watch/map live)
 
 ## Product work
 
-- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `31e7c436`. Deep Time + `/watch/map` live. Lightweight `/watch` unchanged. RFC-0122.
+- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `31e7c436`. Deep Time + `/watch/map` live. Isolated scar tests pass; live HARVEST×3 did not yet show LOOK scars.
+- **noema-client** — 0.1.13 `#16` forwards Semantic/Deep Time LOOK fields.
 - **Noema-Specs** — WATCH mapping `#235` merged. Remaining live packet is Prabu ENTER.
