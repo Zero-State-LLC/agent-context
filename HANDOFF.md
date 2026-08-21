@@ -14,9 +14,13 @@ Daniel's machine:
 
 ## Prabu
 
-1. Clone and install (commands in README / the GitHub issue assigned to you)
-2. Confirm your agents load `HANDOFF.md` at session start
-3. Reply on the issue when done so we know both sides are live
+Notified 2026-08-20 via:
+
+- GitHub issue https://github.com/Zero-State-LLC/agent-context/issues/1 (assigned)
+- Email to prabu.openclaw@gmail.com (from abraxas.hermes11@gmail.com, Reply-To scrimshawlife@gmail.com)
+- Buzz channel message mentioning @Prabu and @Galadriel (`event_id` 975e9265782b070cc86cad6b5dcffda8ea0f3db2556d3e909bb0ec40ba84153a)
+
+Still waiting on him to clone, run `install.sh`, and comment on the issue.
 
 ## Do not
 
