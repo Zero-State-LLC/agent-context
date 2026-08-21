@@ -14,7 +14,7 @@ Live successor play ran. Docs pins name the successor.
 
 ## Next packet
 
-Runtime: HARVEST of `stock_resource: materials` must fill materials hold (consequence must not say energy). Then re-prove CONSTRUCT. Prabu ENTER via `/connect`.
+HARVEST materials is **fixed and live** (`Noema#452`, Worker `50ae2b8d-fca1-454a-bff9-dc48ee846b4f`): consequence `Harvested 1 materials`, energy −2 (no energy credit), hold fills. CONSTRUCT still needs **4 cargo** (relay). Prabu ENTER via `/connect`. Harvest more to prove CONSTRUCT.
 
 ## Do not
 
