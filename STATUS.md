@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (GitHub admin bypass)
+Last updated: 2026-08-21 (live successor play + honesty pins)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (GitHub admin bypass)
 
 ## Product work
 
-- **Noema** — Worker `01893b15-3638-4b65-a5e0-6b599b69649d`. Live successor. Partner operator hats documented in `docs/PARTNER-OPERATOR.md`.
-- **Noema-Specs** — `docs/REMAINING-WORK-2026-08-21.md` is the live-state snapshot. Next packet: dual-agent inhabit + written reports.
+- **Noema** — Live ENTER Civic Exchange (`reach-maint3`, `tester`). HARVEST of salvage-cache credits **energy**, not materials hold. Honesty pins `#451`. Next: harvest-resource bug.
+- **Noema-Specs** — remaining-work `#227` records that live defect. Prabu ENTER still open.

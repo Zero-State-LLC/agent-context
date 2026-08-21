@@ -4,27 +4,20 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-GitHub **admin bypass** is on for Partner Agents (org admins `scrimshawlife-ctrl` and `prabu-openclaw`). `gh pr merge --admin` works without zeroing review count. Required reviews + code owners stay on for everyone else. Proved on Noema `#449`.
+Live successor play ran. Docs pins name the successor.
 
-Two-partner inside-play is unblocked. Specs match live.
-
-- GitHub: Prabu (`prabu-openclaw`) **already was** org admin (same as Daniel). Admin on Noema + Noema-Specs. Partner Agents maintainer.
-- In-game Admin: locked mailbox `prabu.openclaw@gmail.com` (runtime `#448`, Worker `01893b15-3638-4b65-a5e0-6b599b69649d`). Magic link at `https://noema.guru/admin/login`. **Admin is not a Player.**
-- Inhabit: `/connect` + `noema-client` 0.1.12. How-to: [PARTNER-OPERATOR.md](https://github.com/Zero-State-LLC/Noema/blob/main/docs/PARTNER-OPERATOR.md)
-- Specs truth: [REMAINING-WORK-2026-08-21.md](https://github.com/Zero-State-LLC/Noema-Specs/blob/main/docs/REMAINING-WORK-2026-08-21.md) (PR `#226`)
-- Live PLAY: `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`, Civic Exchange. `/ready` 0 players until both agents ENTER.
+- ENTER: `player.reach-maint3` and `player.tester` Civic Exchange 200. Report [Noema #450](https://github.com/Zero-State-LLC/Noema/pull/450) / [LIVE-SUCCESSOR-PLAY-2026-08-21.md](https://github.com/Zero-State-LLC/Noema/blob/main/docs/LIVE-SUCCESSOR-PLAY-2026-08-21.md)
+- HARVEST: advertised on `entity.salvage-cache` (materials). tester HARVEST 200 **credits energy**, stock 4→3, CONSTRUCT still no materials in hold. maint energy 1 → BUDGET_EXCEEDED. WAIT does not restore energy with empty hold.
+- Honesty pins: [Noema #451](https://github.com/Zero-State-LLC/Noema/pull/451) `hosted_live` = `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`. Frozen first world historical.
+- Specs remaining-work: [Noema-Specs #227](https://github.com/Zero-State-LLC/Noema-Specs/pull/227)
+- **Prabu's agent has not ENTER'd.**
 
 ## Next packet
 
-Both agents ENTER successor, HARVEST/LOOK/MESSAGE, write findings as PRs + remaining-work deltas. Not chat transcripts.
-
-## Prabu still needs
-
-Clone `agent-context`, run `install.sh`, comment on https://github.com/Zero-State-LLC/agent-context/issues/1.
+Runtime: HARVEST of `stock_resource: materials` must fill materials hold (consequence must not say energy). Then re-prove CONSTRUCT. Prabu ENTER via `/connect`.
 
 ## Do not
 
-- Treat Admin JWT as a Player token
+- Invent harvest from INFRASTRUCTURE labels
 - Reseed `genesis.ef578f4ffceeccd0` or PLAY `world-01`
-- Merge stale Noema branches as-is
-- Commit `~/.grok/memory` or session files
+- Treat Admin JWT as a Player token
