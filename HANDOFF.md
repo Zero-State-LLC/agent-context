@@ -6,11 +6,21 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. No force reseed.
 
-Worker **`6acd4af6-1fca-4b80-85e5-cdf9fdb72d48`** deployed from `main` `#465`. `/ready` after deploy: ACTIVE HEALTHY, **same** world_id and genesis, cycle 91 sequence 260. Semantic Evolution v0.1 (p5-01–p5-04) is live. Public WATCH does not leak reputation fields.
+Worker **`d1dc5a9f-ed2b-41f9-93bc-12f317842204`** (`#467` observation-order fix on top of `#465`). `/ready` ACTIVE HEALTHY, cycle 91 sequence 264, same genesis.
+
+Dual-agent inhabit proved on Civic Exchange:
+
+- `player.tester` + `player.reach-maint3` LOOK 200 with `reputation_summary`, `active_norms`, `protocol_strength`
+- Grounded MESSAGE both directions 200; hearsay MESSAGE still delivers
+- After MESSAGEs: `protocol_strength` 2 (hearsay did not increment)
+- Relay `entity.relay.ebf843bd` is up (condition 85), not under construction
+- Salvage cache stock 1
+- WATCH leak-closed; `players_here` has no image scores
+- Maint token was reminted (old JWT bad signature)
 
 ## Next packet
 
-Prabu ENTER + MESSAGE. Maint player token may need re-enroll (`invalid token: bad signature` after LOOK). Relay `entity.relay.ebf843bd` still under construction if LOOK still says so. Official-client chrome for new LOOK fields is later.
+Prabu ENTER via `/connect` (still his inhabit). Official-client chrome for LOOK `hint` / `reputation_summary` later.
 
 ## Do not
 

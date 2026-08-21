@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (Worker 6acd4af6 live; PLAY still reach-3)
+Last updated: 2026-08-21 (Worker d1dc5a9f; dual-agent MESSAGE on reach-3)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (Worker 6acd4af6 live; PLAY still reach-3)
 
 ## Product work
 
-- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `6acd4af6` (p5-01–p5-04 live). RFC-0122. reach-2 not reseeding. Isolated verifier still PASS.
-- **Noema-Specs** — Semantic Evolution v0.1 pin `#231`/`#233`. Remaining live packet is Prabu ENTER + MESSAGE.
+- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `d1dc5a9f`. Dual-agent MESSAGE (`tester` ↔ `reach-maint3`) 200; `protocol_strength` 2. Relay `entity.relay.ebf843bd` condition 85. RFC-0122. reach-2 not reseeding.
+- **Noema-Specs** — Semantic Evolution v0.1 pin `#231`/`#233`. Remaining live packet is Prabu ENTER (his `/connect`).
