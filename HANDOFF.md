@@ -4,17 +4,15 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`31e7c436`**. `/watch/map` live. No force reseed.
+PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker **`5c796d6e-34f7-45f7-81fb-eb760804f5e1`**. No force reseed.
 
-Official client **0.1.13** forwarded Semantic + Deep Time LOOK fields: [noema-client #16](https://github.com/scrimshawlife-ctrl/noema-client/pull/16).
+Deep Time persist fix is live ([Noema #473](https://github.com/Zero-State-LLC/Noema/pull/473)). Civic Exchange has a public economic scar (`strength` 0.5) after fabricator HARVEST×3. LOOK and `/v1/watch/map` both show it (`scar_activity` 0.5, residue on Civic Exchange). No reputation leak.
 
-Tester HARVEST×3 succeeded on Civic Exchange; LOOK after did not yet show `scars` (fragments=1). Isolated tests still pass. Possible durable-head restore dropping new Deep Time fields — investigate before relying on live scar residue.
+Official client 0.1.13: [noema-client #16](https://github.com/scrimshawlife-ctrl/noema-client/pull/16).
 
 ## Next packet
 
-- Prabu ENTER via `/connect`
-- Trace why live HARVEST did not persist `WorldRuntime.scars` (canonical head vs DO)
-- PyPI publish 0.1.13 if you want agents on the new client
+Prabu ENTER via `/connect`. Optional PyPI 0.1.13.
 
 ## Do not
 
