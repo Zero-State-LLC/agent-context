@@ -4,18 +4,20 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-PLAY is **EWM_ENHANCED** on a new world_id. No force reseed.
+PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. No force reseed.
 
-- RFC-0122 Accepted ([Specs #229](https://github.com/Zero-State-LLC/Noema-Specs/pull/229))
-- Admit + activate: [Noema #458](https://github.com/Zero-State-LLC/Noema/pull/458) then `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` ACTIVATED (no force)
-- PLAY default: [Noema #459](https://github.com/Zero-State-LLC/Noema/pull/459) Worker `edcd7e93-7712-4174-b56a-bfb5e57f816a`
-- `/ready`: `world.perihelion-reach-3` cycle 0 seq 0 ACTIVE HEALTHY
-- PLAY ENTER Civic Exchange 200, HARVEST×4 materials, `BUILD.CONSTRUCT` relay 200 (`entity.relay.ebf843bd`)
-- Prior PLAY `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1` not reseeding. Frozen `world-01` untouched.
+Semantic Evolution v0.1 **runtime + spec pin** is on `main`:
+
+- p5-01 ASP sidecar [Noema #461](https://github.com/Zero-State-LLC/Noema/pull/461)
+- p5-02 ASI drift [Noema #462](https://github.com/Zero-State-LLC/Noema/pull/462)
+- p5-03 image / hearsay quarantine / cascading-risk [Noema #463](https://github.com/Zero-State-LLC/Noema/pull/463)
+- Specs pin [Noema-Specs #231](https://github.com/Zero-State-LLC/Noema-Specs/pull/231)
+
+Privileged `image_score` is not a WATCH scalar (GC3-S0). No new verbs. Production Worker is still `edcd7e93` until the next deploy; do not reseed to pick this up.
 
 ## Next packet
 
-P5-03 reputation/image scores. Prabu ENTER + MESSAGE. Relay `entity.relay.ebf843bd` still under construction.
+Prabu ENTER + MESSAGE. Relay `entity.relay.ebf843bd` still under construction. Optional: deploy Worker so live PLAY has p5-03 gates. Full cultural-generation tracking and Ollivier–Ricci remain later.
 
 ## Do not
 
@@ -23,3 +25,4 @@ P5-03 reputation/image scores. Prabu ENTER + MESSAGE. Relay `entity.relay.ebf843
 - `force:true` on production
 - Same-id activate on `world.perihelion-reach-2`
 - Treat Admin JWT as a Player token
+- Put image/reputation on public WATCH
