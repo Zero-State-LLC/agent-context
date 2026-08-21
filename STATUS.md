@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (isolated EWM verifier PASS)
+Last updated: 2026-08-21 (PLAY is EWM world.perihelion-reach-3)
 
 ## In flight (org)
 
