@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (isolated live-LOOK verifier)
+Last updated: 2026-08-21 (isolated EWM verifier PASS)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (isolated live-LOOK verifier)
 
 ## Product work
 
-- **Noema** — Isolated live-LOOK verifier: `NEEDS_ATTENTION` (HIGH_CONCENTRATION). Live PLAY still `dbeb43d198ce81b1` seq 455. Same-id cutover still forbidden.
+- **Noema** — Isolated EWM verifier **PASS** (occupancy-weighted conc 50%). Live PLAY still `dbeb43d198ce81b1` (seq 478, same genesis). Same-id cutover still forbidden.
 - **Noema-Specs** — remaining-work `#227` still current for live HARVEST/CONSTRUCT cargo.
