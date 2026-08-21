@@ -6,20 +6,11 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. No force reseed.
 
-Semantic Evolution v0.1 **runtime + spec pin** is on `main`:
-
-- p5-01 ASP sidecar [Noema #461](https://github.com/Zero-State-LLC/Noema/pull/461)
-- p5-02 ASI drift [Noema #462](https://github.com/Zero-State-LLC/Noema/pull/462)
-- p5-03 image / hearsay quarantine / cascading-risk [Noema #463](https://github.com/Zero-State-LLC/Noema/pull/463)
-- p5-03 follow-up: `second_order` written from ATTEST/TRADE/ORG apply [Noema #464](https://github.com/Zero-State-LLC/Noema/pull/464)
-- p5-04 protocol strength / LOOK norms / Forman risk / ATTEST ontology [Noema #465](https://github.com/Zero-State-LLC/Noema/pull/465)
-- Specs pin [Noema-Specs #231](https://github.com/Zero-State-LLC/Noema-Specs/pull/231) · p5-04 [Noema-Specs #233](https://github.com/Zero-State-LLC/Noema-Specs/pull/233)
-
-Privileged `image_score` is not a WATCH scalar (GC3-S0). No new verbs. Production Worker is still `edcd7e93` until the next deploy; do not reseed to pick this up.
+Worker **`6acd4af6-1fca-4b80-85e5-cdf9fdb72d48`** deployed from `main` `#465`. `/ready` after deploy: ACTIVE HEALTHY, **same** world_id and genesis, cycle 91 sequence 260. Semantic Evolution v0.1 (p5-01–p5-04) is live. Public WATCH does not leak reputation fields.
 
 ## Next packet
 
-Prabu ENTER + MESSAGE. Optional: deploy Worker so live PLAY has p5-01–p5-04. Wasserstein Ollivier, official-client chrome, and live cultural-generation remain later.
+Prabu ENTER + MESSAGE. Maint player token may need re-enroll (`invalid token: bad signature` after LOOK). Relay `entity.relay.ebf843bd` still under construction if LOOK still says so. Official-client chrome for new LOOK fields is later.
 
 ## Do not
 

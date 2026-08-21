@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (Semantic Evolution v0.1 on main; PLAY still reach-3)
+Last updated: 2026-08-21 (Worker 6acd4af6 live; PLAY still reach-3)
 
 ## In flight (org)
 
@@ -11,5 +11,5 @@ Last updated: 2026-08-21 (Semantic Evolution v0.1 on main; PLAY still reach-3)
 
 ## Product work
 
-- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). RFC-0122. reach-2 not reseeding. Isolated verifier still PASS. Semantic Evolution v0.1 runtime is on `main` (p5-01 `#461` through p5-04 `#465`); live Worker is still `edcd7e93` until the next deploy.
-- **Noema-Specs** — Semantic Evolution v0.1 pin `#231`. Remaining live packet is Prabu ENTER + MESSAGE, not another honesty pass.
+- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8` (EWM_ENHANCED). Worker `6acd4af6` (p5-01–p5-04 live). RFC-0122. reach-2 not reseeding. Isolated verifier still PASS.
+- **Noema-Specs** — Semantic Evolution v0.1 pin `#231`/`#233`. Remaining live packet is Prabu ENTER + MESSAGE.
