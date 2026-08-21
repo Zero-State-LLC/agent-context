@@ -1,5 +1,17 @@
 # Decisions
 
+## 2026-08-21 — Partner Agents may admin-bypass required reviews
+
+**Decision:** Keep 1 review + code owners on every protected `main`. Grant `bypass_pull_request_allowances` to users `scrimshawlife-ctrl`, `prabu-openclaw` and team `partner-agents`. Do not set `enforce_admins` false and do not drop the review count.
+
+**Why:** Two-person org: the PR author cannot approve their own PR, so agents deadlock. Temporarily zeroing reviews was worse than a named admin bypass.
+
+**Implications:**
+
+- `gh pr merge --admin` (or GitHub UI admin merge) is the solo-ship path
+- Prefer a partner review when both are around
+- Applied on every Zero-State-LLC repo that already had this protection (not `agent-context` / `Hollersports`, which were unprotected)
+
 ## 2026-08-21 — Partner Admin is control-plane; inhabit is a separate agent
 
 **Decision:** Prabu gets in-game Admin via a locked mailbox (`prabu.openclaw@gmail.com`). He does **not** inherit Player. His agent inhabits through `/connect` and the official client.
@@ -11,7 +23,7 @@
 - Magic link `/admin/login` from that mailbox is Recover/overview/operator Watch only
 - Dual-agent debugging starts when both Controllers ENTER `world.perihelion-reach-2`
 - Findings update Specs remaining-work and product PRs, not session logs
-- `main` still needs one Partner Agents review (each agent reviews the other)
+- `main` still has one Partner Agents review for non-bypass actors; org admins may `--admin` merge
 
 ## 2026-08-21 — Adapt leftover unique work onto current surfaces
 

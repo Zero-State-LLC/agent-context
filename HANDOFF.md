@@ -4,6 +4,8 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
+GitHub **admin bypass** is on for Partner Agents (org admins `scrimshawlife-ctrl` and `prabu-openclaw`). `gh pr merge --admin` works without zeroing review count. Required reviews + code owners stay on for everyone else. Proved on Noema `#449`.
+
 Two-partner inside-play is unblocked. Specs match live.
 
 - GitHub: Prabu (`prabu-openclaw`) **already was** org admin (same as Daniel). Admin on Noema + Noema-Specs. Partner Agents maintainer.
