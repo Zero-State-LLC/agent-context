@@ -11,9 +11,11 @@ Live (`tester` + `reach-maint3`, Civic Exchange, cycle 153):
 - HARVEST salvage at cycle 153: **MICRO_GENESIS_CAPACITY** `max_stock 18 -> 20` on salvage-cache
 - TRADE `trade.0480` propose+accept **settled** (tester energy→maint compute)
 
+Maint-evolve CLI is on `main` ([Noema #485](https://github.com/Zero-State-LLC/Noema/pull/485)). Smoke: `python -m maint_evolve.supervisor` → `halt_inhabit: false`, `spawn_patrol: false` (public `/ready` only). Probe still requires `test.*` world_id. Copied to `~/.config/noema/maint_evolve/`.
+
 ## Next packet
 
-Optional: maint-evolve `supervisor.py` `__main__`.
+Isolated live probe (`--world-id test.hosted-canonical.ewm-cutover`) with tester token if you want scar persist on a test DO. Do not `--spawn-patrol` until you mean it.
 
 ## Do not
 
