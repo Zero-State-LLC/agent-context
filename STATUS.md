@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (maint-evolve #480; Prabu ENTER complete; PLAY 5c796d6e)
+Last updated: 2026-08-21 (PR queues drained: Noema #479 merged, #478/#18 closed, Zero-State #38/#41 merged)
 
 ## In flight (org)
 
@@ -11,6 +11,7 @@ Last updated: 2026-08-21 (maint-evolve #480; Prabu ENTER complete; PLAY 5c796d6e
 
 ## Product work
 
-- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `5c796d6e`. Deep Time persist live. Maint-evolve library `#480` on `main` (`ops/maint_evolve/`, 42 tests). Not a live PLAY supervisor yet. RFC-0122.
-- **noema-client** — 0.1.13 on PyPI. LOOK forwards Semantic/Deep Time fields. Hosted pin `noema-client==0.1.13`.
-- **Noema-Specs** — WATCH mapping `#235` merged. Prabu ENTER packet complete — see HANDOFF.md for E2E findings (default play adapter, policy-visibility gap, one-off NOT_IN_WORLD race).
+- **Noema** — PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `ff6210bc`. Deep Time persist live. Maint-evolve library+CLI on `main`. Harness policy visibility `#479` on `main`. No open PRs. Worker CI red on reconstruction tests (pre-existing). RFC-0122.
+- **noema-client** — 0.1.14 on main (LOOK fields, play/policy/ENTER). #18 closed as superseded. Repo still `scrimshawlife-ctrl/noema-client` (not transferred).
+- **Noema-Specs** — WATCH mapping `#235` merged. No open PRs.
+- **Zero-State website** — sitemap+robots `#41` and CI permission `#38` merged. No open PRs.
