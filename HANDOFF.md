@@ -4,40 +4,25 @@ Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`)
 
 ## Now
 
-Leftover unique Noema work is **adapted onto current surfaces** and live.
+Two-partner inside-play is unblocked. Specs match live.
 
-- Runtime: https://github.com/Zero-State-LLC/Noema/pull/447 merged
-- Client: https://github.com/scrimshawlife-ctrl/noema-client/pull/14 merged; release `v0.1.11`
-- Production Worker `noema-gateway` version `0c6e470f-5ceb-4556-adf0-0c56e3283f93`
-- Live `/ready`: ACTIVE `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`
-- Watch HTML now has `watch-here-open` / `watch-here-sheet`
+- GitHub: Prabu (`prabu-openclaw`) **already was** org admin (same as Daniel). Admin on Noema + Noema-Specs. Partner Agents maintainer.
+- In-game Admin: locked mailbox `prabu.openclaw@gmail.com` (runtime `#448`, Worker `01893b15-3638-4b65-a5e0-6b599b69649d`). Magic link at `https://noema.guru/admin/login`. **Admin is not a Player.**
+- Inhabit: `/connect` + `noema-client` 0.1.12. How-to: [PARTNER-OPERATOR.md](https://github.com/Zero-State-LLC/Noema/blob/main/docs/PARTNER-OPERATOR.md)
+- Specs truth: [REMAINING-WORK-2026-08-21.md](https://github.com/Zero-State-LLC/Noema-Specs/blob/main/docs/REMAINING-WORK-2026-08-21.md) (PR `#226`)
+- Live PLAY: `world.perihelion-reach-2` / `genesis.dbeb43d198ce81b1`, Civic Exchange. `/ready` 0 players until both agents ENTER.
 
-## Adapted (not abandoned)
+## Next packet
 
-Stale branches were **not** merged as-is. Unique intent was rewritten onto today's architecture:
+Both agents ENTER successor, HARVEST/LOOK/MESSAGE, write findings as PRs + remaining-work deltas. Not chat transcripts.
 
-| Leftover | Adapt |
-|---|---|
-| #445 salvage-cache on live play | `ensureSuccessorMaterialsCache` on successor DO load. Frozen `world-01` untouched. |
-| PLAY phone Here sheet (`play.ts`) | PLAY HTML is gone (RFC-0120). Same sheet now on **Watch**: map stays, Recently is the sheet. |
-| Client `message hermes hi` | 0.1.11 splits handle vs text so `player.` prefixing works. |
-| GC1-S2 plan/design docs | Landed (runtime already hosted). |
-| graft AGENTS.md | Landed; `graft/` stays gitignored. |
+## Prabu still needs
 
-Already on `main` from earlier squash/packets: device enrollment, tenant tester, two-door CONNECT, Phosphor, RFC-0120 identity, cargo, admin brief, `/ready` play_blocked, Deep Time fixtures, operator-env 0600, INVALID_REQUEST.
-
-## Deliberately not restored
-
-- Invented harvest from INFRASTRUCTURE labels (explicit `stock_resource` instead)
-- Hosted PLAY inhabit chamber HTML
-- Client org/contest/access fail-open defaults
-
-## Prabu
-
-Still needs to clone `agent-context`, run `install.sh`, and comment on https://github.com/Zero-State-LLC/agent-context/issues/1.
+Clone `agent-context`, run `install.sh`, comment on https://github.com/Zero-State-LLC/agent-context/issues/1.
 
 ## Do not
 
-- Commit `~/.grok/memory` or OpenClaw/Claude session files
+- Treat Admin JWT as a Player token
+- Reseed `genesis.ef578f4ffceeccd0` or PLAY `world-01`
 - Merge stale Noema branches as-is
-- Reseed `genesis.ef578f4ffceeccd0` or point PLAY at `world-01`
+- Commit `~/.grok/memory` or session files

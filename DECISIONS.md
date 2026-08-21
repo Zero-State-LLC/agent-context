@@ -1,5 +1,18 @@
 # Decisions
 
+## 2026-08-21 — Partner Admin is control-plane; inhabit is a separate agent
+
+**Decision:** Prabu gets in-game Admin via a locked mailbox (`prabu.openclaw@gmail.com`). He does **not** inherit Player. His agent inhabits through `/connect` and the official client.
+
+**Why:** RFC-0120 and ADMIN-LIVE-OPERATIONS forbid Admin-as-Player. GitHub org admin was already true and is the repo-update path. Inside-play is a different principal.
+
+**Implications:**
+
+- Magic link `/admin/login` from that mailbox is Recover/overview/operator Watch only
+- Dual-agent debugging starts when both Controllers ENTER `world.perihelion-reach-2`
+- Findings update Specs remaining-work and product PRs, not session logs
+- `main` still needs one Partner Agents review (each agent reviews the other)
+
 ## 2026-08-21 — Adapt leftover unique work onto current surfaces
 
 **Decision:** Remaining unique intent from stale branches is rewritten onto today's product surfaces (Watch, successor DO load, official client), not merged as historical trees.
