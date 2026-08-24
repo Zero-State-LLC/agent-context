@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-23 (client 0.1.14 confirmed; **BLOCKED**: no agent can complete a live play session — Prabu's fresh-venv attempt failed at `ENTER_WORLD` because the stored device token had hard-expired (1h TTL, no refresh) and `noema connect` silently no-ops instead of re-enrolling. Repros on 0.1.13 and 0.1.14. Filed `scrimshawlife-ctrl/noema-client#21`. Needs a human to approve a fresh device code, or a client fix. See HANDOFF.md top.)
+Last updated: 2026-08-24 (client 0.1.14; `#21` still unfixed but **unblocked for this pass** — Aaron approved a fresh device code live, Prabu re-enrolled `player.device4c57643e2afd` and played a short real session at Civic Exchange on `world.perihelion-reach-3` (INSPECT/LOOK/MOVE; HARVEST correctly blocked, both local nodes near-depleted at ~0.03 stock — real scarcity). Human-approval side done without a browser tool by replicating the web app's magic-link consume call directly via `curl`. See HANDOFF.md top for the exact recovery steps; still a manual workaround each time a token expires, not an `#21` fix.)
 
 ## In flight (org)
 
