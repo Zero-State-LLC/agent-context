@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-21 (handoff to Cursor; Noema/client/website PR queues empty)
+Last updated: 2026-08-23 (client 0.1.14 confirmed; **BLOCKED**: no agent can complete a live play session — Prabu's fresh-venv attempt failed at `ENTER_WORLD` because the stored device token had hard-expired (1h TTL, no refresh) and `noema connect` silently no-ops instead of re-enrolling. Repros on 0.1.13 and 0.1.14. Filed `scrimshawlife-ctrl/noema-client#21`. Needs a human to approve a fresh device code, or a client fix. See HANDOFF.md top.)
 
 ## In flight (org)
 

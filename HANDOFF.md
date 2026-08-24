@@ -1,6 +1,16 @@
 # Handoff
 
-Updated: 2026-08-21 by Daniel (`scrimshawlife-ctrl`). Grok session compacted; continuing in **Cursor**.
+Updated: 2026-08-23 by Prabu (`prabu-openclaw`)
+
+## Now (2026-08-23 — BLOCKED: no agent can ENTER until a human re-approves a device)
+
+Attempted a fresh-venv E2E play pass on `world.perihelion-reach-3` (player `player.devicedda6be5c9f55`, previously-enrolled device). Installed the current pin, **client 0.1.14**, in a clean `python3.12` venv — confirmed correct, not the stale 0.1.13 an earlier local copy of this file implied (always `git pull` this repo before trusting a version number in it). `noema status`/`noema doctor` both reported healthy (`connected: True`, `credential: stored`, new 0.1.14 fields `policy_blocked_actions: []` present), but **`noema act ENTER_WORLD` failed immediately**: `NOT_AUTHORIZED: invalid token: bad signature`.
+
+Root cause (decoded the stored JWT locally, no secret needed): the access token has a **hard 3600s TTL** and no `refresh_token`; it had been dead for ~58h. `NoemaClient.connect()` (same in 0.1.13 and 0.1.14) only checks that *some* `access_token` string exists on disk — never `exp`, never a server ping — so `status`/`doctor`/`connect` all report a healthy connection even when the token is long dead, and `noema connect` is a **complete no-op** when a stale credential is present (verified: re-ran it, byte-identical token/`iat`/`exp`/`sid` before and after). Filed **`scrimshawlife-ctrl/noema-client#21`**, confirmed it reproduces on both 0.1.13 and 0.1.14.
+
+Recovering requires deleting the local credential file so `connect()` falls through to `DeviceEnrollment` — a fresh interactive device-authorization flow (`noema.guru/connect?code=...`) that needs a **human** to click Approve in an already-authenticated browser. I don't have that browser session, so I could not re-enroll or enter the world this pass; restored the original expired credential file, no destructive action taken, Player-only throughout, no world action attempted.
+
+**This blocks every future headless/agent NOEMA session** (not just mine) once the last human-approved token is >1h old — which, given session cadence, is most of the time. Needs Aaron or Danny to either (a) approve a fresh device code in a browser, or (b) fix `#21` so `connect()`/`status` detect expiry and either refresh automatically or fail loudly instead of silently reporting healthy.
 
 ## Start here (Cursor)
 
@@ -10,7 +20,7 @@ git -C ~/agent-context pull --ff-only
 
 Open **Zero-State-LLC/Noema**. First actions: this file, then `STATUS.md`. For code, use `graft ask` before grep (`AGENTS.md` / `.cursor/rules/graft.mdc`). Do not treat Grok/Claude session logs as source of truth.
 
-## Now
+## Now (as of 2026-08-21, still the last *completed* live-play baseline)
 
 PLAY is **EWM_ENHANCED** on `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Production Worker **`ff6210bc`** (`noema-gateway`). Official client **noema-client 0.1.14** (PyPI + git tag `v0.1.14`). Hosted `https://noema.guru`. No force reseed.
 
@@ -53,6 +63,7 @@ RFC-0122 PLAY default is reach-3 (two-deploy admit+activate then `DEFAULT_WORLD_
 
 ## Next packet (pick one)
 
+0. **Most urgent: unblock `noema-client#21`** — a human approves a fresh device code for `player.devicedda6be5c9f55` at `noema.guru/connect`, or the client gets a fix so `connect()`/`status` detect an expired token instead of silently no-op'ing (see top of file). No agent can complete a live play session until one of these happens.
 1. **Fix Noema worker CI** — `main` is red. Reconstruction `gatherEvidence` expected true, got false (`test/reconstruction.test.ts`, `test/agent-reconstruct.test.ts`) since Deep Time / #481. Unrelated to harness #479. Do this before treating CI as a merge gate.
 2. Isolated live probe: `--world-id test.hosted-canonical.ewm-cutover` with **Player** tester token. Not PLAY. Do not `--spawn-patrol` until you mean it.
 3. Org-wide leftover (not Noema): Prabu CI clones (`repository-projects`, CodeQL-free scanning) on Kubrick/Hyperlex/NeonGenie/etc. Batch only if asked.
