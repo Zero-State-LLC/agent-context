@@ -1,16 +1,17 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — suas#91 merged; #94 /app cursor awaits CI
+Updated: 2026-08-26 by Daniel (Grok) — #91+#95 on main; #94 awaits CI
 
 ## Now (2026-08-26 — continue SUAS)
 
-- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + review fix gating EMAIL catalog to EMAIL channel only; optional `renderBody` for SMS/IN_APP; empty credential/subject/html fail closed.
-- **Open suas#94** (recreated from #93): `/app/responder` + `/app/responder/needs` cursor/limit + Show more. Local unit + `ui.test.ts` green. GitHub Actions same-day outage aftermath: verify never attached to this branch despite reopen/recreate/rebase/nudge — do not merge until a `verify` run lands on the tip. Main post-#91 `verify` was cancelled by concurrency; pages succeeded.
-- Native still owner-held. Formal STAGING waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
+- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + EMAIL-only catalog gating for `attemptSend`.
+- **Merged suas#95** (`599b98c`): phone-scan UUID false-positive fix after main verify failed on deletion-drill (`4724466123` inside UUID hex). Admin-merged with local proof while Actions was not attaching to new PR branches post-outage; main verify re-running on tip.
+- **Open suas#94**: `/app/responder` HTML cursor/limit + Show more. Rebased onto `599b98c`. Local green. Still waiting for Actions to attach a verify run.
+- Native held. Formal STAGING waits on D-022 + owner Neon/Hyperdrive/secrets.
 
 ## Prior
 
-- Merged #88 cases cursor/limit API; #90 Worker `/app`+`/api/v0`; #92 STAGING topology packet.
+- #88 cases API cursor; #90 Worker; #92 STAGING topology packet.
 
 # Handoff
 

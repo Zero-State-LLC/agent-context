@@ -1,4 +1,4 @@
-Last updated: 2026-08-26 — suas#91 merged (`05835aa`); #94 /app responder HTML cursor open (local green, Actions not attaching post-outage). Specs 0.3.0 held for native. SPEC-018 residual: owner D-022 / staging auth / SLO.
+Last updated: 2026-08-26 — suas#91+#95 on main (`599b98c`); #94 /app responder cursor open (local green, await Actions). Specs 0.3.0 held for native. SPEC-018 residual: owner D-022 / staging auth / SLO.
 
 # Status
 
