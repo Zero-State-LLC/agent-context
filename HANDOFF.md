@@ -9,7 +9,7 @@ Updated: 2026-08-26 by Daniel (Grok) — interim LOCAL Worker soak live; bridge 
   - Worker entry: Fastify `listen` + `cloudflare:node` `handleAsNodeRequest` (left inject path)
   - Smoke: `/api/v0/health` 200; `/app` 200 HTML
   - Deploy via gitignored `wrangler.synthetic.jsonc`; committed wrangler keeps `YOUR_HYPERDRIVE_ID`
-- **PR open:** `scrimshawlife-ctrl/suas` branch `fix/worker-migration-url-startup` — Worker bridge + find-my-way patch + runbook
+- **PR open:** [suas#98](https://github.com/scrimshawlife-ctrl/suas/pull/98) (`fix/worker-migration-url-startup`) — Worker bridge + find-my-way patch + runbook
 - **D-022:** still owner decision (Postgres outbox recommended). No adapter started.
 - Native held (specs 0.3.0 ratified; no native code).
 
