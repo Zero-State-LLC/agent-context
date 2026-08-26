@@ -1,4 +1,4 @@
-Last updated: 2026-08-26 — suas#97 resource catalog cursor open; soak owner-blocked (Neon OAuth/secrets). #91+#95+#96 on main. D-022 owner decision open. Specs 0.3.0 held for native.
+Last updated: 2026-08-26 — suas#97 merged (`85bef88`) resource catalog cursor. Soak owner-blocked. D-022 open. #91+#95+#96+#97 on main. Specs 0.3.0 held for native.
 
 # Status
 

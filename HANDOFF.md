@@ -1,19 +1,27 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — resources cursor PR #97 + soak blocked
+Updated: 2026-08-26 by Daniel (Grok) — #97 resources cursor merged; soak owner-blocked
 
-## Now (2026-08-26 — packet order: 3 then 1-prep; hold 2 and native)
+## Now (2026-08-26)
 
-- **Open suas#97**: resource catalog keyset cursor/limit on `searchResources`, `GET /api/v0/resources`, and `/app/resources/:label` Show more. Local 172 related tests green. Await verify.
-- **Soak prep (packet 1):** documented in `docs/runbooks/cloudflare-workers.md` — eng blocked until owner Neon/Hyperdrive/`SUAS_SESSION_SECRET`/GH Environment tokens. Neon MCP OAuth not completed on this machine. Do **not** deploy or claim STAGING.
-- **D-022:** still `OWNER_DECISION_REQUIRED` (recommended Postgres outbox). No adapter started.
-- Native held. Specs tip `0.3.0` not re-pinned.
+- **Merged suas#97** (`85bef88`): resource catalog keyset cursor/limit on domain + `GET /api/v0/resources` + `/app/resources/:label` Show more.
+- **Soak (packet 1):** still owner-blocked — Neon MCP OAuth, Hyperdrive id, `SUAS_SESSION_SECRET`, GH Environment `synthetic-worker` tokens. Checklist in `docs/runbooks/cloudflare-workers.md`. No deploy claimed.
+- **D-022:** owner decision still required (Postgres outbox recommended). No adapter started.
+- Native held.
 
-## On main already this session
+## On main this arc
 
-- #91 Resend EmailPort (no live mode) + attemptSend EMAIL gate
-- #95 phone-scan UUID false-positive fix
+- #91 Resend EmailPort (sink only) + EMAIL catalog gate
+- #95 phone-scan UUID false positive
 - #96 `/app/responder` HTML cursor
+- #97 resource catalog cursor (JSON + `/app`)
+
+## Next
+
+1. Owner authorizes Neon/Hyperdrive/secrets → interim LOCAL Worker soak
+2. Owner decides D-022 → durable adapter behind existing port
+3. More `/app` HTML under 0.2.0
+4. Not native
 
 # Handoff
 
