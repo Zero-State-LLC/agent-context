@@ -1,6 +1,21 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — SUAS SPEC-018 readiness sprint
+Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface plan
+
+## Now (2026-08-26 — SUAS iOS: audited, specced, plan ready; NO implementation started)
+
+Ran a three-track audit (implementation `c9f1da0`, specs `31bba35`/v0.2.0, SPEC-018 readiness) and produced a protocol-compliant plan for a native iOS veteran app. Honored the final report's "Do not start mobile work until that residual set shrinks" — this is spec/plan work only, zero mobile code.
+
+Key findings:
+- `/api/v0` (53 ops) can drive nearly the whole veteran loop natively; `GET /veterans/me` is the home-screen anchor. Gaps: `GET /cases` accepts no `cursor`/`limit` despite returning `next_cursor` (CODE_FIXABLE now under API.md §5); `tenant_id` needed pre-sign-in with no discovery; PUSH is reserved/rejected (inbox is poll-only); chat/on-duty/metrics have no domain entities (G-I-30/31/32); QRF deploy is a client-side composition; checked-in OpenAPI is path-level only and wrong on some status codes (derive models from zod schemas).
+- A native client is UNSPECIFIED in released canon → strictest state. Correct entry path: new artifact `MOBILE_SURFACE.md` + decision **D-033** (register tops at D-032) + `RELEASE_DECISIONS-0.3.0.md` + `RELEASE_MANIFEST-0.3.0.md` (MINOR → stack 0.3.0), same shape as D-012/v0.1.5. Do NOT consume a SPEC-0XX number (017/018 are stages, 019 reserved). Keep draft SURFACES/ISLANDS/FENCE_POSTS out of scope (drag in D-026–D-032).
+- Forbidden under current release (each spec-cited): APNs push, Sign in with Apple, contact-list/GPS/telemetry, App-Store-download-as-consent, HIPAA claims. Required: D-012 copy verbatim + hardcoded 988/VCL fallback (G8), §7.2 QRF truthfulness table, consent evaluated at use time, explicit environment class + pins + build-info, WCAG 2.2 AA.
+
+Deliverables (local, uncommitted, on Prabu's machine in the `~/Desktop/suas` clone — read-only upstream, so tracked via local-markdown tickets): `.scratch/ios-app/spec.md` (Pocock-template spec), `plan.md` (Phases 0–5), `issues/01–08`. Phase 0 = fork + cross-fork PR to SUAS-specs proposing 0.3.0; owner (Danny) ratifies by merge. Three one-line owner asks bundled in plan.md (D-033 scope; iOS fixtures in UI_CONFORMANCE now or later; park push without burning a D-number).
+
+Also: installed the Matt Pocock skills flow (`mattpocock-skills` plugin, user scope) on Prabu's Claude Code and configured it per-repo in the suas clone (local-markdown tracker under `.scratch/`, default triage labels, domain docs pointed at CONTEXT.md + SUAS-specs glossary/ledgers). AGENTS.md in the clone got an "## Agent skills" section (local-only edit, not pushed anywhere).
+
+Next packet for whoever picks this up: execute `.scratch/ios-app/issues/01` (draft the 0.3.0 spec PR) and/or `02` (cases pagination — independently mergeable today). SPEC-018 owner residuals (D-022, D-001/D-005, D-021/023/024, D-007, D-025) don't gate Phase 0–3 LOCAL work but gate all staging/TestFlight evidence.
 
 ## Now (2026-08-26 — SUAS SPEC-018)
 
