@@ -1,3 +1,5 @@
+Last updated: 2026-08-26 — suas#88 merged (`fa39bfc`); #92 STAGING topology packet (GH+CF Worker+Neon) in flight. Specs 0.3.0 held for native. Terminal SPEC-018 residual still owner D-022 / staging auth / SLO.
+
 # Status
 
 Last updated: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny attached an explicit hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until a separate owner-sequenced re-pin; "this weekend is Pages plus `/app`, not TestFlight". `suas#88` (cursor/limit, CI green) still open for review. No mobile code written.

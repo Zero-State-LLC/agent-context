@@ -1,5 +1,15 @@
 # Handoff
 
+Updated: 2026-08-26 by Daniel (Grok) — suas#88 merged; STAGING topology packet
+
+## Now (2026-08-26 — merge + staging continue)
+
+- Merged **suas#88** (`fa39bfc`): `GET /api/v0/cases` accepts `cursor`/`limit`.
+- Runtime tip includes Cloudflare Worker compute (#90). Specs tip `0.3.0` (`a868e00`); native still owner-held.
+- Opened **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon; `worker-deploy` workflow_dispatch only. Formal `SUAS_ENV=STAGING` still waits on D-022. No PRODUCTION claim. No native work.
+
+# Handoff
+
 Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface spec PR OPEN
 
 ## RATIFIED + HELD: spec 0.3.0 merged; native implementation NOT started by owner instruction
