@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-26 — SUAS `#79` merged (`e8d3082`): `POST /api/v0/cases/{id}/commands/resolve` + Settlement list/get; OpenAPI 46; settle:check OK. Terminal still `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (owner D-022/D-001/D-005/D-021–024/D-007; evidence staging/UI). See HANDOFF.md.
+Last updated: 2026-08-26 — SUAS `#81` (`5f49b49`): every CASE_COMMANDS verb + settlements over /api/v0; OpenAPI 53; settle:check enum gate OK. Terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (owner D-022/D-001/D-005/D-021–024/D-007; evidence staging/UI).
 
 Prior: 2026-08-25 Prabu WATCH/play presence on `player.deviceb491f6710e50`; noema-client 0.1.19; see earlier HANDOFF entries.
 
