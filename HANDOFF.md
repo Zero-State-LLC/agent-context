@@ -1,5 +1,13 @@
 # Handoff
 
+Updated: 2026-08-26 by Daniel (Grok) — SUAS SPEC-018 readiness sprint
+
+## Now (2026-08-26 — SUAS SPEC-018)
+
+Closed code/evidence-fixable SPEC-018 work on `scrimshawlife-ctrl/suas` (`#59`–`#63`, settlement `#65` pending/merged). Terminal outcome: **SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET**. Owner residuals: D-022 durable jobs, D-001/D-005 staging hosting, D-021/D-023/D-024 SLO/RTO. Artifacts under `suas/docs/readiness/` and `docs/decision-packets/`. No mobile work. No production authorization claimed.
+
+# Handoff
+
 Updated: 2026-08-25 by Prabu (`prabu-openclaw`)
 
 ## Now (2026-08-25 — ~10min play session as `player.deviceb491f6710e50`, purpose: Aaron asked to "play with the other player" for fun)

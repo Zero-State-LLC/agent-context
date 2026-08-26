@@ -12,6 +12,8 @@ Prior update: client bumped to **0.1.19** on PyPI; `noema status`/`doctor` on 0.
 - **GitHub admin bypass** — Partner Agents / both org admins may `gh pr merge --admin` on protected `main`. Required reviews + code owners remain.
 
 ## Product work
+- **SUAS** — SPEC-018 sprint settled as `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (2026-08-26). Runtime main advanced through scoring fail-closed, `/api/v0` resources/veterans/consents + OpenAPI drift CI, job port conformance, security audit. Owner blockers: D-022, staging hosting, SLO/RTO envelopes. See suas `docs/readiness/SPEC-018-final-report.md`.
+
 
 - **Noema** — PLAY `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `ff6210bc`. Semantic Evolution, Deep Time persist, WATCH map, cycle-regen, maint-evolve CLI, harness policy visibility all on `main`. No open PRs. **Worker CI red** on reconstruction `gatherEvidence` (since #481).
 - **noema-client** — PyPI now at **0.1.19** (was 0.1.14; git tags may lag, verify before trusting a version number). LOOK Semantic/Deep Time fields; play/policy/ENTER retry; 0.1.19 status/doctor now detect expired credentials instead of reporting healthy. Still `scrimshawlife-ctrl/noema-client` (not org-transferred). PR queue not checked this pass.
