@@ -1,8 +1,22 @@
 # Handoff
 
-Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface plan
+Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface spec PR OPEN
 
-## Now (2026-08-26 — SUAS iOS: audited, specced, plan ready; NO implementation started)
+## ACTION FOR DANNY: SUAS-specs PR #12 awaits owner ratification
+
+**https://github.com/scrimshawlife-ctrl/suas-specs/pull/12** — proposes specification release `0.3.0`, closing **D-033** (native mobile client surface) and opening **D-034** (on-device data protection). Cross-fork from `prabu-openclaw/suas-specs`, 15 files, +353/−47, mergeable. No CI is configured on the specs repo, so review is the only gate. **Lifecycle is `released` only on your merge** — CONTRIBUTING §1, contributors cannot self-accept. I did not merge and will not.
+
+Why it exists: a native client was **unspecified** in released canon (not `FUTURE`, not `UNAVAILABLE`), which under AGENTS rules 3/12 is the strictest state — unimplementable, and config can't enable it. The gap had to return to specs. This does NOT contradict the SPEC-018 "no mobile work" hold, which governs implementation/evidence, not specification.
+
+Adds a **client surface only** — no domain concept, state, event, capability, API selector, or config variable. `/api/v0`, event schema `0.1.0`, `qv-001`/`sv-001`, notification channels unchanged; all 12 gates stay `NOT_READY`; `UI_CONFORMANCE` conditions untouched.
+
+Deliberate scope calls to review: **no SPEC-0xx number consumed** (017 active, 018 blocked, 019 reserved — ROADMAP now records that in-stage contract additions version through the manifest, per the D-012/D-011 precedent); **draft Rev 3 not promoted** (SURFACES/ISLANDS/FENCE_POSTS/RIDES stay draft, D-026–D-032 stay open, front door + islands explicitly out of scope); **PUSH stays `FUTURE`** with no D-number and no push-mode variable (ENVIRONMENT now forbids adding one first).
+
+Three one-line owner asks in the PR body: (1) ratify D-033 scope (veteran-first, responder/admin permitted but conditioned on MFA factor selection + cursor/limit queue contract); (2) native fixtures additive-only as drafted, or do UI_CONFORMANCE gate conditions change (that's a gate-definition change, left to you); (3) confirm push stays parked.
+
+Also folded in editorial fixes CONTRIBUTING §4 requires in the same change set: stale `draft` headers on ARCHITECTURE.md/MVP_REFERENCE.md stamped, and ROADMAP's stale `0.1.3` stack header + `0.1.3` implementation target + `READY_TO_BEGIN` SPEC-017 status corrected against STATUS.md.
+
+## Now (2026-08-26 — SUAS iOS: audited, specced, PR open; NO implementation started)
 
 Ran a three-track audit (implementation `c9f1da0`, specs `31bba35`/v0.2.0, SPEC-018 readiness) and produced a protocol-compliant plan for a native iOS veteran app. Honored the final report's "Do not start mobile work until that residual set shrinks" — this is spec/plan work only, zero mobile code.
 
