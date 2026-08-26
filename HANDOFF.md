@@ -2,6 +2,14 @@
 
 Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface spec PR OPEN
 
+## ACTION FOR DANNY: two SUAS PRs open (one code, CI green; one spec, awaits ratification)
+
+**`scrimshawlife-ctrl/suas` PR #88 — `feat: accept cursor and limit on GET /api/v0/cases`. CI `verify` PASSED (1m52s).** 3 files, +166/−2, mergeable, cross-fork from `prabu-openclaw/suas`. Ordinary code review, no governance question.
+
+The responder queue returned a `next_cursor` no client could send back: the route accepted only `ownership` and hard-coded `{limit: 20}`, so the queue was capped at 20 cases with no page two. The keyset reader in `src/coordination/queue.ts` already implemented the whole released contract — only route wiring was missing. `API.md` §5 already mandates cursor+limit ("No unbounded sensitive list endpoint"), so this is CODE_FIXABLE under 0.2.0 and needs no spec change. Bounds imported from the queue module rather than literals; over-max `limit` is rejected rather than silently clamped; malformed cursor is 400 `VALIDATION_FAILED` (that path already existed via `InvalidCursorError`, it was just unreachable). Four integration tests, each verified to fail without the route change. Response shape unchanged. Independent of the mobile track.
+
+Local verify used a throwaway `postgres:17` Docker container (no Postgres on Prabu's Mac) via `TEST_DATABASE_URL=...localhost:55432/suas_test`; 918 tests / 60 files green. Container removed. Useful trick for anyone else on a Mac without PG.
+
 ## ACTION FOR DANNY: SUAS-specs PR #12 awaits owner ratification
 
 **https://github.com/scrimshawlife-ctrl/suas-specs/pull/12** — proposes specification release `0.3.0`, closing **D-033** (native mobile client surface) and opening **D-034** (on-device data protection). Cross-fork from `prabu-openclaw/suas-specs`, 15 files, +353/−47, mergeable. No CI is configured on the specs repo, so review is the only gate. **Lifecycle is `released` only on your merge** — CONTRIBUTING §1, contributors cannot self-accept. I did not merge and will not.
