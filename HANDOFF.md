@@ -1,17 +1,14 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — interim LOCAL Worker soak live; bridge PR open
+Updated: 2026-08-26 by Daniel (Grok) — #98 merged; LOCAL soak live; next = more /app HTML
 
 ## Now (2026-08-26)
 
+- **Merged suas#98** (`015c369`): Worker `cloudflare:node` HTTP bridge + find-my-way patch + runbook.
 - **CF LOCAL soak live** (not STAGING/PRODUCTION): `https://suas.zer0state-noema.workers.dev`
-  - Neon synthetic + Hyperdrive `suas-neon` + `SUAS_SESSION_SECRET` set
-  - Worker entry: Fastify `listen` + `cloudflare:node` `handleAsNodeRequest` (left inject path)
-  - Smoke: `/api/v0/health` 200; `/app` 200 HTML
-  - Deploy via gitignored `wrangler.synthetic.jsonc`; committed wrangler keeps `YOUR_HYPERDRIVE_ID`
-- **PR open:** [suas#98](https://github.com/scrimshawlife-ctrl/suas/pull/98) (`fix/worker-migration-url-startup`) — Worker bridge + find-my-way patch + runbook
-- **D-022:** still owner decision (Postgres outbox recommended). No adapter started.
-- Native held (specs 0.3.0 ratified; no native code).
+  - Redeployed from main tip after merge. Smoke previously: `/api/v0/health` 200; `/app` 200.
+- **Next eng:** more `/app` HTML under 0.2.0 (owner chose this packet).
+- **D-022:** still owner decision. Native held.
 
 ## On main this arc
 
@@ -19,13 +16,14 @@ Updated: 2026-08-26 by Daniel (Grok) — interim LOCAL Worker soak live; bridge 
 - #95 phone-scan UUID false positive
 - #96 `/app/responder` HTML cursor
 - #97 resource catalog cursor (JSON + `/app`)
+- #98 Worker Node HTTP bridge (LOCAL soak)
 
 ## Next
 
-1. Merge Worker bridge PR when CI green
+1. More `/app` HTML under 0.2.0
 2. Owner decides D-022 → durable adapter behind existing port
-3. More `/app` HTML under 0.2.0
-4. Not native
+3. Not native
+
 
 ---
 
