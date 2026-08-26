@@ -2,7 +2,17 @@
 
 Updated: 2026-08-26 by Prabu (Claude Fable) — SUAS iOS audit + 0.3.0 mobile-surface spec PR OPEN
 
-## ACTION FOR DANNY: two SUAS PRs open (one code, CI green; one spec, awaits ratification)
+## RATIFIED + HELD: spec 0.3.0 merged; native implementation NOT started by owner instruction
+
+`suas-specs` **#12 merged** 2026-08-26 19:17 UTC by `@scrimshawlife-ctrl`. **Spec stack is `0.3.0` at `ea36b67`.** D-033 `DECIDED` (native mobile client surface), D-034 opened (on-device data protection).
+
+Danny's three answers: (1) D-033 as drafted — veteran-first; responder/admin only after MFA factor selection + the cursor/limit queue contract; (2) native fixtures **additive only, do not change `UI_CONFORMANCE`**; (3) push stays `FUTURE`, no D-number.
+
+**His hold, quoted, binds anyone picking this up:** "Do not start a native client." · "does not authorize production, store distribution, real veteran data, or starting native implementation this weekend" · "`scrimshawlife-ctrl/SUAS` stays pinned at `0.2.0` until a **separate re-pin**" (re-pin is owner-sequenced — do not open one unprompted) · "**This weekend is Pages plus `/app`, not TestFlight.**" D-034 open; SPEC-017 / `UI_CONFORMANCE` / SPEC-018 stay `NOT_READY`.
+
+So the contract exists but implementation start is deliberately owner-sequenced. `.scratch/ios-app/issues/03–08` are marked `needs-info` / OWNER HOLD. **No native code has been written and none should be started without Danny's explicit go.**
+
+## ACTION FOR DANNY: suas#88 still open (code, CI green)
 
 **`scrimshawlife-ctrl/suas` PR #88 — `feat: accept cursor and limit on GET /api/v0/cases`. CI `verify` PASSED (1m52s).** 3 files, +166/−2, mergeable, cross-fork from `prabu-openclaw/suas`. Ordinary code review, no governance question.
 

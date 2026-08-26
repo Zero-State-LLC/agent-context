@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-26 (later) — Prabu: **two SUAS PRs open for Danny** — `suas#88` cursor/limit on `GET /api/v0/cases` (**CI green**, plain code review) and `suas-specs#12` (`MOBILE_SURFACE.md` + D-033 + D-034, stack 0.3.0, awaits owner ratification). No mobile code written. Working docs in Prabu's suas clone `.scratch/ios-app/`.
+Last updated: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny attached an explicit hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until a separate owner-sequenced re-pin; "this weekend is Pages plus `/app`, not TestFlight". `suas#88` (cursor/limit, CI green) still open for review. No mobile code written.
 
 Prior: 2026-08-26 — SUAS `#81` (`5f49b49`): every CASE_COMMANDS verb + settlements over /api/v0; OpenAPI 53; settle:check enum gate OK. Terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (owner D-022/D-001/D-005/D-021–024/D-007; evidence staging/UI).
 
@@ -15,7 +15,7 @@ Prior: 2026-08-25 Prabu WATCH/play presence on `player.deviceb491f6710e50`; noem
 
 ## Product work
 - **SUAS** — SPEC-018 terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET`. CODE_FIXABLE Plane A JSON closed through `#79` (resolve + settlements). Owner blockers: D-022, staging hosting, SLO/RTO, D-007. See `suas/docs/readiness/SPEC-018-final-report.md`.
-- **SUAS iOS (spec-first; no code)** — audit + spec + phased plan done 2026-08-26. **`scrimshawlife-ctrl/suas-specs` PR #12 open**: releases `MOBILE_SURFACE.md`, closes D-033, opens D-034, stack `0.3.0`. Client surface only; all 12 gates stay `NOT_READY`; PUSH stays `FUTURE`; no SPEC-0xx consumed; draft Rev 3 not promoted. **Owner merge = ratification and gates all iOS implementation.** Independent quick win **now shipped as `suas#88`** (CI green): `cursor`/`limit` on `GET /api/v0/cases`, closing the queue that returned a `next_cursor` it could not accept back.
+- **SUAS iOS (spec ratified; implementation HELD)** — `suas-specs#12` **merged**, stack `0.3.0` at `ea36b67`: `MOBILE_SURFACE.md` released, D-033 `DECIDED`, D-034 open. Client surface only; all 12 gates still `NOT_READY`; PUSH still `FUTURE`; no SPEC-0xx consumed; draft Rev 3 not promoted. **Danny's merge explicitly holds implementation: "Do not start a native client."** Tickets 03–08 are `needs-info`/OWNER HOLD pending his go. Re-pin of `SUAS` to 0.3.0 is owner-sequenced, not to be opened unprompted. Independent quick win **now shipped as `suas#88`** (CI green): `cursor`/`limit` on `GET /api/v0/cases`, closing the queue that returned a `next_cursor` it could not accept back.
 
 
 - **Noema** — PLAY `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `ff6210bc`. Semantic Evolution, Deep Time persist, WATCH map, cycle-regen, maint-evolve CLI, harness policy visibility all on `main`. No open PRs. **Worker CI red** on reconstruction `gatherEvidence` (since #481).
