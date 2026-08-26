@@ -1,13 +1,17 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #97 resources cursor merged; soak owner-blocked
+Updated: 2026-08-26 by Daniel (Grok) — interim LOCAL Worker soak live; bridge PR open
 
 ## Now (2026-08-26)
 
-- **Merged suas#97** (`85bef88`): resource catalog keyset cursor/limit on domain + `GET /api/v0/resources` + `/app/resources/:label` Show more.
-- **Soak (packet 1):** still owner-blocked — Neon MCP OAuth, Hyperdrive id, `SUAS_SESSION_SECRET`, GH Environment `synthetic-worker` tokens. Checklist in `docs/runbooks/cloudflare-workers.md`. No deploy claimed.
-- **D-022:** owner decision still required (Postgres outbox recommended). No adapter started.
-- Native held.
+- **CF LOCAL soak live** (not STAGING/PRODUCTION): `https://suas.zer0state-noema.workers.dev`
+  - Neon synthetic + Hyperdrive `suas-neon` + `SUAS_SESSION_SECRET` set
+  - Worker entry: Fastify `listen` + `cloudflare:node` `handleAsNodeRequest` (left inject path)
+  - Smoke: `/api/v0/health` 200; `/app` 200 HTML
+  - Deploy via gitignored `wrangler.synthetic.jsonc`; committed wrangler keeps `YOUR_HYPERDRIVE_ID`
+- **PR open:** `scrimshawlife-ctrl/suas` branch `fix/worker-migration-url-startup` — Worker bridge + find-my-way patch + runbook
+- **D-022:** still owner decision (Postgres outbox recommended). No adapter started.
+- Native held (specs 0.3.0 ratified; no native code).
 
 ## On main this arc
 
@@ -18,10 +22,12 @@ Updated: 2026-08-26 by Daniel (Grok) — #97 resources cursor merged; soak owner
 
 ## Next
 
-1. Owner authorizes Neon/Hyperdrive/secrets → interim LOCAL Worker soak
+1. Merge Worker bridge PR when CI green
 2. Owner decides D-022 → durable adapter behind existing port
 3. More `/app` HTML under 0.2.0
 4. Not native
+
+---
 
 # Handoff
 

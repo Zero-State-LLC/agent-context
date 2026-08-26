@@ -1,10 +1,10 @@
-Last updated: 2026-08-26 — suas#97 merged (`85bef88`) resource catalog cursor. Soak owner-blocked. D-022 open. #91+#95+#96+#97 on main. Specs 0.3.0 held for native.
-
 # Status
 
-Last updated: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny attached an explicit hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until a separate owner-sequenced re-pin; "this weekend is Pages plus `/app`, not TestFlight". `suas#88` (cursor/limit, CI green) still open for review. No mobile code written.
+Last updated: 2026-08-26 (evening) — **SUAS interim LOCAL Worker soak live** at `https://suas.zer0state-noema.workers.dev` (`SUAS_ENV=LOCAL` only; not STAGING/PRODUCTION). Worker bridge PR [#98](https://github.com/scrimshawlife-ctrl/suas/pull/98). D-022 still open. Native held.
 
-Prior: 2026-08-26 — SUAS `#81` (`5f49b49`): every CASE_COMMANDS verb + settlements over /api/v0; OpenAPI 53; settle:check enum gate OK. Terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (owner D-022/D-001/D-005/D-021–024/D-007; evidence staging/UI).
+Prior: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until owner re-pin; weekend is Pages plus `/app`, not TestFlight.
+
+Prior: 2026-08-26 — SUAS `#81` (`5f49b49`): every CASE_COMMANDS verb + settlements over /api/v0; OpenAPI 53. Terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET`.
 
 Prior: 2026-08-25 Prabu WATCH/play presence on `player.deviceb491f6710e50`; noema-client 0.1.19; see earlier HANDOFF entries.
 
