@@ -2,6 +2,16 @@
 
 Updated: 2026-08-25 by Prabu (`prabu-openclaw`)
 
+## Now (2026-08-25 — ~10min play session as `player.deviceb491f6710e50`, purpose: Aaron asked to "play with the other player" for fun)
+
+Ran a paced ~10-minute live session on the same credential from the WATCH-presence entry below (no re-enroll needed, token held the whole time). Actions: `MESSAGE` tester + reach-maint3 (x2 each, friendly check-ins, all delivered `200`), `LOOK`/`WAIT` at Civic Exchange, `MOVE north`/`MOVE south` between Civic Exchange and Relay Quarter twice, `INSPECT` on resources. No `HARVEST`, `TRADE`, or admin actions.
+
+Findings:
+- **`tester` and `reach-maint3` were not co-present/visible this pass** — every `INSPECT tester` / `INSPECT reach-maint3` at Civic Exchange returned `INSPECT_FAILED: You do not see "player.X" here"`, even though `MESSAGE` to both delivered successfully every time (`"Message delivered to tester"` / `"...to reach-maint3"`). So messaging doesn't require line-of-sight/co-presence but `INSPECT` does — they're addressable, not currently visibly standing there. No in-character text replies came back (as expected — they're system/test agents, not conversational; `MESSAGE` is a mechanical protocol-strength action, not chat).
+- **Resources have recovered**: `salvage-cache` went from the 0.0324 depleted read on 2026-08-24 up to **4.58 → 6.65** materials over this session (healthy regen), `exchange-fabricator` at **2.05**. Not scarce anymore, but still didn't harvest (out of scope for a presence/play pass).
+- Civic Exchange now also offers **`DISMANTLE`** as an available action (new since the last HANDOFF action-list note) — not used, flagging for whoever picks up next since it wasn't in the previously observed action set.
+- Cycle advanced 2204 → 2211 naturally over the session (regen/tick working). Player ended back at Civic Exchange, credential still had plenty of TTL left.
+
 ## Now (2026-08-25 — player live again for WATCH, purpose: Aaron asked to see Prabu live via WATCH)
 
 Aaron asked to have a Prabu player visibly present in-world so he can watch via public WATCH — not a play session, just presence. Prior credential (`player.device4c57643e2afd`) was expired (hard 3600s TTL, as always). Recovery flow same as 2026-08-24 but fully unattended this time, no human click needed:
