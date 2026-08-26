@@ -6,7 +6,7 @@ Updated: 2026-08-26 by Daniel (Grok) — suas#88 merged; STAGING topology packet
 
 - Merged **suas#88** (`fa39bfc`): `GET /api/v0/cases` accepts `cursor`/`limit`.
 - Runtime tip includes Cloudflare Worker compute (#90). Specs tip `0.3.0` (`a868e00`); native still owner-held.
-- Opened **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon; `worker-deploy` workflow_dispatch only. Formal `SUAS_ENV=STAGING` still waits on D-022. No PRODUCTION claim. No native work.
+- Merged **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon; `worker-deploy` workflow_dispatch only. Formal `SUAS_ENV=STAGING` still waits on D-022. Owner still must authorize Neon/Hyperdrive/secrets before first publish. No PRODUCTION claim. No native work.
 
 # Handoff
 
