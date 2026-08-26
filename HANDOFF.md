@@ -1,18 +1,16 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — suas#91 fix + #93 Pages cursor PR
+Updated: 2026-08-26 by Daniel (Grok) — suas#91 merged; #94 /app cursor awaits CI
 
-## Now (2026-08-26 — continue SUAS: email fix + /app responder cursor)
+## Now (2026-08-26 — continue SUAS)
 
-- **suas#91** (Resend EmailPort, no live mode): review found P1 — `attemptSend` always used EMAIL catalog. Fix `2265d3f` (+ empty CI bounce) on `cursor/email-resend-adapter-909a`. Security clean. Local: unit + notifications integration green. GitHub Actions had a same-day outage (resolved ~18:00 UTC); verify re-trigger in flight — **merge when green**.
-- **suas#93** opened: `/app/responder` + `/app/responder/needs` accept cursor/limit (API.md §5) with Show more links — closes the HTML hard-cap left after #88. Local: unit + `ui.test.ts` green. Await CI after Actions recovery.
-- Native still owner-held. Formal STAGING still waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
+- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + review fix gating EMAIL catalog to EMAIL channel only; optional `renderBody` for SMS/IN_APP; empty credential/subject/html fail closed.
+- **Open suas#94** (recreated from #93): `/app/responder` + `/app/responder/needs` cursor/limit + Show more. Local unit + `ui.test.ts` green. GitHub Actions same-day outage aftermath: verify never attached to this branch despite reopen/recreate/rebase/nudge — do not merge until a `verify` run lands on the tip. Main post-#91 `verify` was cancelled by concurrency; pages succeeded.
+- Native still owner-held. Formal STAGING waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
 
-## Prior (2026-08-26 — merge + staging continue)
+## Prior
 
-- Merged **suas#88** (`fa39bfc`): `GET /api/v0/cases` accepts `cursor`/`limit`.
-- Runtime tip includes Cloudflare Worker compute (#90). Specs tip `0.3.0`; native still owner-held.
-- Merged **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon.
+- Merged #88 cases cursor/limit API; #90 Worker `/app`+`/api/v0`; #92 STAGING topology packet.
 
 # Handoff
 
