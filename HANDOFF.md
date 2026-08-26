@@ -1,24 +1,19 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — suas#91+#95+#96 on main
+Updated: 2026-08-26 by Daniel (Grok) — resources cursor PR #97 + soak blocked
 
-## Now (2026-08-26 — continue SUAS complete for this packet)
+## Now (2026-08-26 — packet order: 3 then 1-prep; hold 2 and native)
 
-- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + `attemptSend` EMAIL-only catalog gate.
-- **Merged suas#95** (`599b98c`): phone-scan UUID false-positive fix; main verify green afterward.
-- **Merged suas#96** (`bb3decc`): `/app/responder` + `/app/responder/needs` accept cursor/limit with Show more (Pages+/app follow-up to #88).
-- Native still owner-held. Formal STAGING still waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
+- **Open suas#97**: resource catalog keyset cursor/limit on `searchResources`, `GET /api/v0/resources`, and `/app/resources/:label` Show more. Local 172 related tests green. Await verify.
+- **Soak prep (packet 1):** documented in `docs/runbooks/cloudflare-workers.md` — eng blocked until owner Neon/Hyperdrive/`SUAS_SESSION_SECRET`/GH Environment tokens. Neon MCP OAuth not completed on this machine. Do **not** deploy or claim STAGING.
+- **D-022:** still `OWNER_DECISION_REQUIRED` (recommended Postgres outbox). No adapter started.
+- Native held. Specs tip `0.3.0` not re-pinned.
 
-## Next packet (pick one)
+## On main already this session
 
-1. Interim LOCAL Worker soak on synthetic Neon (owner must authorize secrets first) — does not close formal STAGING.
-2. Owner D-022 durable jobs decision → implement adapter behind existing port.
-3. More `/app` HTML loops (resources list cursor, join/auth honesty) under 0.2.0.
-4. Do **not** start native client.
-
-## Prior
-
-- #88 cases API cursor; #90 Worker; #92 STAGING topology packet.
+- #91 Resend EmailPort (no live mode) + attemptSend EMAIL gate
+- #95 phone-scan UUID false-positive fix
+- #96 `/app/responder` HTML cursor
 
 # Handoff
 

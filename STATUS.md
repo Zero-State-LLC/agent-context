@@ -1,4 +1,4 @@
-Last updated: 2026-08-26 — suas#91+#95+#96 on main (`bb3decc`): Resend adapter, phone-scan fix, /app responder HTML cursor. Specs 0.3.0 held for native. SPEC-018 residual: owner D-022 / staging auth / SLO.
+Last updated: 2026-08-26 — suas#97 resource catalog cursor open; soak owner-blocked (Neon OAuth/secrets). #91+#95+#96 on main. D-022 owner decision open. Specs 0.3.0 held for native.
 
 # Status
 
