@@ -1,12 +1,18 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — suas#88 merged; STAGING topology packet
+Updated: 2026-08-26 by Daniel (Grok) — suas#91 fix + #93 Pages cursor PR
 
-## Now (2026-08-26 — merge + staging continue)
+## Now (2026-08-26 — continue SUAS: email fix + /app responder cursor)
+
+- **suas#91** (Resend EmailPort, no live mode): review found P1 — `attemptSend` always used EMAIL catalog. Fix `2265d3f` (+ empty CI bounce) on `cursor/email-resend-adapter-909a`. Security clean. Local: unit + notifications integration green. GitHub Actions had a same-day outage (resolved ~18:00 UTC); verify re-trigger in flight — **merge when green**.
+- **suas#93** opened: `/app/responder` + `/app/responder/needs` accept cursor/limit (API.md §5) with Show more links — closes the HTML hard-cap left after #88. Local: unit + `ui.test.ts` green. Await CI after Actions recovery.
+- Native still owner-held. Formal STAGING still waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
+
+## Prior (2026-08-26 — merge + staging continue)
 
 - Merged **suas#88** (`fa39bfc`): `GET /api/v0/cases` accepts `cursor`/`limit`.
-- Runtime tip includes Cloudflare Worker compute (#90). Specs tip `0.3.0` (`a868e00`); native still owner-held.
-- Merged **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon; `worker-deploy` workflow_dispatch only. Formal `SUAS_ENV=STAGING` still waits on D-022. Owner still must authorize Neon/Hyperdrive/secrets before first publish. No PRODUCTION claim. No native work.
+- Runtime tip includes Cloudflare Worker compute (#90). Specs tip `0.3.0`; native still owner-held.
+- Merged **suas#92**: D-001/D-005 recommended topology = GitHub + CF Worker + Neon.
 
 # Handoff
 

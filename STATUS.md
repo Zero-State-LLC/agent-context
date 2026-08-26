@@ -1,4 +1,4 @@
-Last updated: 2026-08-26 — suas#88 merged (`fa39bfc`); #92 STAGING topology packet (GH+CF Worker+Neon) in flight. Specs 0.3.0 held for native. Terminal SPEC-018 residual still owner D-022 / staging auth / SLO.
+Last updated: 2026-08-26 — suas#91 (Resend, review fix) + #93 (/app responder cursor) open; await Actions post-outage. #88/#92 on main. Specs 0.3.0 held for native. SPEC-018 residual: owner D-022 / staging auth / SLO.
 
 # Status
 
