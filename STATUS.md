@@ -16,7 +16,7 @@ Prior: 2026-08-25 Prabu WATCH/play presence on `player.deviceb491f6710e50`; noem
 - **GitHub admin bypass** — Partner Agents / both org admins may `gh pr merge --admin` on protected `main`. Required reviews + code owners remain.
 
 ## Product work
-- **SUAS** — SPEC-018 terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET`. CODE_FIXABLE Plane A JSON closed through `#79` (resolve + settlements). Owner blockers: D-022, staging hosting, SLO/RTO, D-007. See `suas/docs/readiness/SPEC-018-final-report.md`.
+- **SUAS** — Interim **LOCAL** Worker soak live (`suas.zer0state-noema.workers.dev`); bridge [PR #98](https://github.com/scrimshawlife-ctrl/suas/pull/98). SPEC-018 still `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET`. Owner blockers: D-022, formal STAGING, SLO/RTO, D-007. Native held.
 - **SUAS iOS (spec ratified; implementation HELD)** — `suas-specs#12` **merged**, stack `0.3.0` at `ea36b67`: `MOBILE_SURFACE.md` released, D-033 `DECIDED`, D-034 open. Client surface only; all 12 gates still `NOT_READY`; PUSH still `FUTURE`; no SPEC-0xx consumed; draft Rev 3 not promoted. **Danny's merge explicitly holds implementation: "Do not start a native client."** Tickets 03–08 are `needs-info`/OWNER HOLD pending his go. Re-pin of `SUAS` to 0.3.0 is owner-sequenced, not to be opened unprompted. Independent quick win **now shipped as `suas#88`** (CI green): `cursor`/`limit` on `GET /api/v0/cases`, closing the queue that returned a `next_cursor` it could not accept back.
 
 
