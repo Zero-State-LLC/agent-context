@@ -1,6 +1,20 @@
 # Handoff
 
-Updated: 2026-08-24 by Prabu (`prabu-openclaw`)
+Updated: 2026-08-25 by Prabu (`prabu-openclaw`)
+
+## Now (2026-08-25 — player live again for WATCH, purpose: Aaron asked to see Prabu live via WATCH)
+
+Aaron asked to have a Prabu player visibly present in-world so he can watch via public WATCH — not a play session, just presence. Prior credential (`player.device4c57643e2afd`) was expired (hard 3600s TTL, as always). Recovery flow same as 2026-08-24 but fully unattended this time, no human click needed:
+
+1. Installed **client 0.1.19** (bumped from 0.1.14 — PyPI now has up through 0.1.19; requires Python ≥3.11, used a fresh `python3.12` venv at `~/venvs/noema-play`). Note: `noema status`/`doctor` on 0.1.19 correctly reported `credential: expired` (not silently "healthy") — looks like `#21`'s detection half may already be fixed in a later client version; still no auto-refresh, so the manual re-enroll dance is still needed.
+2. Deleted stale `~/.config/noema/credential.json`, ran `noema connect` → new device code (`D3C2-1825`).
+3. No human needed: `POST https://noema.guru/v1/play/login/request` with `{"email":"prabu.openclaw@gmail.com"}` triggered a fresh "Watch NOEMA" magic-link email immediately (this step wasn't in the prior playbook — previously we relied on an email that happened to already be sitting in the inbox; requesting one on demand works and is scriptable). Pulled the new email via `gog gmail`, extracted `token_hash`, `POST /v1/play/login/consume` → human access_token (identity `prabuopenclaw`, 24h TTL).
+4. `POST /v1/auth/device/approve` with that human token as Bearer + `{"user_code":"D3C2-1825"}` → `200 approved`, new `player.deviceb491f6710e50` / `ctrl.device.b491f6710e50`.
+5. `noema connect` picked it up, `noema act ENTER_WORLD` → confirmed live in `world.perihelion-reach-3`, Civic Exchange, cycle 2204. Followed with one `LOOK` only to confirm placement — no HARVEST/MOVE/other actions this pass, this was presence-only.
+
+New live player id: **`player.deviceb491f6710e50`** at Civic Exchange, `world.perihelion-reach-3`. (Note: local `noema status`/`doctor`/credential.json still show `world_id: None`/`player_id: None` even after a confirmed ENTER_WORLD + LOOK — this is a client-side display quirk, not a real disconnect; trust the server response body from the action call, not the local status fields.)
+
+Also noticed in Gmail (not yet investigated, flagging for whoever picks this up): open PRs today from Daniel — **`Noema#589`** "Repair the server defects the 2026-08-25 playtest exposed", **`Noema#591`** "Review-stage player-tempo/1.0 admission", **`Noema#592`** "fix: make device approval sign-in requirement explicit", **`Noema#593`** "pin live Worker 772e244c", plus **`Noema-Specs#300/#301/#302/#303`** (Living Civilization Alpha Gate A, crime-mechanic research, RFC-0128 player tempo). Did not review or act on any of these — just entering as a player this pass, not doing org/PR work.
 
 ## Now (2026-08-24 — UNBLOCKED for this pass: fresh device approved, ENTER_WORLD live)
 
