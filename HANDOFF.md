@@ -1,28 +1,23 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #98 merged; LOCAL soak live; next = more /app HTML
+Updated: 2026-08-26 by Daniel (Grok) — #98 merged; #99 case HTML lists open
 
 ## Now (2026-08-26)
 
-- **Merged suas#98** (`015c369`): Worker `cloudflare:node` HTTP bridge + find-my-way patch + runbook.
-- **CF LOCAL soak live** (not STAGING/PRODUCTION): `https://suas.zer0state-noema.workers.dev`
-  - Redeployed from main tip after merge. Smoke previously: `/api/v0/health` 200; `/app` 200.
-- **Next eng:** more `/app` HTML under 0.2.0 (owner chose this packet).
+- **Merged suas#98** (`015c369`): Worker `cloudflare:node` HTTP bridge + find-my-way patch. LOCAL soak live at `https://suas.zer0state-noema.workers.dev` (redeployed from main).
+- **PR open:** [suas#99](https://github.com/scrimshawlife-ctrl/suas/pull/99) — `/app/responder/cases/:id` shows contact attempts + service requests; GET `/app/responder/availability` display-only.
 - **D-022:** still owner decision. Native held.
 
 ## On main this arc
 
-- #91 Resend EmailPort (sink only) + EMAIL catalog gate
-- #95 phone-scan UUID false positive
-- #96 `/app/responder` HTML cursor
-- #97 resource catalog cursor (JSON + `/app`)
-- #98 Worker Node HTTP bridge (LOCAL soak)
+- #91 EmailPort · #95 phone-scan · #96 responder cursor · #97 resources cursor · #98 Worker bridge
 
 ## Next
 
-1. More `/app` HTML under 0.2.0
-2. Owner decides D-022 → durable adapter behind existing port
-3. Not native
+1. Merge #99 when CI green
+2. More `/app` HTML under 0.2.0
+3. Owner decides D-022
+4. Not native
 
 
 ---
