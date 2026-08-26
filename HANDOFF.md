@@ -1,13 +1,20 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #91+#95 on main; #94 awaits CI
+Updated: 2026-08-26 by Daniel (Grok) — suas#91+#95+#96 on main
 
-## Now (2026-08-26 — continue SUAS)
+## Now (2026-08-26 — continue SUAS complete for this packet)
 
-- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + EMAIL-only catalog gating for `attemptSend`.
-- **Merged suas#95** (`599b98c`): phone-scan UUID false-positive fix after main verify failed on deletion-drill (`4724466123` inside UUID hex). Admin-merged with local proof while Actions was not attaching to new PR branches post-outage; main verify re-running on tip.
-- **Open suas#94**: `/app/responder` HTML cursor/limit + Show more. Rebased onto `599b98c`. Local green. Still waiting for Actions to attach a verify run.
-- Native held. Formal STAGING waits on D-022 + owner Neon/Hyperdrive/secrets.
+- **Merged suas#91** (`05835aa`): Resend EmailPort (no live mode) + `attemptSend` EMAIL-only catalog gate.
+- **Merged suas#95** (`599b98c`): phone-scan UUID false-positive fix; main verify green afterward.
+- **Merged suas#96** (`bb3decc`): `/app/responder` + `/app/responder/needs` accept cursor/limit with Show more (Pages+/app follow-up to #88).
+- Native still owner-held. Formal STAGING still waits on D-022 + owner Neon/Hyperdrive/secrets. Specs tip `0.3.0` not re-pinned.
+
+## Next packet (pick one)
+
+1. Interim LOCAL Worker soak on synthetic Neon (owner must authorize secrets first) — does not close formal STAGING.
+2. Owner D-022 durable jobs decision → implement adapter behind existing port.
+3. More `/app` HTML loops (resources list cursor, join/auth honesty) under 0.2.0.
+4. Do **not** start native client.
 
 ## Prior
 
