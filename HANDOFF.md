@@ -4,7 +4,7 @@ Updated: 2026-08-26 by Daniel (Grok) — SUAS SPEC-018 readiness sprint
 
 ## Now (2026-08-26 — SUAS SPEC-018)
 
-Closed code/evidence-fixable SPEC-018 work on `scrimshawlife-ctrl/suas` (`#59`–`#63`, settlement `#65` pending/merged). Terminal outcome: **SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET**. Owner residuals: D-022 durable jobs, D-001/D-005 staging hosting, D-021/D-023/D-024 SLO/RTO. Artifacts under `suas/docs/readiness/` and `docs/decision-packets/`. No mobile work. No production authorization claimed.
+Closed remaining CODE_FIXABLE Plane A JSON on `scrimshawlife-ctrl/suas`: case resolve + Settlement reads shipped in **#79** (`e8d3082`). Prior closes `#59`–`#78`. OpenAPI **46** `/api/v0` ops; `npm run settle:check` OK on that HEAD (verify CI `32931373216`). Terminal outcome remains **SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET** — no CODE_FIXABLE Plane A gaps left. Owner residuals: D-022 durable jobs, D-001/D-005 staging hosting, D-021/D-023/D-024 SLO/RTO, D-007 retention; evidence staging soak / UI a11y; tooling GHSA. Artifacts under `suas/docs/readiness/` and `docs/decision-packets/`. No mobile work. No production authorization claimed.
 
 # Handoff
 

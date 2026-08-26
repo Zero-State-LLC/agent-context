@@ -1,8 +1,8 @@
 # Status
 
-Last updated: 2026-08-25 (followed the WATCH-presence entry with a ~10min paced play session on the same `player.deviceb491f6710e50` credential — MESSAGE/LOOK/WAIT/MOVE only, no harvest/trade/admin. `tester`/`reach-maint3` accepted MESSAGE but weren't INSPECT-visible/co-present this pass; no text replies, they're mechanical not conversational. `salvage-cache` recovered from the 2026-08-24 depletion read (0.03 → 4.58 → 6.65). New `DISMANTLE` action spotted at Civic Exchange, unused. See HANDOFF.md top for detail.
+Last updated: 2026-08-26 — SUAS `#79` merged (`e8d3082`): `POST /api/v0/cases/{id}/commands/resolve` + Settlement list/get; OpenAPI 46; settle:check OK. Terminal still `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (owner D-022/D-001/D-005/D-021–024/D-007; evidence staging/UI). See HANDOFF.md.
 
-Prior update: client bumped to **0.1.19** on PyPI; `noema status`/`doctor` on 0.1.19 now correctly report `credential: expired` instead of silently "healthy" — `#21` detection may be partly fixed upstream, no auto-refresh yet though. Prabu enrolled a fresh device fully unattended — used `POST /v1/play/login/request` to trigger an on-demand magic-link email instead of waiting for one to already be sitting in the inbox — and entered `world.perihelion-reach-3` as new player `player.deviceb491f6710e50` at Civic Exchange, presence-only so Aaron can watch via public WATCH (no play actions beyond one confirming LOOK). See HANDOFF.md top for exact steps. Also flagging unreviewed same-day PRs: `Noema#589/#591/#592/#593`, `Noema-Specs#300-303`.)
+Prior: 2026-08-25 Prabu WATCH/play presence on `player.deviceb491f6710e50`; noema-client 0.1.19; see earlier HANDOFF entries.
 
 ## In flight (org)
 
@@ -12,7 +12,7 @@ Prior update: client bumped to **0.1.19** on PyPI; `noema status`/`doctor` on 0.
 - **GitHub admin bypass** — Partner Agents / both org admins may `gh pr merge --admin` on protected `main`. Required reviews + code owners remain.
 
 ## Product work
-- **SUAS** — SPEC-018 sprint settled as `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET` (2026-08-26). Runtime main advanced through scoring fail-closed, `/api/v0` resources/veterans/consents + OpenAPI drift CI, job port conformance, security audit. Owner blockers: D-022, staging hosting, SLO/RTO envelopes. See suas `docs/readiness/SPEC-018-final-report.md`.
+- **SUAS** — SPEC-018 terminal `SPEC_018_BLOCKED_WITH_MINIMAL_RESIDUAL_SET`. CODE_FIXABLE Plane A JSON closed through `#79` (resolve + settlements). Owner blockers: D-022, staging hosting, SLO/RTO, D-007. See `suas/docs/readiness/SPEC-018-final-report.md`.
 
 
 - **Noema** — PLAY `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Worker `ff6210bc`. Semantic Evolution, Deep Time persist, WATCH map, cycle-regen, maint-evolve CLI, harness policy visibility all on `main`. No open PRs. **Worker CI red** on reconstruction `gatherEvidence` (since #481).
