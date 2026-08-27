@@ -1,19 +1,21 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #104 notification preferences HTML open (merge-on-green)
+Updated: 2026-08-26 by Daniel (Grok) — #98–#104 merged; LOCAL soak live
 
 ## Now (2026-08-26)
 
-- **Merged:** #98–#103 (Worker soak + case/privacy/notifications HTML)
-- **PR open (merge-on-green):** [suas#104](https://github.com/scrimshawlife-ctrl/suas/pull/104) — `/app/notifications/preferences`
-- **LOCAL soak** live. **D-022** open. Native held.
+- **Merged this session:**
+  - #98 Worker `cloudflare:node` bridge (LOCAL soak)
+  - #99–#101 case HTML arc
+  - #102 notifications inbox · #103 consents/trusted · #104 channel preferences
+- **LOCAL soak** live at `https://suas.zer0state-noema.workers.dev` (redeployed after #104)
+- **D-022** still owner decision. Native held.
 
 ## Next
 
-1. Merge #104 when CI green
-2. More `/app` HTML as needed
-3. Owner decides D-022
-4. Not native
+1. More `/app` HTML as needed
+2. Owner decides D-022 → durable adapter
+3. Not native
 
 
 ---
