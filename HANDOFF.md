@@ -1,22 +1,19 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — Worker soak stability fix live; #106 open (merge-on-green)
+Updated: 2026-08-26 by Daniel (Grok) — #106 merged; Worker LOCAL soak stable
 
 ## Now (2026-08-26)
 
-- **Item 1 (stabilize Worker):** root causes fixed and redeployed to workers.dev
-  - Hyperdrive: Client-per-request pool (`createPool(..., 'worker')`) — was flaky CF 1101
-  - Fastify `request.params` null under `handleAsNodeRequest` — `pathParams()` fallback
-  - Seeded route smoke **8/8 × 200** (home, notifications, consents, trusted, resources/food, responder, case)
-- **PR:** [suas#106](https://github.com/scrimshawlife-ctrl/suas/pull/106) merge-on-green
-- Neon LOCAL seed still live; bearers in `.local-secrets/seed-summary.json`
-- **Next readiness items:** D-022 owner decision → durable adapter + STAGING; UI/a11y baseline; D-007
+- **Merged #106** — Hyperdrive Client-per-request + Fastify `pathParams` fallback
+- LOCAL soak stable at `https://suas.zer0state-noema.workers.dev` (seeded routes 8/8 × 200)
+- Neon synthetic seed live; bearers in `.local-secrets/seed-summary.json`
+- **Next:** owner D-022 → durable adapter + formal STAGING; then UI/a11y baseline; D-007
 - Native held. Not STAGING/PRODUCTION.
 
 ## Next
 
-1. Merge #106
-2. Owner decides D-022 (Postgres outbox recommended)
+1. Owner decides D-022 (Postgres outbox recommended)
+2. Eng implements durable adapter + STAGING class
 3. Not native
 
 
