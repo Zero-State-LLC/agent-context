@@ -1,24 +1,21 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — LOCAL UI/a11y baseline pack (#107 merge-on-green)
+Updated: 2026-08-26 by Daniel (Grok) — #107 merged; LOCAL UI/a11y baseline on main
 
 ## Now (2026-08-26)
 
-- **LOCAL UI/a11y baseline pinned:** `docs/readiness/evidence/local-ui-a11y-2026-08-26/`
-  - 12 surfaces HTTP 200 from workers.dev + seed
-  - Markup a11y 12/12 pass; Lighthouse a11y 100 (home, responder)
-  - Screenshots for human review; **UI_CONFORMANCE still NOT_READY**
-- **PR:** [suas#107](https://github.com/scrimshawlife-ctrl/suas/pull/107) (merge-on-green)
+- **Merged #107** — LOCAL UI/a11y baseline at `docs/readiness/evidence/local-ui-a11y-2026-08-26/`
+  - 12 surfaces 200; markup a11y 12/12; LH a11y 100; screenshots pinned
+  - **UI_CONFORMANCE still NOT_READY** (needs human contrast/focus/reflow + STAGING re-run)
 - Worker soak stable (#106). Neon seed live.
-- **Next:** owner D-022 → STAGING; human review of pinned screenshots; D-007
-- Native held.
+- **Next:** owner D-022; optional human review of pinned screenshots; D-007
+- Native held. Not STAGING/PRODUCTION.
 
 ## Next
 
-1. Merge #107
-2. Owner decides D-022
-3. Human review of LOCAL baseline screenshots (contrast/focus/reflow)
-4. Not native
+1. Owner decides D-022 (Postgres outbox recommended)
+2. Human review of LOCAL baseline screenshots
+3. Not native
 
 
 ---
