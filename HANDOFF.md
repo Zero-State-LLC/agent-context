@@ -1,21 +1,22 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #107 merged; LOCAL UI/a11y baseline on main
+Updated: 2026-08-26 by Daniel (Grok) — D-022 DECIDED; Postgres outbox PR #108
 
 ## Now (2026-08-26)
 
-- **Merged #107** — LOCAL UI/a11y baseline at `docs/readiness/evidence/local-ui-a11y-2026-08-26/`
-  - 12 surfaces 200; markup a11y 12/12; LH a11y 100; screenshots pinned
-  - **UI_CONFORMANCE still NOT_READY** (needs human contrast/focus/reflow + STAGING re-run)
-- Worker soak stable (#106). Neon seed live.
-- **Next:** owner D-022; optional human review of pinned screenshots; D-007
-- Native held. Not STAGING/PRODUCTION.
+- **D-022 DECIDED:** Postgres outbox / SKIP LOCKED (recorded in `DECISIONS.md`)
+- **PR open (merge-on-green):** [suas#108](https://github.com/scrimshawlife-ctrl/suas/pull/108) — `job_outbox` v12 + `PostgresOutboxJobQueue` + factory wiring
+- Neon synthetic already at schema **v12**
+- LOCAL Worker soak stable (#106); UI/a11y baseline (#107)
+- **Next after #108:** formal STAGING env (D-001/005) using durable queue; optional job worker/poller loop; human a11y review; D-007
+- Native held. Not STAGING/PRODUCTION yet.
 
 ## Next
 
-1. Owner decides D-022 (Postgres outbox recommended)
-2. Human review of LOCAL baseline screenshots
-3. Not native
+1. Merge #108
+2. Formal STAGING Worker + `SUAS_ENV=STAGING` + postgres-outbox
+3. Human review of LOCAL a11y screenshots
+4. Not native
 
 
 ---
