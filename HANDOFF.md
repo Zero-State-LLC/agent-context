@@ -1,21 +1,20 @@
 # Handoff
 
-Updated: 2026-08-27 by Daniel (Grok) — formal STAGING Worker live; #109 open
+Updated: 2026-08-27 by Daniel (Grok) — #109 merged; D-007 rehearsal #110 open
 
 ## Now (2026-08-27)
 
-- **Formal STAGING live:** `https://suas.zer0state-noema.workers.dev` with `SUAS_ENV=STAGING`
-  - Health: `job_queue.durability=durable`, `implementation=postgres-outbox`
-  - Seeded `/app` routes 5×200
-- **PR:** [suas#109](https://github.com/scrimshawlife-ctrl/suas/pull/109) — docs + `npm run jobs:work` poller + HUMAN-REVIEW notes
-- D-022 shipped (#108). UI/a11y baseline (#107). Not PRODUCTION.
-- Native held.
+- **#109 merged** — formal STAGING Worker + `jobs:work` on main
+- **STAGING live:** workers.dev `SUAS_ENV=STAGING`, health `postgres-outbox` durable
+- **D-007 DECIDED + rehearsed:** soft-delete, retain events 365d; Neon report in evidence pack
+- **PR:** [suas#110](https://github.com/scrimshawlife-ctrl/suas/pull/110) merge-on-green
+- PRIVACY still NOT_READY (purge/export). Not PRODUCTION. Native held.
 
 ## Next
 
-1. Merge #109
-2. Owner human a11y sign-off (focus/reflow/SR) if closing UI_CONFORMANCE further
-3. D-007 retention / deletion rehearsal
+1. Merge #110
+2. Optional owner a11y SR/focus/reflow sign-off
+3. D-021/023/024 SLO–RTO when owner ready
 4. Not native / not PRODUCTION
 
 
