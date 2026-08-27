@@ -1,5 +1,18 @@
 # Decisions
 
+
+## 2026-08-26 — D-022 durable jobs = Postgres outbox
+
+**Decision:** SUAS STAGING/PRODUCTION durable async work uses a **Postgres-backed outbox / SKIP LOCKED worker** behind `DurableJobQueuePort` (decision packet option 2). LOCAL/TEST may keep the in-memory fake.
+
+**Why:** Same system of record as domain state; backup/RPO tied to Neon; no new vendor for first durable cut. Revisit managed queue if multi-region/volume demands it.
+
+**Implications:**
+
+- Eng implements `job_outbox` (+ lease worker) and wires factory for STAGING/PRODUCTION
+- Formal `SUAS_ENV=STAGING` unblocked once adapter + topology land
+- Specs/manifest naming can follow in a later pin; runtime may land under 0.2.0 with D-022 DECIDED recorded here
+
 ## 2026-08-21 — PLAY identity is perihelion-reach-3
 
 **Decision:** Live PLAY is `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`. Do not ENTER, activate, or same-id EWM `world.perihelion-reach-2`. Frozen first world remains `world-01` / `genesis.ef578f4ffceeccd0`.
