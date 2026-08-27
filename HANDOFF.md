@@ -1,20 +1,22 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #108 merged; D-022 Postgres outbox on main
+Updated: 2026-08-27 by Daniel (Grok) — formal STAGING Worker live; #109 open
 
-## Now (2026-08-26)
+## Now (2026-08-27)
 
-- **D-022 DECIDED + shipped:** Postgres outbox / SKIP LOCKED (`job_outbox` schema v12, `PostgresOutboxJobQueue`)
-- **Merged #108** — STAGING/PRODUCTION factory uses durable outbox when pool present; LOCAL keeps in-memory fake
-- Neon synthetic at **v12**; LOCAL Worker soak stable (#106); UI/a11y baseline (#107)
-- **Next:** formal STAGING Worker env (`SUAS_ENV=STAGING` + postgres-outbox); optional claim worker loop; human a11y review; D-007
-- Native held. Not PRODUCTION.
+- **Formal STAGING live:** `https://suas.zer0state-noema.workers.dev` with `SUAS_ENV=STAGING`
+  - Health: `job_queue.durability=durable`, `implementation=postgres-outbox`
+  - Seeded `/app` routes 5×200
+- **PR:** [suas#109](https://github.com/scrimshawlife-ctrl/suas/pull/109) — docs + `npm run jobs:work` poller + HUMAN-REVIEW notes
+- D-022 shipped (#108). UI/a11y baseline (#107). Not PRODUCTION.
+- Native held.
 
 ## Next
 
-1. Formal STAGING deploy (D-001/005 topology + durable queue)
-2. Human review of LOCAL a11y screenshots
-3. Not native
+1. Merge #109
+2. Owner human a11y sign-off (focus/reflow/SR) if closing UI_CONFORMANCE further
+3. D-007 retention / deletion rehearsal
+4. Not native / not PRODUCTION
 
 
 ---
