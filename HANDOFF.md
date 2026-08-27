@@ -1,20 +1,24 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #106 merged; Worker LOCAL soak stable
+Updated: 2026-08-26 by Daniel (Grok) — LOCAL UI/a11y baseline pack (#107 merge-on-green)
 
 ## Now (2026-08-26)
 
-- **Merged #106** — Hyperdrive Client-per-request + Fastify `pathParams` fallback
-- LOCAL soak stable at `https://suas.zer0state-noema.workers.dev` (seeded routes 8/8 × 200)
-- Neon synthetic seed live; bearers in `.local-secrets/seed-summary.json`
-- **Next:** owner D-022 → durable adapter + formal STAGING; then UI/a11y baseline; D-007
-- Native held. Not STAGING/PRODUCTION.
+- **LOCAL UI/a11y baseline pinned:** `docs/readiness/evidence/local-ui-a11y-2026-08-26/`
+  - 12 surfaces HTTP 200 from workers.dev + seed
+  - Markup a11y 12/12 pass; Lighthouse a11y 100 (home, responder)
+  - Screenshots for human review; **UI_CONFORMANCE still NOT_READY**
+- **PR:** [suas#107](https://github.com/scrimshawlife-ctrl/suas/pull/107) (merge-on-green)
+- Worker soak stable (#106). Neon seed live.
+- **Next:** owner D-022 → STAGING; human review of pinned screenshots; D-007
+- Native held.
 
 ## Next
 
-1. Owner decides D-022 (Postgres outbox recommended)
-2. Eng implements durable adapter + STAGING class
-3. Not native
+1. Merge #107
+2. Owner decides D-022
+3. Human review of LOCAL baseline screenshots (contrast/focus/reflow)
+4. Not native
 
 
 ---
