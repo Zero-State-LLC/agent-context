@@ -1,19 +1,22 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #105 merged; Neon LOCAL seed live
+Updated: 2026-08-26 by Daniel (Grok) — Worker soak stability fix live; #106 open (merge-on-green)
 
 ## Now (2026-08-26)
 
-- **Merged #105** — seed extensions (trusted contact + IN_APP notifications) + runbook seed steps
-- **Neon LOCAL synthetic seed live** (schema v11); bearers in `.local-secrets/seed-summary.json`
-- **Local inject vs Neon: all 200**; Worker still flaky 500 on some auth routes (isolate/bridge)
-- Soak: `https://suas.zer0state-noema.workers.dev` (`SUAS_ENV=LOCAL`)
-- **D-022** open. Native held. Not STAGING/PRODUCTION.
+- **Item 1 (stabilize Worker):** root causes fixed and redeployed to workers.dev
+  - Hyperdrive: Client-per-request pool (`createPool(..., 'worker')`) — was flaky CF 1101
+  - Fastify `request.params` null under `handleAsNodeRequest` — `pathParams()` fallback
+  - Seeded route smoke **8/8 × 200** (home, notifications, consents, trusted, resources/food, responder, case)
+- **PR:** [suas#106](https://github.com/scrimshawlife-ctrl/suas/pull/106) merge-on-green
+- Neon LOCAL seed still live; bearers in `.local-secrets/seed-summary.json`
+- **Next readiness items:** D-022 owner decision → durable adapter + STAGING; UI/a11y baseline; D-007
+- Native held. Not STAGING/PRODUCTION.
 
 ## Next
 
-1. Optional: diagnose Worker CF 1101 flakiness on authenticated DB routes
-2. Owner decides D-022 for formal STAGING
+1. Merge #106
+2. Owner decides D-022 (Postgres outbox recommended)
 3. Not native
 
 
