@@ -1,6 +1,19 @@
 # Decisions
 
 
+
+## 2026-08-27 — D-007 retention/deletion (STAGING policy)
+
+**Decision:** Soft-delete operational identity rows on deletion request; **retain Domain Events, Audit Events, and consent history for 365 days** (STAGING synthetic policy). No provider-side erase claim. No HIPAA claim.
+
+**Why:** Matches the shipped synthetic deletion drill (soft-delete + event retention) and gives PRIVACY a concrete duration for STAGING rehearsal. PRODUCTION purge/export package remains separate / SPEC-018.
+
+**Implications:**
+
+- `D_007_RETENTION` is no longer `DECISION_PENDING` for STAGING
+- Staging deletion rehearsal may run against synthetic Neon under `SUAS_ENV=STAGING` (fail closed on PRODUCTION / prod URL markers)
+- Formal purge after 365 days is a later ops package, not invented here
+
 ## 2026-08-26 — D-022 durable jobs = Postgres outbox
 
 **Decision:** SUAS STAGING/PRODUCTION durable async work uses a **Postgres-backed outbox / SKIP LOCKED worker** behind `DurableJobQueuePort` (decision packet option 2). LOCAL/TEST may keep the in-memory fake.
