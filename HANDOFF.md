@@ -1,21 +1,17 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #99 merged; #100 log-contact HTML open (merge-on-green)
+Updated: 2026-08-26 by Daniel (Grok) — #99+#100 merged; #101 create-SR HTML open (merge-on-green)
 
 ## Now (2026-08-26)
 
-- **Merged suas#99** (`c26ce18`): case HTML lists contact attempts + service requests; GET `/app/responder/availability`.
-- **PR open (merge-on-green):** [suas#100](https://github.com/scrimshawlife-ctrl/suas/pull/100) — HTML log-contact-attempt form on case page for assigned responders.
-- **LOCAL Worker soak** still live at `https://suas.zer0state-noema.workers.dev` (#98).
+- **Merged:** #98 Worker bridge · #99 case lists · #100 log-contact HTML
+- **LOCAL soak** live at `https://suas.zer0state-noema.workers.dev` (redeployed after #100)
+- **PR open (merge-on-green):** [suas#101](https://github.com/scrimshawlife-ctrl/suas/pull/101) — HTML create service request on case page
 - **D-022** open. Native held.
-
-## On main this arc
-
-- #91 EmailPort · #95 phone-scan · #96 responder cursor · #97 resources cursor · #98 Worker bridge · #99 case lists
 
 ## Next
 
-1. Merge #100 when CI green (in flight)
+1. Merge #101 when CI green
 2. More `/app` HTML under 0.2.0
 3. Owner decides D-022
 4. Not native
