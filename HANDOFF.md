@@ -1,23 +1,20 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — #98–#102 merged; LOCAL soak live
+Updated: 2026-08-26 by Daniel (Grok) — #103 consents/trusted HTML open (merge-on-green)
 
 ## Now (2026-08-26)
 
-- **Merged this session:**
-  - #98 Worker `cloudflare:node` HTTP bridge (LOCAL soak)
-  - #99 case HTML lists (contact + service requests)
-  - #100 HTML log-contact-attempt
-  - #101 HTML create service request
-  - #102 `/app/notifications` inbox HTML
-- **LOCAL soak** live at `https://suas.zer0state-noema.workers.dev` (redeployed after #102)
-- **D-022** still owner decision. Native held.
+- **Merged:** #98–#102 (Worker soak + case HTML arc + notifications inbox)
+- **PR open (merge-on-green):** [suas#103](https://github.com/scrimshawlife-ctrl/suas/pull/103) — `/app/consents` + `/app/trusted-contacts` read-only HTML
+- **LOCAL soak** live at `https://suas.zer0state-noema.workers.dev`
+- **D-022** open. Native held.
 
 ## Next
 
-1. More `/app` HTML under 0.2.0 as needed (consents/trusted-circle are candidates)
-2. Owner decides D-022 → durable adapter
-3. Not native
+1. Merge #103 when CI green
+2. More `/app` HTML as needed
+3. Owner decides D-022
+4. Not native
 
 
 ---
