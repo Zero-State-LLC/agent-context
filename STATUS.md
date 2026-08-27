@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-26 (evening) — **Neon LOCAL synthetic seed live**; suas#98–#104 merged; #105 seed extension open. Worker soak flaky on some auth routes. D-022 open. Native held.
+Last updated: 2026-08-26 (evening) — **suas#98–#105 merged**; Neon LOCAL synthetic seed live. Worker soak flaky on some auth routes. D-022 open. Native held.
 
 Prior: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until owner re-pin; weekend is Pages plus `/app`, not TestFlight.
 

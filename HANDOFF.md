@@ -1,24 +1,18 @@
 # Handoff
 
-Updated: 2026-08-26 by Daniel (Grok) — Neon LOCAL synthetic seed live; #105 seed PR
+Updated: 2026-08-26 by Daniel (Grok) — #105 merged; Neon LOCAL seed live
 
 ## Now (2026-08-26)
 
-- **Synthetic data seeded** on Neon (schema v11) via `npm run seed`:
-  - tenant `00000000-0000-4000-8000-000000000001`
-  - admin / responder / veteran / veteran2 (`*@example.invalid`)
-  - active QRF (ASSIGNED) + PEER_SUPPORT SR
-  - consent grant, INVITED trusted contact, 2 IN_APP notifications
-  - 4 verified resources; closed settled case for veteran2
-  - Bearers in gitignored `.local-secrets/seed-summary.json` (re-run seed to refresh)
-- **Local inject smoke vs Neon: all 200** (`/app/home`, notifications, consents, trusted-contacts, resources/food, responder)
-- **Worker soak** still LOCAL at `https://suas.zer0state-noema.workers.dev` — some authenticated routes are **flaky 500** under CF (isolate/bridge); same routes OK on Node inject. Not a seed-data problem.
-- **PR:** [suas#105](https://github.com/scrimshawlife-ctrl/suas/pull/105) extends seed for trusted contact + notifications (merge-on-green)
+- **Merged #105** — seed extensions (trusted contact + IN_APP notifications) + runbook seed steps
+- **Neon LOCAL synthetic seed live** (schema v11); bearers in `.local-secrets/seed-summary.json`
+- **Local inject vs Neon: all 200**; Worker still flaky 500 on some auth routes (isolate/bridge)
+- Soak: `https://suas.zer0state-noema.workers.dev` (`SUAS_ENV=LOCAL`)
 - **D-022** open. Native held. Not STAGING/PRODUCTION.
 
 ## Next
 
-1. Merge #105; optional diagnose Worker 1101 flakiness on authenticated DB routes
+1. Optional: diagnose Worker CF 1101 flakiness on authenticated DB routes
 2. Owner decides D-022 for formal STAGING
 3. Not native
 
