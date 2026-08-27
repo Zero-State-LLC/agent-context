@@ -1,18 +1,18 @@
 # Handoff
 
-Updated: 2026-08-27 by Daniel (Grok) — #109+#110 merged; STAGING + D-007 rehearsal on main
+Updated: 2026-08-27 by Daniel (Grok) — STAGING soak pack #111 open
 
 ## Now (2026-08-27)
 
-- **Formal STAGING live** on workers.dev (`SUAS_ENV=STAGING`, postgres-outbox durable)
-- **#109 merged** — STAGING docs + `jobs:work` poller
-- **#110 merged** — D-007 STAGING policy (soft-delete, retain events 365d) + Neon rehearsal evidence
-- PRIVACY still NOT_READY (purge/export). Not PRODUCTION. Native held.
+- Formal STAGING live (postgres-outbox). D-022 + D-007 shipped.
+- **PR:** [suas#111](https://github.com/scrimshawlife-ctrl/suas/pull/111) — STAGING soak evidence **85/85** HTTP 200
+- Next plan steps: owner a11y sign-off; SAFETY approved copy; D-021/023/024; privacy purge/export
+- Native held. Not PRODUCTION.
 
 ## Next
 
-1. Optional owner a11y SR/focus/reflow sign-off
-2. D-021/023/024 SLO–RTO when owner ready
+1. Merge #111
+2. Owner UI_CONFORMANCE sign-off (or SAFETY approved checklist)
 3. Not native / not PRODUCTION
 
 
