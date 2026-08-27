@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-26 (evening) — **D-022 DECIDED** (Postgres outbox); [suas#108](https://github.com/scrimshawlife-ctrl/suas/pull/108) adapter open. #106–#107 on main. Next: formal STAGING. Native held.
+Last updated: 2026-08-26 (evening) — **D-022 shipped** ([suas#108](https://github.com/scrimshawlife-ctrl/suas/pull/108) Postgres outbox). Next: formal STAGING. Native held.
 
 Prior: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until owner re-pin; weekend is Pages plus `/app`, not TestFlight.
 
