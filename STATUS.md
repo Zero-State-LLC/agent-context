@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-26 (evening) — **suas#99–#101 merged**; [suas#102](https://github.com/scrimshawlife-ctrl/suas/pull/102) notifications inbox open (merge-on-green). LOCAL soak live. D-022 open. Native held.
+Last updated: 2026-08-26 (evening) — **suas#98–#102 merged** (Worker soak + case HTML arc + notifications inbox). LOCAL soak live. D-022 open. Native held.
 
 Prior: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until owner re-pin; weekend is Pages plus `/app`, not TestFlight.
 
