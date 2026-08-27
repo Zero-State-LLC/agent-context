@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-08-27 — STAGING soak pack [suas#111](https://github.com/scrimshawlife-ctrl/suas/pull/111) (85/85). Formal STAGING + D-007 on main. Not PRODUCTION. Native held.
+Last updated: 2026-08-27 — STAGING soak pack on main (#111, 85/85). Next: a11y sign-off / SAFETY approved / SLO envelopes. Not PRODUCTION. Native held.
 
 Prior: 2026-08-26 (later) — **spec `0.3.0` MERGED** (`suas-specs#12`, `ea36b67`): D-033 native mobile client surface `DECIDED`, D-034 opened. Danny hold — **do not start a native client**; `SUAS` stays pinned `0.2.0` until owner re-pin; weekend is Pages plus `/app`, not TestFlight.
 

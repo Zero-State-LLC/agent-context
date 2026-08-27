@@ -1,19 +1,21 @@
 # Handoff
 
-Updated: 2026-08-27 by Daniel (Grok) — STAGING soak pack #111 open
+Updated: 2026-08-27 by Daniel (Grok) — #111 merged; STAGING soak pack on main
 
 ## Now (2026-08-27)
 
 - Formal STAGING live (postgres-outbox). D-022 + D-007 shipped.
-- **PR:** [suas#111](https://github.com/scrimshawlife-ctrl/suas/pull/111) — STAGING soak evidence **85/85** HTTP 200
-- Next plan steps: owner a11y sign-off; SAFETY approved copy; D-021/023/024; privacy purge/export
+- **#111 merged** — STAGING soak evidence 85/85 at `docs/readiness/evidence/staging-soak-2026-08-27/`
+- **Next 5 (readiness):** (1 done soak pack) → owner a11y sign-off → SAFETY approved copy → D-021/023/024 → privacy purge/export
 - Native held. Not PRODUCTION.
 
 ## Next
 
-1. Merge #111
-2. Owner UI_CONFORMANCE sign-off (or SAFETY approved checklist)
-3. Not native / not PRODUCTION
+1. Owner UI_CONFORMANCE sign-off (focus/reflow/SR) + live screenshots
+2. SAFETY `approved` copy checklist on STAGING
+3. D-021/023/024 SLO–RTO (owner) or keep SCALE NOT_COMPUTABLE
+4. Privacy purge/export for 365d retention
+5. Not native / not PRODUCTION
 
 
 ---
