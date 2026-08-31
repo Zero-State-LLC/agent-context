@@ -1,6 +1,6 @@
 # Handoff
 
-Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 4 PRs merged + RFC-0129 Accepted; Gate B waits on owner deploy + release + approvals
+Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 5 PRs merged + RFC-0129 Accepted; #600 security finding; Gate B waits on owner deploy + release + approvals
 
 ## Now (2026-08-30 — Noema audited; everything mechanical is green)
 
@@ -16,10 +16,11 @@ Verified: Worker suite **222 files / 1590 tests**, typecheck clean. All four Spe
 
 ### Also this pass
 
-- **`Noema#600`** — ran the official-client E2E that CI structurally cannot run (it self-skips without a client checkout, so CI's "90 passed, 1 skipped" excluded the only real integration test). With a checkout: **91 passed, 0 skipped**, at both client `main` and 0.1.20. Evidence posted. My three earlier comment-only reviews are superseded.
+- **`Noema#600`** — ran the official-client E2E that CI structurally cannot run (it self-skips without a client checkout, so CI's "90 passed, 1 skipped" excluded the only real integration test). With a checkout: **91 passed, 0 skipped**, at both client `main` and 0.1.20.
+  Then did the credential/process-isolation read I had been deferring. Code is genuinely careful (`lstat`+symlink rejection+exact-mode+uid checks, allowlist env, `HOME`/`TMPDIR`/`XDG_CONFIG_HOME` redirected per participant, process-group kill, no `shell=True`, structural redaction). **One finding that matters for Gate B: `PYTHONPATH` is inherited from the orchestrator into all three Controllers, identically, in live mode too** — arbitrary code execution in every Controller via `sitecustomize.py`, which is exactly how this PR's own E2E hooks `decide()` in all three. That is the shared-planner channel the independence contract forbids, and it fails **open**. Suggested: drop `PYTHONPATH`/`VIRTUAL_ENV` from `keep` in live mode, or route via the per-participant `env_from`. Second, minor: `_atomic_json` writes tmp at `0644` before `chmod 0600` (mitigated by the `0700` run dir). **Fix finding 1 before any live Gate B run — it would not show up in the resulting evidence.**
 - **`Noema-Specs#302` — MERGED, RFC-0129 now `Accepted`.** I retargeted it onto `main` (base #301 had merged) and reconciled it with a second artifact for the same gap (`RFC-PROPOSAL-GC7-...` landed after it was drafted; marked superseded so B7a has one authority). Danny then made both **Decision required** calls and landed the rest himself: optional `victim_id` + `visibility` (`PARTIES`|`PUBLIC`), **no default** (absent means not public, as `AGREEMENT_BROKEN`), co-extensiveness stands. **B7a is now `CLOSED_BY_RFC`.** Catalog stays 32 / Chamber 0.1 stays 24; no producer, verb, Genesis, or 0.3.
 - **`Noema-Specs#291`** — still open; recommended closing (it is Danny's, so untouched). Merging it would regress canon: it asserts "Gate A is not complete" and reverts the live pin to `d86352b2`. Its content fails both validators on merged main — the freshness failure is the check #310 repaired.
-- **`Noema-Specs#311`** (open, CI green) — `check_markdown_links` compared resolved link targets against an **unresolved** `ROOT`. Where ROOT holds a symlink (macOS `/var` -> `/private/var`) every target looked outside the tree and the scan silently checked nothing. The louder half: the neighbouring "ignores external/anchor/outside" test asserts `fail` is not called, so on macOS it passed **vacuously**. Fixed by resolving the root once; verified non-vacuous afterwards.
+- **`Noema-Specs#311` — MERGED.** `check_markdown_links` compared resolved link targets against an **unresolved** `ROOT`. Where ROOT holds a symlink (macOS `/var` -> `/private/var`) every target looked outside the tree and the scan silently checked nothing. The louder half: the neighbouring "ignores external/anchor/outside" test asserts `fail` is not called, so on macOS it passed **vacuously**. Fixed by resolving the root once; verified non-vacuous afterwards.
 
 ### Gate B: what is actually left
 
