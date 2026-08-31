@@ -1,6 +1,6 @@
 # Handoff
 
-Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 3 PRs merged, Gate B waits on owner deploy + release + approvals
+Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 4 PRs merged + RFC-0129 Accepted; Gate B waits on owner deploy + release + approvals
 
 ## Now (2026-08-30 — Noema audited; everything mechanical is green)
 
@@ -17,8 +17,9 @@ Verified: Worker suite **222 files / 1590 tests**, typecheck clean. All four Spe
 ### Also this pass
 
 - **`Noema#600`** — ran the official-client E2E that CI structurally cannot run (it self-skips without a client checkout, so CI's "90 passed, 1 skipped" excluded the only real integration test). With a checkout: **91 passed, 0 skipped**, at both client `main` and 0.1.20. Evidence posted. My three earlier comment-only reviews are superseded.
-- **`Noema-Specs#302`** — retargeted to `main` (its base #301 had merged) and **reconciled with a second artifact for the same gap**: `RFC-PROPOSAL-GC7-CRIME-PAYLOAD-VICTIM-RECONCILIATION.md` landed on main after #302 was drafted. B7a lists two exits; that note restates both without choosing, RFC-0129 specifies the first. Note marked superseded so B7a has one authority. Re-verified the defect still exists on main (payload still `additionalProperties: false`, no `victim_id`, no `visibility`). `validate=SUCCESS`. Awaiting Danny's two **Decision required** calls: amend a closed catalog payload at all, and whether `visibility` declares `"default": "PARTIES"`.
-- **`Noema-Specs#291`** — recommended closing (it is Danny's, so untouched). Merging it would regress canon: it asserts "Gate A is not complete" and reverts the live pin to `d86352b2`. Its content now fails both validators on merged main — the freshness failure is the check #310 repaired.
+- **`Noema-Specs#302` — MERGED, RFC-0129 now `Accepted`.** I retargeted it onto `main` (base #301 had merged) and reconciled it with a second artifact for the same gap (`RFC-PROPOSAL-GC7-...` landed after it was drafted; marked superseded so B7a has one authority). Danny then made both **Decision required** calls and landed the rest himself: optional `victim_id` + `visibility` (`PARTIES`|`PUBLIC`), **no default** (absent means not public, as `AGREEMENT_BROKEN`), co-extensiveness stands. **B7a is now `CLOSED_BY_RFC`.** Catalog stays 32 / Chamber 0.1 stays 24; no producer, verb, Genesis, or 0.3.
+- **`Noema-Specs#291`** — still open; recommended closing (it is Danny's, so untouched). Merging it would regress canon: it asserts "Gate A is not complete" and reverts the live pin to `d86352b2`. Its content fails both validators on merged main — the freshness failure is the check #310 repaired.
+- **`Noema-Specs#311`** (open, CI green) — `check_markdown_links` compared resolved link targets against an **unresolved** `ROOT`. Where ROOT holds a symlink (macOS `/var` -> `/private/var`) every target looked outside the tree and the scan silently checked nothing. The louder half: the neighbouring "ignores external/anchor/outside" test asserts `fail` is not called, so on macOS it passed **vacuously**. Fixed by resolving the root once; verified non-vacuous afterwards.
 
 ### Gate B: what is actually left
 
@@ -33,10 +34,11 @@ Danny's #601 review says it explicitly: **"This does not open Gate B and does no
 - **Don't re-run the Noema audit** — runtime, CI, and specs validation green as of 2026-08-30.
 - **Don't re-review `Noema#600` on the old rationale** — the "unclaimed acceptance run" objection is closed by the E2E above. Still wants a human read of the credential/isolation paths in `cohort.py`.
 - **Don't move the successor pins.** `production_successor_runtime` / `advanced_worker_runtime` read `61234cc` while live runs `0b902c28` — **22 commits later**, and `61234cc` is an ancestor. Recorded as `OPEN_RECONCILIATION` in `current-state.v1.yaml`; re-deriving needs a new evidence packet. **Owner-sequenced.**
-- **Pre-existing, out of scope:** `test_validate_all` markdown-link unittest fails on clean Specs `main`; `validation/run.sh` runs that suite but `spec-validation.yml` does not. Worth checking whether the validator silently stopped detecting broken links.
-- **CI gotcha:** `spec-validation` only runs on PRs targeting `main`. A stacked PR never runs it, and retargeting fires `edited`, which is not a default trigger — close/reopen to fire `reopened`.
+- **CORRECTION to my earlier note:** I said `spec-validation.yml` does not run the validator unittests. **That was wrong** — it runs them as "Run validator smoke tests"; I had grepped only for the `validate_*.py` invocations and missed the step. Nothing needs adding to CI.
+- **Also corrected:** the markdown-link unittest failure was **not** a validator regression. The real-repo scan works (verified by injecting a broken link into `docs/ROADMAP.md` and watching `validate_all` fail, then restoring). It was macOS-only; Linux CI was legitimately green. Fixed in #311.
+- **CI gotcha (still true):** `spec-validation` only runs on PRs targeting `main`. A stacked PR never runs it, and retargeting fires `edited`, which is not a default trigger — close/reopen to fire `reopened`. This is why #302 sat five days unvalidated.
 
-Open queues: **Noema** #600 (+ issue #590 Gate B). **Noema-Specs** #302, #291 (+ issue #290). **noema-client** empty. **Zero-State website** empty.
+Open queues: **Noema** #600 (+ issue #590 Gate B). **Noema-Specs** #311, #291 (+ issue #290). **noema-client** empty. **Zero-State website** empty.
 
 ## Repos
 
