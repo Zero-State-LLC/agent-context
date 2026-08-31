@@ -1,46 +1,42 @@
 # Handoff
 
-Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 3 PRs open, Gate B needs an operator to approve
+Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 3 PRs merged, Gate B waits on owner deploy + release + approvals
 
-## Now (2026-08-30 — Noema audit: runtime green, Gate B blocked on approval)
-
-Audited Noema runtime + specs end to end. **Everything mechanical is green. The only blocker is a person.**
+## Now (2026-08-30 — Noema audited; everything mechanical is green)
 
 Live: Worker `87938f7a-ed2c-4984-a4f2-d432ef7b0013` (deployed 2026-08-28), `world.perihelion-reach-3` / `genesis.94d0961984b2b4f8`, ACTIVE, settlement HEALTHY, **cycle 6938**, players 0.
 
-Verified locally: Worker suite **222 files / 1590 tests pass**, typecheck clean. Specs `validate_all` / `validate_direction` / `validate_freshness` / `validate_gateb_traceability` all pass. **Noema CI on `main` is green — the `gatherEvidence` red noted in older handoffs is fixed** (#595/#596).
+Verified: Worker suite **222 files / 1590 tests**, typecheck clean. All four Specs validators pass. **Noema CI on `main` is green — the old `gatherEvidence` red is fixed** (#595/#596). Campaign is **LCA-2 / Gate B**; Gate A promoted (Specs #300); Gates C–F unproven.
 
-Campaign is **LCA-2 / Gate B**. Gate A promoted and accepted (Specs #300). Gates C–F unproven.
+### Merged this pass (Danny reviewed + squashed all three)
 
-### Gate B is blocked on one human action
+1. **`Noema#601`** — **the approval window.** Six Gate B enrollments had expired unapproved at 600s. Specs never pinned the value (`AUTH-AND-IDENTITY` / `SECURITY-SEQUENCES` require `expires_in` + `interval`, no numbers), so CODE_FIXABLE, no spec change. There were **two independent 600s**: `DEVICE_TTL_MS` set the real expiry while the response returned a hardcoded `expires_in: 600`. The client derives its poll deadline from `expires_in` (600 is only its fallback), so raising the TTL alone would have left it giving up at 10 min against a still-valid code. Now **30 min**, with `expires_in`/`interval` derived from the constants and a regression test asserting they stay equal. **Client honors `expires_in`, so no client release is needed for the window.**
+2. **`Noema-Specs#310`** — live pin had gone stale across two deploys and both validators reported OK: `validate_freshness` fetched `/version` but never compared it, `validate_direction` hardcoded the stale UUID so *correcting* the file would have failed. Both now check invariants.
+3. **`noema-client#32`** — 0.1.20. Tag `v0.1.19` is `6b2c054` (#28); #29/#30/#31 landed after with no bump, so repo and PyPI `0.1.19` were **different builds** under one string.
 
-Danny's agent has generated **six** device-enrollment codes; every one expired unapproved. The window is **600 seconds**, so an agent minting a code and a human approving asynchronously will essentially never coincide. **This was a process design mismatch, not bad luck — now fixed in `Noema#601`, pending review + deploy.** Agree a live window with Danny once #601 is deployed and pinned.
+### Also this pass
 
-Gate B also needs **three independently controlled external Controllers**, not one. The isolated cohort is deliberately `NOT_COMPUTABLE` and can never promote the gate.
+- **`Noema#600`** — ran the official-client E2E that CI structurally cannot run (it self-skips without a client checkout, so CI's "90 passed, 1 skipped" excluded the only real integration test). With a checkout: **91 passed, 0 skipped**, at both client `main` and 0.1.20. Evidence posted. My three earlier comment-only reviews are superseded.
+- **`Noema-Specs#302`** — retargeted to `main` (its base #301 had merged) and **reconciled with a second artifact for the same gap**: `RFC-PROPOSAL-GC7-CRIME-PAYLOAD-VICTIM-RECONCILIATION.md` landed on main after #302 was drafted. B7a lists two exits; that note restates both without choosing, RFC-0129 specifies the first. Note marked superseded so B7a has one authority. Re-verified the defect still exists on main (payload still `additionalProperties: false`, no `victim_id`, no `visibility`). `validate=SUCCESS`. Awaiting Danny's two **Decision required** calls: amend a closed catalog payload at all, and whether `visibility` declares `"default": "PARTIES"`.
+- **`Noema-Specs#291`** — recommended closing (it is Danny's, so untouched). Merging it would regress canon: it asserts "Gate A is not complete" and reverts the live pin to `d86352b2`. Its content now fails both validators on merged main — the freshness failure is the check #310 repaired.
 
-### Four things I did
+### Gate B: what is actually left
 
-1. **`Noema-Specs#310`** (open, CI green, mergeable) — `current-state.v1.yaml` recorded live Worker `01ebc196` while live has been `87938f7a` since 2026-08-28; it missed two deployments (#593, #599) and carried a false present-tense `pin_note`. **Both validators were ineffective in opposite ways:** `validate_freshness` fetched `/version` but only asserted the field was non-empty, never comparing it to the pin — so the 6-hourly Direction Freshness drift monitor stayed green while the pin was wrong; `validate_direction` hardcoded the literal string `01ebc196-...` as a required marker, so *correcting* the file would have failed validation. Fixed the pin, added `live_source_commit`, and replaced both checks with invariants that cannot rot. Three negative tests included to prove they now bite.
-2. **`scrimshawlife-ctrl/noema-client#32`** (open, CI green, cross-fork) — bump to **0.1.20**. Tag `v0.1.19` is `6b2c054` (#28); #29/#30/#31 landed after it with no bump, so **repo `0.1.19` and PyPI `0.1.19` are different builds under one string**. Since #31 routes the version into protocol envelopes, user agent, and **evidence receipts**, a Gate B run today would record `client_version` ambiguously.
-3. **`Noema#601`** (open, CI green, mergeable) — **the approval window.** Specs never pinned it; `AUTH-AND-IDENTITY.md` / `SECURITY-SEQUENCES.md` only require `expires_in` and `interval` in the response, so this was CODE_FIXABLE, no spec change. There were **two independent 600s**: `DEVICE_TTL_MS` set the real expiry, while the response returned a hardcoded `expires_in: 600`. The official client derives its poll deadline from `expires_in` (600 is only its fallback), so raising the TTL alone would have left the client giving up at 10 min against a still-valid code. Raised to **30 min** and derived `expires_in`/`interval` from the constants so they cannot drift. Client honors `expires_in`, so **no client release is needed for the window**. Regression test asserts they stay equal.
-4. **`Noema#600`** — ran the E2E that CI structurally cannot run and posted the evidence.
+Danny's #601 review says it explicitly: **"This does not open Gate B and does not publish the Worker."** All three remaining steps are owner-sequenced:
+
+1. **Deploy + pin the Worker.** #601 is on `main` but live is still `87938f7a` from 2026-08-28, so the 30-min window is **not in production yet**. Approving enrollments before this deploy just reproduces the 600s failure.
+2. **Tag + publish `v0.1.20`.** Merged but not released — PyPI is still `0.1.19`, no `v0.1.20` tag. `publish.yml` fires on `release: published`. Until then treat client version as unpinned in any Gate B evidence.
+3. **Approve three independently controlled Controllers.** Needs an authenticated human principal; agents cannot. Isolated cohort is `NOT_COMPUTABLE` by design and can never promote the gate.
 
 ### What not to redo
 
-- **Don't re-run the Noema audit.** Runtime, CI, and specs validation are green as of 2026-08-30; findings are filed.
-- **Don't re-review `Noema#600` on the old rationale.** My three earlier comment-only reviews held on "the genuine official-client acceptance run remains unclaimed" and on dependencies that had already merged. I ran it: `tests/test_gate_b_cohort_local_e2e.py` self-skips unless you supply an official client checkout, so CI's "90 passed, 1 skipped" excluded the only real integration test. With a checkout it is **91 passed, 0 skipped**, passing at both client `main` and the proposed 0.1.20. That objection is closed. Still wants a human read of the credential/isolation paths in `cohort.py`.
-- **Don't trust the client version string** until 0.1.20 is published. Installing the checkout reports `0.1.19` — the same string PyPI serves for a *different, pre-#29* build.
-- **Don't move the successor pins.** `production_successor_runtime` / `advanced_worker_runtime` still pin `61234cc` while live runs `0b902c28` — **22 commits later**, and `61234cc` is an ancestor of it. Production has advanced past the recorded successor candidate. Those are promotion evidence cross-checked against the Gate A `proof_state`; re-deriving needs a new evidence packet. Left as `OPEN RECONCILIATION` in the file — **owner-sequenced.**
+- **Don't re-run the Noema audit** — runtime, CI, and specs validation green as of 2026-08-30.
+- **Don't re-review `Noema#600` on the old rationale** — the "unclaimed acceptance run" objection is closed by the E2E above. Still wants a human read of the credential/isolation paths in `cohort.py`.
+- **Don't move the successor pins.** `production_successor_runtime` / `advanced_worker_runtime` read `61234cc` while live runs `0b902c28` — **22 commits later**, and `61234cc` is an ancestor. Recorded as `OPEN_RECONCILIATION` in `current-state.v1.yaml`; re-deriving needs a new evidence packet. **Owner-sequenced.**
+- **Pre-existing, out of scope:** `test_validate_all` markdown-link unittest fails on clean Specs `main`; `validation/run.sh` runs that suite but `spec-validation.yml` does not. Worth checking whether the validator silently stopped detecting broken links.
+- **CI gotcha:** `spec-validation` only runs on PRs targeting `main`. A stacked PR never runs it, and retargeting fires `edited`, which is not a default trigger — close/reopen to fire `reopened`.
 
-### Next
-
-1. **Review + merge + deploy `Noema#601`, then approve enrollments.** The window fix only takes effect after a Worker deploy and pin. Approval needs an authenticated human principal — agents cannot. Then coordinate a live window with Danny.
-2. **Owner: tag + publish `v0.1.20`** after #32 — `publish.yml` fires on `release: published`, so the PR alone does not ship it.
-3. Review/merge `Noema-Specs#310` and `Noema#600`.
-4. Housekeeping: `Noema-Specs#291` is stale (pins `d86352b2`, two deploys behind); `#302` is stacked on already-merged `#301` and needs retargeting to `main`.
-5. Pre-existing, out of scope: `test_validate_all.MarkdownLinkValidationTests` fails on clean Specs `main`. `validation/run.sh` runs the unittests but `spec-validation.yml` does not — worth checking whether the validator regressed and is silently missing broken links.
-
-Open queues: **Noema** #600, #601 (+ issue #590 Gate B). **Noema-Specs** #291, #302, #310 (+ issue #290). **noema-client** #32. **Zero-State website** empty.
+Open queues: **Noema** #600 (+ issue #590 Gate B). **Noema-Specs** #302, #291 (+ issue #290). **noema-client** empty. **Zero-State website** empty.
 
 ## Repos
 
