@@ -1,6 +1,6 @@
 # Handoff
 
-Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 2 PRs open, Gate B blocked on a human click
+Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 3 PRs open, Gate B needs an operator to approve
 
 ## Now (2026-08-30 — Noema audit: runtime green, Gate B blocked on approval)
 
@@ -14,15 +14,16 @@ Campaign is **LCA-2 / Gate B**. Gate A promoted and accepted (Specs #300). Gates
 
 ### Gate B is blocked on one human action
 
-Danny's agent has generated **six** device-enrollment codes; every one expired unapproved. The window is **600 seconds**, so an agent minting a code and a human approving asynchronously will essentially never coincide. **This is a process design mismatch, not bad luck.** Fix the window or add an out-of-band approval path before the next attempt, then agree a live window with Danny.
+Danny's agent has generated **six** device-enrollment codes; every one expired unapproved. The window is **600 seconds**, so an agent minting a code and a human approving asynchronously will essentially never coincide. **This was a process design mismatch, not bad luck — now fixed in `Noema#601`, pending review + deploy.** Agree a live window with Danny once #601 is deployed and pinned.
 
 Gate B also needs **three independently controlled external Controllers**, not one. The isolated cohort is deliberately `NOT_COMPUTABLE` and can never promote the gate.
 
-### Three things I did
+### Four things I did
 
 1. **`Noema-Specs#310`** (open, CI green, mergeable) — `current-state.v1.yaml` recorded live Worker `01ebc196` while live has been `87938f7a` since 2026-08-28; it missed two deployments (#593, #599) and carried a false present-tense `pin_note`. **Both validators were ineffective in opposite ways:** `validate_freshness` fetched `/version` but only asserted the field was non-empty, never comparing it to the pin — so the 6-hourly Direction Freshness drift monitor stayed green while the pin was wrong; `validate_direction` hardcoded the literal string `01ebc196-...` as a required marker, so *correcting* the file would have failed validation. Fixed the pin, added `live_source_commit`, and replaced both checks with invariants that cannot rot. Three negative tests included to prove they now bite.
 2. **`scrimshawlife-ctrl/noema-client#32`** (open, CI green, cross-fork) — bump to **0.1.20**. Tag `v0.1.19` is `6b2c054` (#28); #29/#30/#31 landed after it with no bump, so **repo `0.1.19` and PyPI `0.1.19` are different builds under one string**. Since #31 routes the version into protocol envelopes, user agent, and **evidence receipts**, a Gate B run today would record `client_version` ambiguously.
-3. **`Noema#600`** — ran the E2E that CI structurally cannot run and posted the evidence.
+3. **`Noema#601`** (open, CI green, mergeable) — **the approval window.** Specs never pinned it; `AUTH-AND-IDENTITY.md` / `SECURITY-SEQUENCES.md` only require `expires_in` and `interval` in the response, so this was CODE_FIXABLE, no spec change. There were **two independent 600s**: `DEVICE_TTL_MS` set the real expiry, while the response returned a hardcoded `expires_in: 600`. The official client derives its poll deadline from `expires_in` (600 is only its fallback), so raising the TTL alone would have left the client giving up at 10 min against a still-valid code. Raised to **30 min** and derived `expires_in`/`interval` from the constants so they cannot drift. Client honors `expires_in`, so **no client release is needed for the window**. Regression test asserts they stay equal.
+4. **`Noema#600`** — ran the E2E that CI structurally cannot run and posted the evidence.
 
 ### What not to redo
 
@@ -33,13 +34,13 @@ Gate B also needs **three independently controlled external Controllers**, not o
 
 ### Next
 
-1. **Owner: approve enrollments** (needs an authenticated human principal — agents cannot). Coordinate a live window with Danny. Fix the 600s window first.
+1. **Review + merge + deploy `Noema#601`, then approve enrollments.** The window fix only takes effect after a Worker deploy and pin. Approval needs an authenticated human principal — agents cannot. Then coordinate a live window with Danny.
 2. **Owner: tag + publish `v0.1.20`** after #32 — `publish.yml` fires on `release: published`, so the PR alone does not ship it.
 3. Review/merge `Noema-Specs#310` and `Noema#600`.
 4. Housekeeping: `Noema-Specs#291` is stale (pins `d86352b2`, two deploys behind); `#302` is stacked on already-merged `#301` and needs retargeting to `main`.
 5. Pre-existing, out of scope: `test_validate_all.MarkdownLinkValidationTests` fails on clean Specs `main`. `validation/run.sh` runs the unittests but `spec-validation.yml` does not — worth checking whether the validator regressed and is silently missing broken links.
 
-Open queues: **Noema** #600 (+ issue #590 Gate B). **Noema-Specs** #291, #302, #310 (+ issue #290). **noema-client** #32. **Zero-State website** empty.
+Open queues: **Noema** #600, #601 (+ issue #590 Gate B). **Noema-Specs** #291, #302, #310 (+ issue #290). **noema-client** #32. **Zero-State website** empty.
 
 ## Repos
 
