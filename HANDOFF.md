@@ -38,6 +38,19 @@ Lesson for the gap register generally: rows written from a subsystem doc rather 
 
 **Provenance caution, now in the register.** Three docs restate the 2026-08-25 crime review as if it were separate authority — `STRATEGIC-CONFLICT` §"Research assimilation 2026-08-25", `INSTITUTIONAL-AUTHORITY` line 207, and `RFC-PROPOSAL-GC7-CRIME-REHABILITATION`. All descend from `RESEARCH-ASSIMILATION-2026-08-25-CRIME.md` and cite it. **I nearly cited the first as independent corroboration for `B7c`.** Reading them as confirmation means reading one claim three times — how `B7e`'s error reached a draft proposal. Confirm `B7*` rows against the Accepted RFC and the machine catalog only.
 
+### `Specs#315` — remaining register families audited (`B1`–`B6`, `B8`–`B10`, `PAM`, `H`)
+
+`#314` merged. Second pass found **two more stale rows**, both the same shape as `B7`: a row calling something unpinned that a later Accepted RFC had pinned.
+
+- **`B1b`** listed "maintenance/decay credit" as residual. **RFC-0043** (GC1-S3) pins it — LATENT after 12 idle cycles, 3 qualifying successes restore MAINTAINED. Row never cited it. Multi-focus *is* genuinely open (RFC-0110 grants one focus).
+- **`B10b`** said irreversible scar creation/recovery "remain unpinned". **RFC-0051** (GC10-S2) pins creation, irreversibility, the pressure boundary, hidden-room omission and WATCH silence. Now `PARTIALLY_CLOSED`.
+
+**Root cause for `B10b`, also fixed:** `WORLD-EVENT-DIRECTOR.md` contradicted itself — "irreversible scars remain SPEC GAP" near the top, "GC10-S2 closed: public DISMANTLE leaves irreparable RUIN scar" further down. The row was written from the stale line.
+
+All ten RFCs cited by rows exist and are Accepted. `B3`/`B5` (the `CLOSED_BY_RFC` claims) match their RFCs exactly. `B2b`, `B4`, `B6`, `B8a`, `H1`, `H2` cite subsystem docs rather than an RFC, so there was nothing to audit them against — recorded as such, not claimed as verified.
+
+**Running tally across #313/#314/#315: four register rows were wrong** (`B7`, `B7e`, `B1b`, `B10b`), all in the same direction — asserting a gap that an Accepted RFC had closed. Worth assuming the register over-reports gaps rather than under-reports them.
+
 ### Still open, unchanged
 
 `B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
