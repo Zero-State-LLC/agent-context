@@ -67,6 +67,17 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#615` — WATCH live regions, and why the obvious fix was wrong
+
+Closes C5 finding 2. **Read the spec before touching this.** `WATCH-LIGHTWEIGHT-SPECTATOR` §8/§9 already settle it: *"Do not make the entire feed `aria-live`. At most the **headline** MAY be polite. Status tag changes MAY be polite."* / *"Periodic updates MUST NOT flood AT. No live region on the feed."* **My #614 recommendation ("a polite region over the feed") would have violated it** — corrected on that PR.
+
+Two things worth carrying forward:
+
+- **`/watch` already had both regions.** The gap was parity: the newer `/watch/map` didn't inherit the pattern.
+- **The guard matters more than the attribute.** `textContent = x` mutates the node *even when x is unchanged*, and a mutation on a live node is an announcement. `/watch/map` repaints every 8s, `/watch` every 10s — so bare `aria-live` announces on **every poll**, worse than silence. Measured: 3 identical unguarded writes → 3 MutationRecords; guarded → 0. `watch.ts` had `setTag()` guarded but its **headline was not**. Both now route through a guard.
+
+Six tests, each mutation-verified. 1614 passing.
+
 ### `Noema#614` + `Specs#319` — C5 WATCH verification, and a correction of mine
 
 **I was wrong in #318.** I wrote that the 2026-09-01 deploy "carried documentation and test changes only". It did not — `git diff a68f5d8d..02fd112 -- workers/noema/src/` shows `watch.ts` (74 lines) and `world-actions.ts` (1 line). The range contains **`45e2070`, the map-first WATCH integration**. Specs alignment still holds at `81ca8c1`, but because those touch **no catalog, verb or event contract** — not because src was untouched. `Specs#319` corrects the note; the right test for "can a deploy move Specs alignment" is *did any contract change*, not *did src change*.
