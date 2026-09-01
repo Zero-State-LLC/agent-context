@@ -105,6 +105,16 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#617` + `Specs#320` — entity ids off the spectator wire; all three C5 findings closed
+
+**My C5 finding 3 was wrong about the doctrine.** I called it an ambiguity ("no rule covers `rooms[].entities[]`"). The WATCH **field table** pins that row to `label`, `entity_type` — I'd read §8/§9 and missed it. So it was the runtime shipping two fields beyond contract, with `rooms[].traces[]` forbidding entity ids one row away.
+
+- **`entity_id` dropped** (#617). Its only consumer was `watch.ts`'s `label || entity_id` fallback, which **cannot fire** — `label` is required on EntityRuntime. It published an internal id to satisfy an unreachable branch, and would have rendered a raw `entity.relay.15ec525b` to spectators if it had.
+- **`glyph` kept** — §18 pins the glyph catalog and both renderers read it; the field row was just stale. Corrected in `Specs#320`.
+- **Scope:** only *public* entities were ever projected (`isPublicEntity` filters hidden), so this narrowed a bounded exposure, not a hidden-entity leak. Don't over-read it.
+
+**Lesson worth keeping: read the field table before concluding WATCH doctrine is silent.** §8/§9 are prose; the per-field contract is a table further up.
+
 ### `Noema#616` — CSP now allows the font hosts the chrome asks for
 
 Closes C5 finding 1. The public door rendered in **system fallback**: HOSTED-FIRST-ENTRY pins Syne / IBM Plex, `theme/tokens.ts` requests them from Google Fonts, and the CSP allowed neither host. Pre-existing, present at the prior live build.
