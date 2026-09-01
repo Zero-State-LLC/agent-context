@@ -67,6 +67,14 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### Standing rule: re-sync the Specs pin after every Specs merge
+
+**`Noema#611`.** After #313–#317 merged, `spec-compat.json` `specs.commit` was **5 commits behind** Specs main — all five my own merges. Noema CI clones Noema-Specs **pinned to `specs.commit`, not main**, so a lagging pin makes any cross-repo test whose fixture landed after it skip *in CI* while passing locally. Green, checking nothing. That is what would have happened to RFC-0129's suite (#608), and with Specs absent 21 Worker tests skip on a run that still exits 0 (#609).
+
+Pin advanced to `d0086e4`, verified: 1608 passing + typecheck against it, and the three cross-repo suites confirmed to **run** (7 + 3 + 8), not skip.
+
+**Treat the pin bump as part of finishing Specs work.** Check with `git rev-list --count <pin>..origin/main` in Specs. #611 also adds a warning-only drift step to the six-hourly `pin-currency` monitor — it never fails, because that workflow deliberately does not go red for another repo's change.
+
 ### Register audit complete (#313 → #317)
 
 Four rows were wrong: `B7`, `B7e`, `B1b`, `B10b` — **all over-reporting a gap an Accepted RFC had closed**, none under-reporting. Two had traceable sources: `B7e` from illustrative prose read as a requirement, `B10b` from a self-contradicting line in `WORLD-EVENT-DIRECTOR.md` (fixed). **Read the register as likely overstating remaining work.** Before building on any row, check the RFC named in the slice catalog's `rfc:` field.
