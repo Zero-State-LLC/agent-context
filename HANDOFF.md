@@ -57,7 +57,17 @@ All ten RFCs cited by rows exist and are Accepted. `B3`/`B5` (the `CLOSED_BY_RFC
 
 **New row `A10`, registered nowhere before:** `hosted_live.official_client` pins `noema-client==0.1.15`, but AGENT-ONBOARDING / QUICKSTART / HOSTED-FIRST-ENTRY / OFFICIAL-AGENT-CLIENT all say `pipx install noema-client`, which serves **0.1.20** since 2026-08-31. `LCA2-GATE-B-PREPARATION` requires `controller_versions` in the packet, so **a Gate B run will record a Controller version the live pin does not name.** Not a mechanical blocker; it is an unreconciled pin at the moment evidence gets sealed. Continuation is the C7 client-pin evidence procedure. **Do not promote the pin just because 0.1.20 exists** — that is a forbidden fill, per C7.
 
-### Register audit complete (#313 → #316)
+### `Specs#317` — the 14 draft proposals audited against their rows
+
+`#316` merged. Rows over-report, and a proposal inherits its row's errors while inviting RFC effort on them — so all fourteen `RFC-PROPOSAL-*` notes were re-read against their parent row and its RFC.
+
+**Two of fourteen were standing on a stale row.** `GC10-WED-CLASS-SCAR` proposed scar irreversibility, provenance, WATCH projection and recovery — **all pinned by Accepted RFC-0051**, which it did not cite. Struck; the storm-class half stands (`B10a` audited clean). `GC7-CRIME-REHABILITATION` was corrected in #313. Both annotated, not deleted — the surviving idea is real in each.
+
+The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale `B1b` but correctly lists decay as shipped, so it dodged the error.
+
+**Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
+
+### Register audit complete (#313 → #317)
 
 Four rows were wrong: `B7`, `B7e`, `B1b`, `B10b` — **all over-reporting a gap an Accepted RFC had closed**, none under-reporting. Two had traceable sources: `B7e` from illustrative prose read as a requirement, `B10b` from a self-contradicting line in `WORLD-EVENT-DIRECTOR.md` (fixed). **Read the register as likely overstating remaining work.** Before building on any row, check the RFC named in the slice catalog's `rfc:` field.
 
