@@ -1,5 +1,33 @@
 # Handoff
 
+Updated: 2026-08-31 by Prabu (Claude Opus 5) — audit: deploy + v0.1.20 release landed; RFC-0129 runtime item 3 closed in `Noema#608`
+
+## Now (2026-08-31)
+
+**Two Gate B blockers cleared since the 2026-08-30 note.** Live Worker is `34f4b0dc` (deployed 2026-08-31T02:51:29Z, source `a68f5d8d`), `spec-compat.json` matches it, reach-3 is ACTIVE / HEALTHY at cycle 8331, `play_blocked=false`. **`v0.1.20` is released** — GH release and PyPI both `0.1.20`, so the "tag + publish" step is done. **Only the third blocker remains: a human approving three independently controlled Controllers.** Agents cannot do it.
+
+All three Specs validators pass. Worker suite 1596 on `main` (1604 on `#608`), typecheck clean.
+
+### Open: `Noema#608` — RFC-0129 conformance item 3
+
+RFC-0129 was Accepted 2026-08-30 with five conformance items. Four landed in Specs. **Item 3 is a runtime requirement and nobody did it**: feed one schema-valid `CRIME_DETECTED` fixture through all five consumers, because "validates and then produces nothing" only shows up when they run together. The RFC's own claim — *"no runtime change is required, all five consumers already read exactly these fields"* — had never been executed. It holds.
+
+**The part worth knowing regardless of that PR:** Noema CI clones Noema-Specs **pinned to `spec-compat.json` `specs.commit`, not main**. That pin read `6b4358c` (#308), which **predates RFC-0129** (`de349f9`). Any cross-repo test depending on RFC-0129 artifacts would have `skipIf`-skipped **in CI** while passing locally — green, verifying nothing. Same family as #310's blind validators and #311's vacuous link scan. Pin advanced to `2e3438f` with 1604 + typecheck green against it, `pin_note` invariant preserved (`hosted_live.specs_git` `81ca8c1` is still an ancestor). **When you add a cross-repo fixture in Specs, check whether `specs.commit` contains it or the test is inert.**
+
+Mutation-verified: breaking each of the five consumers fails exactly two tests (its own case + the aggregate).
+
+### Still open, unchanged
+
+`B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
+
+### Coordination note
+
+Checked before starting: zero open PRs in Noema, Noema-Specs, and noema-client; open issues were `Noema#590` (Gate B, unassigned) and `Specs#290` (Danny's). `#608` races nothing. The C0–C8 runtime continuation plan (`Noema#607`) is `OWNER_BLOCKED` at C0/C1/C3, C6, C8 — deploy authorization, protected secrets, controlled recipient, and enrollment receipts are all owner-sequenced.
+
+---
+
+# Handoff
+
 Updated: 2026-08-30 by Prabu (Claude Opus 5) — Noema LCA-2 audit; 8 PRs merged incl. #600 cohort runner; Gate B tooling complete, waits on owner deploy + release + approvals
 
 ## Now (2026-08-30 — Noema audited; everything mechanical is green)
