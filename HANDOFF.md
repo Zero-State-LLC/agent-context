@@ -67,6 +67,10 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Specs#318` — Danny deployed 2026-09-01; live pointer refreshed
+
+**New live Worker `c681fd71`**, deployed 2026-09-01T06:19:31Z from Noema source `02fd112` (= the #612 merge — docs/test only, so Specs alignment `81ca8c1` and the C7 affordance evidence both carry forward unchanged). The generated pin PR **Noema#613 is merged**; `Specs#318` refreshes `current-state.v1.yaml`, which `validate_freshness` correctly flagged within the hour. Full specs audit via the repo's own SKILLS.md workflows (ORIENT → DRIFT_AUDIT → VALIDATE): otherwise clean — RFC index 129 files zero mismatches, 221 catalog pointers resolve, catalogs 24/32, SKILLS.md citations all exist.
+
 ### `Noema#612` — C7 client-pin evidence, the half that needs no human
 
 Four of C7's six checks are done; the pin is **not** promoted. **Do not re-run these.**
