@@ -16,6 +16,12 @@ RFC-0129 was Accepted 2026-08-30 with five conformance items. Four landed in Spe
 
 Mutation-verified: breaking each of the five consumers fails exactly two tests (its own case + the aggregate).
 
+### Open: `Noema#609` — cross-repo skips are silent
+
+`#608` merged (approved by Danny). Its trap generalises: **seven suites** guard on `skipIf(!have)` against a Noema-Specs sibling. With Specs absent the Worker suite reports **`1583 passed | 21 skipped`, exit 0** — twenty-one tests can stop running behind a green check, including the RFC-0129 conformance just added. `haveSpecsArtifacts()` keeps the local skip and throws in CI naming the missing path and the likely cause (pin lagging an artifact). Mutation-verified in both directions.
+
+**If you add a Specs fixture and a test that reads it, this now tells you in CI instead of skipping.**
+
 ### Still open, unchanged
 
 `B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
