@@ -67,6 +67,20 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#612` — C7 client-pin evidence, the half that needs no human
+
+Four of C7's six checks are done; the pin is **not** promoted. **Do not re-run these.**
+
+- **Release identity:** tag `v0.1.20` == `origin/main` == `af19d16`, version single-sourced from `_version.py`. The `#32` defect (tag and PyPI being different builds under one version string) is holding fixed.
+- **Wheel identity:** wheel built from the tag vs the wheel PyPI serves — 28 files each, **byte-identical in source content**. Installing `noema-client==0.1.20` gets this repo's code.
+- **Clean suite at the tag:** 165 passed. ruff 36 is **pre-existing and ungated** (client CI runs pytest only; was 38 at 0.1.18).
+- **Live `doctor`, read-only:** reachability ok, `agent-protocol/v1`, seal required, credential missing. Nothing mutated.
+- **Affordance contract vs the LIVE build:** run against `a68f5d8d` (what `34f4b0dc` serves), **not** just Worker main, because C7 asks about the current Worker and main is ahead. 42/42 exact both ways.
+
+**Still NOT_COMPUTABLE:** enrollment/connect, observe/act/resync/reconnect, bounded session with receipts. All need a human principal or an enrolled credential, and acting mutates the live world. **Run them inside the Gate B enrollment**, not as a separate live exercise — they are the same principal-bound steps.
+
+If those pass against `34f4b0dc`, C7 is satisfied and the pin may go to `0.1.20`, closing `A10`. Promoting because 0.1.20 exists is still a forbidden fill.
+
 ### Standing rule: re-sync the Specs pin after every Specs merge
 
 **`Noema#611`.** After #313–#317 merged, `spec-compat.json` `specs.commit` was **5 commits behind** Specs main — all five my own merges. Noema CI clones Noema-Specs **pinned to `specs.commit`, not main**, so a lagging pin makes any cross-repo test whose fixture landed after it skip *in CI* while passing locally. Green, checking nothing. That is what would have happened to RFC-0129's suite (#608), and with Specs absent 21 Worker tests skip on a run that still exits 0 (#609).
