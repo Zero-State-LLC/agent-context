@@ -51,6 +51,16 @@ All ten RFCs cited by rows exist and are Accepted. `B3`/`B5` (the `CLOSED_BY_RFC
 
 **Running tally across #313/#314/#315: four register rows were wrong** (`B7`, `B7e`, `B1b`, `B10b`), all in the same direction — asserting a gap that an Accepted RFC had closed. Worth assuming the register over-reports gaps rather than under-reports them.
 
+### `Specs#316` — LCA campaign rows audited; register complete
+
+`#315` merged. Third pass finishes the register. `A*` rows are not SPEC GAPs, so they were checked against the live door and campaign state, not RFCs. **All accurate** — `A2`/`A9` confirmed by `players: 0` and `cycle` static at 8331 across hours (documented zero-player behaviour, not a stall); `A3`/`A4`/`A5` unproven for the same reason; `A1` already correctly removed since Gate A is accepted. `current-state.v1.yaml` verified against `/version` and is accurate, successor-pin reconciliation correctly held owner-sequenced.
+
+**New row `A10`, registered nowhere before:** `hosted_live.official_client` pins `noema-client==0.1.15`, but AGENT-ONBOARDING / QUICKSTART / HOSTED-FIRST-ENTRY / OFFICIAL-AGENT-CLIENT all say `pipx install noema-client`, which serves **0.1.20** since 2026-08-31. `LCA2-GATE-B-PREPARATION` requires `controller_versions` in the packet, so **a Gate B run will record a Controller version the live pin does not name.** Not a mechanical blocker; it is an unreconciled pin at the moment evidence gets sealed. Continuation is the C7 client-pin evidence procedure. **Do not promote the pin just because 0.1.20 exists** — that is a forbidden fill, per C7.
+
+### Register audit complete (#313 → #316)
+
+Four rows were wrong: `B7`, `B7e`, `B1b`, `B10b` — **all over-reporting a gap an Accepted RFC had closed**, none under-reporting. Two had traceable sources: `B7e` from illustrative prose read as a requirement, `B10b` from a self-contradicting line in `WORLD-EVENT-DIRECTOR.md` (fixed). **Read the register as likely overstating remaining work.** Before building on any row, check the RFC named in the slice catalog's `rfc:` field.
+
 ### Still open, unchanged
 
 `B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
