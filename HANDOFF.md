@@ -105,6 +105,16 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#616` — CSP now allows the font hosts the chrome asks for
+
+Closes C5 finding 1. The public door rendered in **system fallback**: HOSTED-FIRST-ENTRY pins Syne / IBM Plex, `theme/tokens.ts` requests them from Google Fonts, and the CSP allowed neither host. Pre-existing, present at the prior live build.
+
+**Two hosts, not interchangeable:** `fonts.googleapis.com` serves the stylesheet (`style-src`); `fonts.gstatic.com` serves the woff2 files (`font-src`). **`font-src` was absent entirely** and inherited `default-src 'self'` — so allowing only the stylesheet host leaves the fonts blocked. That half-fix is now guarded by a test.
+
+Verified on a local Worker, not asserted: display stack 287.02 == system before → **331.88 ≠ 287.02** after; mono 325.11 == before → **324.00 ≠ 325.11** after. Six tests where there were none — an untested header is how this stayed live. Widening is narrow: `default-src` still `'self'`, no third-party script/img origin, no wildcard in the touched directives.
+
+Owner note: this makes a per-pageload request to a Google host. Self-hosting the two families would avoid it and need no CSP widening — larger change, not done.
+
 ### `Noema#615` — WATCH live regions, and why the obvious fix was wrong
 
 Closes C5 finding 2. **Read the spec before touching this.** `WATCH-LIGHTWEIGHT-SPECTATOR` §8/§9 already settle it: *"Do not make the entire feed `aria-live`. At most the **headline** MAY be polite. Status tag changes MAY be polite."* / *"Periodic updates MUST NOT flood AT. No live region on the feed."* **My #614 recommendation ("a polite region over the feed") would have violated it** — corrected on that PR.
