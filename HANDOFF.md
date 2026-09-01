@@ -105,6 +105,20 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `noema-client#33` — the client had no check against the Worker
+
+The client's fixture pins all 42 Worker `cmd:` templates and the suite checks the client against it — but **nothing checked the fixture against the Worker**, so a command added or renamed in Noema drifts silently while client CI stays green. Same shape as `Noema#609` / `Specs#310`/`#311`. Matters because **Gate B runs three Controllers on this client against the live Worker**, and the affordance contract is what they exercise.
+
+`scripts/check_worker_contract.py` compares both directions (a gained command must be classified `parsed` vs `structured_only`; a dropped one must be removed) and rejects a template listed in both halves. Mutation-verified: adding a template and renaming one each exit 1 with the right message; unmodified exits 0. Trigger mirrors `pin-currency` — scheduled watch + narrow `pull_request` on the fixture/parser/script only, so a normal PR isn't failed by another repo moving.
+
+Contract was 42/42 clean today against both Worker main and the live build.
+
+### Also verified, no findings: the public door
+
+Contrast **passes AA and AAA everywhere** (7.55–14.93 across headline, prose, tags, feed, site list, nav). Tier markers are not colour-only (`·` mark elements, `>` on the headline); older rows get `quiet` = visual fade, no deletion. Low-noise applies `is-low-noise` and persists client-local. **No slice needed here — do not re-audit.**
+
+**Gate D is not evidenceable yet.** Its test is blind human comprehension of a populated WATCH; with `players: 0` there is nothing to comprehend. Only its redaction clause is already evidenced (`#614`/`#618`).
+
 ### `Noema#618` — C5 verification finished; **do not re-run it**
 
 `#616`, `#617`, `Specs#320` merged. `#618` closes the C5 items my first pass left open *without listing them as uncovered*: WebSocket 101, TEXT/PIXEL, low-noise, reduced-motion behaviour, MAJOR banner. **All pass — no further findings.** C5's read-only half is complete.
