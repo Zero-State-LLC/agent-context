@@ -32,6 +32,12 @@ It had already spread: `RFC-PROPOSAL-GC7-CRIME-REHABILITATION` cites an "existin
 
 Lesson for the gap register generally: rows written from a subsystem doc rather than the governing RFC can invert the defect. Check the RFC named in the catalog's `rfc:` field first.
 
+### `Specs#314` — every `B7` row audited against its governing RFC
+
+`#313` merged. Applied its method to the whole family. One more defect: **`B7` miscounted** — it said "only a genuinely new fifth contest form remains unpinned", but `INFORMATION_CONTEST` **is** the fifth and is pinned (RFC-0042 via `conflict-catalog.gc7-s3.json` `new_forms`, alongside the four in `contest-config.v02.json`). `B7a`/`B7b`/`B7d` verified accurate. `B7c` holds but cited "RFC-0002 line 60" — a drifting line reference, now replaced with the section plus the EVENT-CATALOG reducer contract; also noted the ladder is `crime_severity_defaults`, **defaults** not a mandate.
+
+**Provenance caution, now in the register.** Three docs restate the 2026-08-25 crime review as if it were separate authority — `STRATEGIC-CONFLICT` §"Research assimilation 2026-08-25", `INSTITUTIONAL-AUTHORITY` line 207, and `RFC-PROPOSAL-GC7-CRIME-REHABILITATION`. All descend from `RESEARCH-ASSIMILATION-2026-08-25-CRIME.md` and cite it. **I nearly cited the first as independent corroboration for `B7c`.** Reading them as confirmation means reading one claim three times — how `B7e`'s error reached a draft proposal. Confirm `B7*` rows against the Accepted RFC and the machine catalog only.
+
 ### Still open, unchanged
 
 `B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
