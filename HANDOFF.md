@@ -105,6 +105,16 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#619` — the Python suite had the same silent-skip hole as the Worker
+
+`#609` closed this on the Worker side; the Chamber suite still carried it. **With Noema-Specs absent the Python suite reports `531 passed, 7 skipped` and exits zero** — and three of those are the cross-repo **ADR-005 conformance** tests: seed replay against the published v0.1 fixtures, published-vs-local fixture comparison, and the event-catalog check. The tests that prove the offline Chamber still agrees with Specs can go quiet behind a green run.
+
+`require_specs()` keeps the local skip, fails under `CI`, and names the likely cause — **CI pins Specs to `spec-compat.json specs.commit`, not main**, so a lagging pin can make an artifact vanish even when the clone succeeds (how #608 would have skipped). Mutation-verified; 538 passed / 4 skipped with Specs present.
+
+The other four skips are legitimate: 2 Postgres, 1 Postgres ops, and the cohort E2E needing an official-client checkout.
+
+**Both suites are now loud.** If you add a cross-repo fixture on either side, CI tells you instead of skipping.
+
 ### `noema-client#33` — the client had no check against the Worker
 
 The client's fixture pins all 42 Worker `cmd:` templates and the suite checks the client against it — but **nothing checked the fixture against the Worker**, so a command added or renamed in Noema drifts silently while client CI stays green. Same shape as `Noema#609` / `Specs#310`/`#311`. Matters because **Gate B runs three Controllers on this client against the live Worker**, and the affordance contract is what they exercise.
