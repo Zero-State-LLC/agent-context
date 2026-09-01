@@ -67,6 +67,19 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#614` + `Specs#319` — C5 WATCH verification, and a correction of mine
+
+**I was wrong in #318.** I wrote that the 2026-09-01 deploy "carried documentation and test changes only". It did not — `git diff a68f5d8d..02fd112 -- workers/noema/src/` shows `watch.ts` (74 lines) and `world-actions.ts` (1 line). The range contains **`45e2070`, the map-first WATCH integration**. Specs alignment still holds at `81ca8c1`, but because those touch **no catalog, verb or event contract** — not because src was untouched. `Specs#319` corrects the note; the right test for "can a deploy move Specs alignment" is *did any contract change*, not *did src change*.
+
+**Consequence I'd missed:** the plan listed map-first as `HOSTED_NOT_COMPUTABLE` / not deployed. It is live now, so **C5 became actionable**. `Noema#614` records its read-only half. Map-first behaves: 10 cards == 10 rooms, live/map agree on cycle 8948 + seq 23853, no player ids, no hidden rooms, traces clean, 390px reflows, semantics sound.
+
+**Three findings, none blocking:**
+1. **The public door renders in system fallback.** The page requests a Google Fonts stylesheet **its own CSP blocks**. Measured: token stack and plain system stack give identical text widths (287.02 / 325.11 px). **Pre-existing** — the link is in `theme/tokens.ts`, present at the prior live build. Beware `document.fonts.check()`, which returns `true` here and is misleading. Product call: allow the font hosts, or drop the request.
+2. **`/watch/map` has zero `aria-live` regions** on a continuously-updating page — screen readers get the page once, then silence. Gate D judges legibility.
+3. **`entity_id` ships in `rooms[].entities[]`** and doctrine does not cover it (it bans ids for `traces[]`, honoured; describes room detail as *labels*). Flagged as ambiguity, not violation.
+
+**Not covered:** map/event coupling under load needs `players > 0` — same reason `A4` stays open.
+
 ### `Specs#318` — Danny deployed 2026-09-01; live pointer refreshed
 
 **New live Worker `c681fd71`**, deployed 2026-09-01T06:19:31Z from Noema source `02fd112` (= the #612 merge — docs/test only, so Specs alignment `81ca8c1` and the C7 affordance evidence both carry forward unchanged). The generated pin PR **Noema#613 is merged**; `Specs#318` refreshes `current-state.v1.yaml`, which `validate_freshness` correctly flagged within the hour. Full specs audit via the repo's own SKILLS.md workflows (ORIENT → DRIFT_AUDIT → VALIDATE): otherwise clean — RFC index 129 files zero mismatches, 221 catalog pointers resolve, catalogs 24/32, SKILLS.md citations all exist.
