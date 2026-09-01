@@ -1,5 +1,43 @@
 # Handoff
 
+Updated: 2026-09-01 by Prabu (Claude Opus 5) — HexWire: App Store 6.9" screenshot set captured; two PRs open for Danny
+
+## Now (2026-09-01) — HexWire
+
+**Two PRs are open and waiting on Danny. Both green on all four checks; neither merged.**
+
+### `Hexwire#32` — roster roles, painted portraits, Decker naming, SMARTLINK
+
+Captured the canonical 6.9" App Store set from the real app first (iPhone 17 Pro Max, iOS 26.4, Release build, dev mission unlock compiled out). Fixing what the capture exposed became the PR.
+
+- **Roster row** now carries each runner's sprite and role. Label/sprite-key/accent moved out of `CharacterInfoSheet`'s private switches onto `CharacterArchetype` — the roster could not show a role without copying them.
+- **Cipher is a Decker, not a "Netrunner".** This is the part worth knowing beyond the PR: **`netrunner` is already the ENEMY archetype id** (spawned in M6 + `ArenaRooms.json`), surfaced to players as "Combat Decker". The two were crossed — our decker wore the enemy's name and the enemy wore ours. Every other surface already said decker: the Codex ("CIPHER — decker"), Cipher's own banter ("I'm a decker"), the debrief scorecard, that enemy's own dossier ("Enemy decker"), the sprite key, the persisted `rawValue`. The stray label entered with the initial squashed import `fcc7c5a` and was never a decision anyone made. Same crossed term fixed in `CombatFlowController`, where a failed matrix hack logged under "Netrunner".
+- **Painted VN portraits** on the info sheet — the assets the prologue already ships, so no added download weight. Cropped vertically only at full width, because the cast stands in different parts of frame and a horizontal bust crop decapitates half of them.
+- **SMARTLINK** rendered as "SMARTLIN / K" (label column 56pt, needed ~58).
+
+### `Hexwire#33` — drop `barrel_check.png`
+
+820x574 RGBA windowed screen grab at the repo root, arrived with `#18` (the barrels PR). Unreferenced anywhere including `project.pbxproj`; `SpriteManager` never builds a `_check` frame name; `SpriteAsset` only resolves under `Sprites/<subdir>/`, never the repo root; `project.yml` excludes `*.png` so it has never shipped. 752K in the repo, nothing in the app.
+
+### Worth knowing regardless of those PRs
+
+**`/Users/prabu/actions-runner/_work/Hexwire/Hexwire` is a live self-hosted CI runner workspace, not a normal clone.** Every push checks out over it and runs `git clean`, which deleted an untracked `screenshots/` directory mid-session and repeatedly left the tree in detached HEAD. Do not leave anything untracked there you intend to keep, and do not switch branches in it while a job is running.
+
+**HexWire CI on the self-hosted runner is green** — unlike the Actions-billing block that affects other Zero-State private repos.
+
+### Deliverable
+
+Six PNGs, exactly 1320x2868 portrait, RGB, no alpha, in `~/Desktop/HexWire Promo/HexWire Media Submission/hexwire-appstore-6.9/` (Danny's press-kit folder), plus `cards/` with the four runner detail cards. Captured via `simctl io` so there is no Mac window frame, cursor or simulator chrome.
+
+### Not done / open questions for Danny
+
+- Neither PR merged — both need his review.
+- The **debrief scorecard** still uses short role forms ("Street Sam", "Mage", "Decker"). Consistent now that Cipher reads Decker, but stylistically different from the full names elsewhere. Left alone deliberately; it is a naming call, not a bug.
+
+---
+
+# Handoff
+
 Updated: 2026-08-31 by Prabu (Claude Opus 5) — audit: deploy + v0.1.20 release landed; RFC-0129 runtime item 3 closed in `Noema#608`
 
 ## Now (2026-08-31)
