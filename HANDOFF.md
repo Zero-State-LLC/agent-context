@@ -22,6 +22,16 @@ Mutation-verified: breaking each of the five consumers fails exactly two tests (
 
 **If you add a Specs fixture and a test that reads it, this now tells you in CI instead of skipping.**
 
+### Open: `Specs#313` — `B7e` was my misreading; corrected at source and downstream
+
+`#609` merged. Then, checking `B7e` before acting on it, the row turned out to be **wrong, and mine**. It claimed rehab "counts ordinary trades where SOCIAL-MEMORY.md says restitution trades", implying a divergence. There is none: **RFC-0036 (Accepted) pins "3 distinct `TRADE_ACCEPTED` after the last danger/deceptive evidence id"**, and the two "restitution trades" phrases are illustrative prose — a parenthetical example list in a high-level SOCIAL-MEMORY table, and a row in a GC3-S4 design-criteria table. **No authority pins a restitution trade type.** The runtime already counts only trades with the harmed counterparty, so it conforms.
+
+It had already spread: `RFC-PROPOSAL-GC7-CRIME-REHABILITATION` cites an "existing SOCIAL-MEMORY.md restitution trades **pinning**" that does not exist, and proposes as a change that non-victim trades should not count — which already ships. Annotated, not rewritten; its severity idea survives.
+
+**`B7e` is now only severity-awareness.** RFC-0036 chose 3 deliberately to match the S0 reliable floor, so a future RFC must argue against that choice, not treat it as an oversight. **Do not "fix" the runtime to require restitution-typed trades — that contradicts Accepted RFC-0036.**
+
+Lesson for the gap register generally: rows written from a subsystem doc rather than the governing RFC can invert the defect. Check the RFC named in the catalog's `rfc:` field first.
+
 ### Still open, unchanged
 
 `B7b`–`B7e` in the SPEC GAP register: detection has no algorithm and the published constants still have no runtime referent; detection and sanction remain conflated; enforcement has no cost or steward; rehabilitation is severity-blind. **There is still no `CRIME_DETECTED` producer in either plane** — `B7b` needs simulation or playtest telemetry before anyone proposes numbers, so do not invent constants.
