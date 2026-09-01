@@ -105,6 +105,17 @@ The other twelve are sound. `GC1-FULL-MASTERY-EXTENSION` descends from the stale
 
 **Cheapest tell:** a proposal that does not cite the RFC which closed part of its parent row is probably standing on a stale row. Neither faulty note cited it.
 
+### `Noema#618` — C5 verification finished; **do not re-run it**
+
+`#616`, `#617`, `Specs#320` merged. `#618` closes the C5 items my first pass left open *without listing them as uncovered*: WebSocket 101, TEXT/PIXEL, low-noise, reduced-motion behaviour, MAJOR banner. **All pass — no further findings.** C5's read-only half is complete.
+
+**Useful:** `/v1/watch/live` and the WS stream both render through `watchSnapshot()` → `buildWatchLive`, so **#617's entity-id fix covers both surfaces**. The live stream still shows `entity_id` only because live runs `02fd112`, predating #617.
+
+**Three measurement traps, each of which looked like a defect** — recorded so nobody files them:
+1. *Semantic site list empty* — queried before the first poll; 10 items after ~3s.
+2. *TEXT doesn't disable the canvas* — `canvas.hidden` false and `display:block`, but the **parent** is hidden so the rendered box is `0x0`. Test `clientWidth`/`offsetParent`, not the element's own `hidden`.
+3. *WS upgrade returns 405* — curl defaults to **HTTP/2**, where upgrade doesn't apply. Use `--http1.1` → 101.
+
 ### `Noema#617` + `Specs#320` — entity ids off the spectator wire; all three C5 findings closed
 
 **My C5 finding 3 was wrong about the doctrine.** I called it an ambiguity ("no rule covers `rooms[].entities[]`"). The WATCH **field table** pins that row to `label`, `entity_type` — I'd read §8/§9 and missed it. So it was the runtime shipping two fields beyond contract, with `rooms[].traces[]` forbidding entity ids one row away.
