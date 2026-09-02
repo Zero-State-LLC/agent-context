@@ -37,7 +37,7 @@ Pin `39b04bb` = SS-specs HEAD in `SPEC_BASELINE.md`, `SPEC_PIN.txt`, `ContractVe
 - **`#18` open** — port of Danny's art remediation `f6410a3` (#161; 106 PNGs; all asset validators pass). **Needs eyes on an LPR-dense panel** — it removes baked beams under the same masts org #12 re-drew cones on (A-02). Store-docs `3b20d88` deliberately *not* ported: it hardcodes `life.zerostate.*` personal bundle IDs.
 - **`#14` closed** as superseded. CodeQL default setup fails on `ubuntu-latest`: *"recent account payments have failed or your spending limit needs to be increased"* — billing, not code.
 - `luna-mac-ios` self-hosted runner (Luna's Mac, `[self-hosted, macOS, ARM64, ios]`) drained the queued simulator jobs; it is the only `ios` runner that has been online since Aug 19.
-- Not done: org boards (`REPO_STATUS.md`, `CONTINUATION_PLAN.md`) still describe 2026-08-10 state.
+- **`#19` open** — boards refreshed to tip `0721cc8` (counts 289/194/14, nightly root cause, runner, personal-repo reconcile) + `CONTINUATION_REPORT_2026-09-01_org_reconcile.md`; `repo-status-check`/`release-docs-check`/`launch-gate-check` pass.
 
 ---
 
