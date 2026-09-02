@@ -1,6 +1,6 @@
 # Handoff
 
-Updated: 2026-09-01 by Prabu (Claude Sonnet 4.6) — WATCH surface status answered to Danny; zer0state.com DNS verified live (GitHub Pages + Hostinger email intact); SS PR#164 (ASC age rating + privacy docs) merged; ASC Connect UI entry still needs Danny/Aaron login — no API key available
+Updated: 2026-09-01 by Prabu (Claude Sonnet 4.6) — Gate B tasks 1-3 done: Noema#620 open (reconstructionLines fidelity/contention, requestAgentEnrollment batch 3+ controllers, reduce_INSPECT fidelity + patch_entity seam); 1613 TS + 535 Python pass. Earlier: WATCH answered, DNS verified, SS#164 merged. ASC Connect UI entry needs Danny/Aaron login.
 
 ## Now (2026-09-01) — Surveillance Survivor reboot (`scrimshawlife-ctrl/SS-specs` + `SS-runtime`)
 
