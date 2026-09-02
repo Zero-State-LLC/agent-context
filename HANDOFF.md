@@ -1,5 +1,46 @@
 # Handoff
 
+Updated: 2026-09-01 by Prabu (Claude Opus 5) — Surveillance Survivor: SS-runtime audited against SS-specs; app built for the first time; four PRs open across three repos
+
+## Now (2026-09-01) — Surveillance Survivor reboot (`scrimshawlife-ctrl/SS-specs` + `SS-runtime`)
+
+**The reboot is real and the kernel is strong; the governance loop and the app target were broken. Four PRs open, all green locally; none merged.**
+
+### `SS-runtime#42` — the iOS app had never compiled
+
+`xcodegen generate` + `xcodebuild` on `main` fails before any App file: `BundledResource.swift:5: type 'Bundle' has no member 'module'`. `project.yml` rebuilt `SurveillanceCore` as an Xcode framework target; `Bundle.module` only exists for SwiftPM resource targets, and the framework target would not have shipped `Resources/contracts` anyway. CI only ran `swift test`, so this survived **41 merged PRs**. Two access-level errors hid behind it (`RunInstrumentation.swift` never imported `SurveillanceCore`; `CameraHUDProjection` had no public init). Fix: consume the package via `packages:`; CI gains an `app` job. **Evidence:** BUILD SUCCEEDED (simulator + signed `iphoneos` for team `7FRK8RHAL5`), app runs in the simulator (stable pid, renders a scene, 56 colours), `swift test` 272/47 pass.
+
+**Fork PR — CI shows no checks. Danny must click *Approve and run* for a first-time fork contributor.**
+
+### `SS-specs#1` — contract drift, stale task ledger, wrong repo identity, no CI
+
+- Runtime bundles **five contracts the spec never owned** (`clip-metadata`, `procedural-vfx`, `ambient-motion`, `visual-language`, `asset-catalog` — 509 records) + two golden fixtures, none in `versions.json`; and **amended `presentation-assets-001` in place** (`camera_field_off`) so both repos shipped different bytes under one ID. Adopted as D-060/D-061.
+- `tasks.md` had Phases 2–9 **entirely unchecked** against 41 citing PRs. 56 tasks now checked with an Evidence table; run/record/measure/decide tasks left open (a harness is not evidence).
+- D-014 said `scrimshawlife-ctrl/SS`; reality is `SS-runtime`. Amended. **T004/D-013 tag `legacy-multicity-2026-08-24` created** on the legacy repo (`e085ea8` → `3b20d88`).
+- New `scripts/validate_specs.py` + workflow: JSON/schema validity, arena/replay/asset-record conformance, `versions.json` resolution, README index completeness. First run found `camera-placement-001.schema.json` un-indexed — and it has **no instance in either repo**; decision needed.
+
+### What is conformant (verified, not assumed)
+
+Pin `39b04bb` = SS-specs HEAD in `SPEC_BASELINE.md`, `SPEC_PIN.txt`, `ContractVersions.swift`. 11 spec-owned contracts byte-identical. Zero forbidden imports in Core; zero `Double`/`Float` in authority dirs; the four dictionary-iteration sites are arrays or sorted. D-038/040/041/053/027/029 constants match; `combat-content-001` byte-identical (boss 800, waves 14/17/25).
+
+### Next (in order)
+
+1. Danny: approve-and-run CI on `SS-runtime#42`; review `SS-specs#1`.
+2. After `SS-specs#1` merges: runtime PR bumping the pin and adding a CI step that byte-compares bundled `contracts/`+`fixtures/` against SS-specs at the pinned SHA — the check that would have caught all of §SS-specs#1.
+3. Device run for Gate C: a signed `SSRuntime.app` is built; install needs the phone unlocked. **Same bundle ID as the legacy app** — installing replaces it. `ReleaseEvidenceStore` exports device-run JSON to the app's Documents; pull with `devicectl`.
+4. `CombatContent.swift` decodes spec JSON with 25× `as!` — crash, not typed fail-closed. S3 hygiene.
+
+## Also this session — org `Zero-State-LLC/Surveillance-Survivor`
+
+- **`#16` merged** (`0721cc8`): Cloud Agent env, core tests off the iOS host (468→194 simulator-hosted is de-duplication, not lost coverage).
+- **`#17` open** — nightly was red 12 days straight *with all tests green*: `Failed to CreateArtifact: Artifact storage quota has been hit` — 17 `simulator-artifacts` bundles on 90-day retention = 1.1 GB of the repo's 1.19 GB. Short retention + `continue-on-error` on evidence bundles; test-count logs stay strict.
+- **`#18` open** — port of Danny's art remediation `f6410a3` (#161; 106 PNGs; all asset validators pass). **Needs eyes on an LPR-dense panel** — it removes baked beams under the same masts org #12 re-drew cones on (A-02). Store-docs `3b20d88` deliberately *not* ported: it hardcodes `life.zerostate.*` personal bundle IDs.
+- **`#14` closed** as superseded. CodeQL default setup fails on `ubuntu-latest`: *"recent account payments have failed or your spending limit needs to be increased"* — billing, not code.
+- `luna-mac-ios` self-hosted runner (Luna's Mac, `[self-hosted, macOS, ARM64, ios]`) drained the queued simulator jobs; it is the only `ios` runner that has been online since Aug 19.
+- Not done: org boards (`REPO_STATUS.md`, `CONTINUATION_PLAN.md`) still describe 2026-08-10 state.
+
+---
+
 Updated: 2026-09-01 by Prabu (Claude Opus 5) — HexWire: App Store 6.9" screenshot set captured; two PRs open for Danny
 
 ## Now (2026-09-01) — HexWire
