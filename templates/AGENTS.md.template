@@ -4,6 +4,14 @@ You are working in **{{PRODUCT}}** (`{{OWNER}}/{{REPO}}`).
 This file is the canonical contract for Cursor, Claude, Codex, Grok, and OpenClaw.
 Harness adapters (`CLAUDE.md`, optional `CODEX.md`) only point here.
 
+## Intent
+
+Read the active `intent.md` for this change (`intent/` or `docs/intent/`)
+before editing. Next stage is `spec.md` — do not skip to code.
+
+If the change is non-trivial and no intent exists, draft `intent.md` from
+the pack template and wait for a human to accept it.
+
 ## Commands
 
 | Task | Command |

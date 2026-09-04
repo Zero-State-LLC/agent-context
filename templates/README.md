@@ -10,6 +10,8 @@ runbooks. Do not dump another repo's Worker deploy or pin workflows here.
 
 | File | Role in the product repo |
 |---|---|
+| [`intent.md.template`](intent.md.template) | Stage-0 proto-spec. Before specify. |
+| [`sdlc/README.md`](sdlc/README.md) | Zero State SDLC order (intent → specify → plan → tasks → implement → REVIEW → land). |
 | [`AGENTS.md.template`](AGENTS.md.template) | Short router. Canonical contract. |
 | [`CLAUDE.md.template`](CLAUDE.md.template) | Thin adapter. Claude reads this and follows `AGENTS.md`. |
 | [`AGENT-GOTCHAS.md.template`](AGENT-GOTCHAS.md.template) | Long environment notes. Not the contract. |
@@ -33,17 +35,21 @@ cp "$SRC/AGENT-GOTCHAS.md.template" "$DEST/AGENT-GOTCHAS.md"
 
 Then in the product repo:
 
-1. Replace `{{PLACEHOLDERS}}` in `AGENTS.md` with this product's identity,
-   real commands, and two or three invariants. Leave the **Escalation**
-   heading in place.
-2. Leave `CLAUDE.md` as the one-liner. Do not paste the contract into it.
-3. Move every long environment note out of `AGENTS.md` into
+1. Create `intent/` or `docs/intent/`. One committed intent file per change
+   stream, copied from [`intent.md.template`](intent.md.template). Do not
+   invent product intents in this pack — only the blank.
+2. Replace `{{PLACEHOLDERS}}` in `AGENTS.md` with this product's identity,
+   real commands, and two or three invariants. Leave the **Intent** and
+   **Escalation** headings in place.
+3. Leave `CLAUDE.md` as the thin adapter. Do not paste the contract into it.
+4. Move every long environment note out of `AGENTS.md` into
    `AGENT-GOTCHAS.md`. Delete empty example rows.
-4. Append [`spec-Workflows-section.md.template`](spec-Workflows-section.md.template)
+5. Append [`spec-Workflows-section.md.template`](spec-Workflows-section.md.template)
    to `spec.md` (or the repo's spec entry file). Keep the default skills.
    Add one owner specialist only if that skill already exists. Name Actions
    this repo already runs or will add; do not invent bots.
-5. Optional size check:
+6. Read [`sdlc/README.md`](sdlc/README.md) before specifying or implementing.
+7. Optional size check:
 
    ```bash
    cp ~/agent-context/scripts/check-agents-md.sh "$DEST/scripts/"
@@ -55,8 +61,13 @@ The check fails if `AGENTS.md` is missing, larger than 12 KB, or has no
 
 ## Rules that stay locked
 
-- One `AGENTS.md` contract. Thin Claude/Codex adapters only.
+- `intent.md` is SDLC stage-0. Specify next. Do not skip to code.
+- One `AGENTS.md` contract. Thin Claude/Codex adapters only. Both say:
+  read the active intent before editing; if a non-trivial change has no
+  intent, draft it and wait for human accept.
 - Procedural `AGENTS.md`. Gotchas live next door.
 - Workflows live in the spec, not in a second agent-fleet doc.
+- FORGE owns plan/tasks. Cloud agents implement. Human yes on deploy,
+  spend, and legal.
 - If CI or tests look wrong, open a labeled defect. Do not patch tests to green.
 - No agent fleets. ECC catalog-only: name existing skills, do not invent them.

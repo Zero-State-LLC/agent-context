@@ -1,5 +1,30 @@
 # Decisions
 
+## 2026-09-04 — intent.md is SDLC stage-0
+
+**Decision:** Every product-repo change stream starts with a committed
+`intent.md` (proto-spec) **before** spec-kit specify. The blank lives at
+`templates/intent.md.template`. Product repos keep accepted intents in
+`intent/` or `docs/intent/` — one file per change stream. Do not invent
+product intents in this pack.
+
+**Why:** Anthropic AI-Native SDLC and Danny's spec-kit lock both put
+intent before spec. Agents that skip to code reopen locks in the PR.
+A dated proto-spec with labeled claims (`[verified: …]` / `[assumed: …]`)
+is cheaper than a green implementation of the wrong outcome.
+
+**Implications:**
+
+- Stage chain: `intent.md` → constitution (if needed) → specify
+  (`spec.md` + `## Workflows`) → plan → tasks → implement → REVIEW /
+  evidence → land.
+- FORGE owns plan and tasks. Cloud agents implement. No extra bots.
+- Human yes on deploy, spend, and legal.
+- Thin `AGENTS.md` / `CLAUDE.md` adapters: read the active intent before
+  editing. If a non-trivial change has no intent, draft `intent.md` and
+  wait for human accept. Do not skip to code.
+- Order of work is documented in `templates/sdlc/README.md`.
+
 ## 2026-09-04 — agent-context is the canonical product-repo template home
 
 **Decision:** `Zero-State-LLC/agent-context` is the canonical home for

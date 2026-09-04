@@ -5,28 +5,41 @@ template home for product-repo multi-agent collab.
 
 ## Now
 
-Danny authorized sealing `templates/` as the copy-pack for product repos.
+Danny authorized sealing `templates/` as the copy-pack for product repos,
+then required `intent.md` as SDLC stage-0.
 
-- `templates/AGENTS.md.template` — short router (identity, commands, invariants,
-  graft/docs, **Escalation**, gotchas pointer, shared HANDOFF pack, skills).
-- `templates/CLAUDE.md.template` — one-line adapter.
-- `templates/AGENT-GOTCHAS.md.template` — environment notes that used to live
-  in `AGENTS.md`.
-- `templates/spec-Workflows-section.md.template` — Workflows lock (existing
-  Grok Bot skills + owner specialist + Actions). Defaults: `anti-slop-code`,
-  `production-systems`, `google-developer-style`.
+- `templates/intent.md.template` — proto-spec before specify (problem,
+  observable done, users/systems, locks/non-goals, open questions,
+  `[verified]` / `[assumed]` claims, author/date). Next stage is `spec.md`.
+- `templates/sdlc/README.md` — Zero State order: intent → constitution
+  (if needed) → specify (`spec.md` + Workflows) → plan → tasks →
+  implement (cloud agents) → REVIEW/evidence → land. FORGE owns plan/tasks.
+  Human yes on deploy/spend/legal. No extra bots.
+- `templates/AGENTS.md.template` — short router plus **Intent** (read
+  active intent; if missing on a non-trivial change, draft and wait) and
+  **Escalation**.
+- `templates/CLAUDE.md.template` — thin adapter: follow `AGENTS.md`; same
+  intent gate.
+- `templates/AGENT-GOTCHAS.md.template` — environment notes.
+- `templates/spec-Workflows-section.md.template` — Workflows lock.
+  Defaults: `anti-slop-code`, `production-systems`, `google-developer-style`.
 - `scripts/check-agents-md.sh` — fail if `AGENTS.md` is missing, over 12 KB,
   or has no Escalation heading.
-- Dated lock in `DECISIONS.md` (2026-09-04 PT).
+- Dated locks in `DECISIONS.md` (2026-09-04 PT): template home + intent
+  as stage-0.
+
+Root `AGENTS.md` and `README.md` point at `templates/`. No product intents
+were invented — blanks only.
 
 Root `AGENTS.md` and `README.md` point at `templates/`.
 
 ## Next
 
-1. Review and merge the templates PR.
+1. Review and merge the templates PR (`agent-context#2`).
 2. Apply the pack to a product repo in a **separate** PR in that repo
    (copy slim `AGENTS.md`, Claude adapter, move gotchas, add Workflows to
-   `spec.md`). Do not apply from this session unless asked.
+   `spec.md`, stand up `intent/` or `docs/intent/`). Do not apply from
+   this session unless asked. Do not invent product intents here.
 3. Product queues (SS reboot, HexWire PRs, Noema Gate B) are unchanged.
    Read `STATUS.md` for those; do not restart those audits.
 

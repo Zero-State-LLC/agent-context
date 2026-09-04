@@ -12,7 +12,7 @@ This repo is the **team** layer. Personal notes, raw chat logs, and secrets stay
 | [CONVENTIONS.md](CONVENTIONS.md) | How to write and load this context |
 | [HANDOFF.md](HANDOFF.md) | Latest cross-agent / cross-person handoff |
 | [AGENTS.md](AGENTS.md) | Contract any agent must follow in this repo |
-| [templates/](templates/) | Canonical copy-pack for product-repo `AGENTS.md` / Claude adapter / gotchas / spec Workflows |
+| [templates/](templates/) | Canonical copy-pack: `intent.md` (SDLC stage-0), slim `AGENTS.md`, Claude adapter, gotchas, spec Workflows |
 
 Code structure still lives in each product repo (`AGENTS.md` + `graft/`). Do not copy code maps here.
 
