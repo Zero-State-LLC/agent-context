@@ -4,21 +4,25 @@
 
 **Decision:** `.github/workflows/` in this repo is pack CI only. Keep
 `ci.yml` (require templates + lint `templates/AGENTS.md.template`) and
-`project-collaboration.yml`. CodeQL, if present, analyzes GitHub Actions
-YAML only. Do not analyze javascript or python here — there is no app
-source. Do not keep Noema Worker/pages pin workflows
-(`deploy-worker-pin-pr.yml`, `pin-currency.yml`, `pages.yml`).
+`project-collaboration.yml`. Do not run CodeQL here. Do not analyze
+javascript or python — there is no app source. Do not keep Noema
+Worker/pages pin workflows (`deploy-worker-pin-pr.yml`,
+`pin-currency.yml`, `pages.yml`).
 
 **Why:** `fc8f292` dumped product workflows into a markdown team-context
-pack. CodeQL then failed on empty JS/TS/Python. Root `AGENTS.md` is the
-team contract and has no `## Escalation`; the size/Escalation check
-applies to the product template only.
+pack. CodeQL then failed on empty JS/TS/Python. Actions-only analysis
+extracted the three workflow files, then failed upload: Code Security
+is not enabled on this repository. Root `AGENTS.md` is the team
+contract and has no `## Escalation`; the size/Escalation check applies
+to the product template only.
 
 **Implications:**
 
 - `scripts/check-agents-md.sh` runs against
   `templates/AGENTS.md.template`, not root `AGENTS.md`.
 - New workflows belong here only if they check this pack or org triage.
+- Re-add CodeQL only after Code Security is enabled, and only for
+  `actions` — never javascript/python on this pack.
 
 ## 2026-09-04 — intent.md is SDLC stage-0
 
