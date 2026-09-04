@@ -1,6 +1,80 @@
 # Decisions
 
+## 2026-09-04 — this pack's CI is team-context only
 
+**Decision:** `.github/workflows/` in this repo is pack CI only. Keep
+`ci.yml` (require templates + lint `templates/AGENTS.md.template`) and
+`project-collaboration.yml`. Do not run CodeQL here. Do not analyze
+javascript or python — there is no app source. Do not keep Noema
+Worker/pages pin workflows (`deploy-worker-pin-pr.yml`,
+`pin-currency.yml`, `pages.yml`).
+
+**Why:** `fc8f292` dumped product workflows into a markdown team-context
+pack. CodeQL then failed on empty JS/TS/Python. Actions-only analysis
+extracted the three workflow files, then failed upload: Code Security
+is not enabled on this repository. Root `AGENTS.md` is the team
+contract and has no `## Escalation`; the size/Escalation check applies
+to the product template only.
+
+**Implications:**
+
+- `scripts/check-agents-md.sh` runs against
+  `templates/AGENTS.md.template`, not root `AGENTS.md`.
+- New workflows belong here only if they check this pack or org triage.
+- Re-add CodeQL only after Code Security is enabled, and only for
+  `actions` — never javascript/python on this pack.
+
+## 2026-09-04 — intent.md is SDLC stage-0
+
+**Decision:** Every product-repo change stream starts with a committed
+`intent.md` (proto-spec) **before** spec-kit specify. The blank lives at
+`templates/intent.md.template`. Product repos keep accepted intents in
+`intent/` or `docs/intent/` — one file per change stream. Do not invent
+product intents in this pack.
+
+**Why:** Anthropic AI-Native SDLC and Danny's spec-kit lock both put
+intent before spec. Agents that skip to code reopen locks in the PR.
+A dated proto-spec with labeled claims (`[verified: …]` / `[assumed: …]`)
+is cheaper than a green implementation of the wrong outcome.
+
+**Implications:**
+
+- Stage chain: `intent.md` → constitution (if needed) → specify
+  (`spec.md` + `## Workflows`) → plan → tasks → implement → REVIEW /
+  evidence → land.
+- FORGE owns plan and tasks. Cloud agents implement. No extra bots.
+- Human yes on deploy, spend, and legal.
+- Thin `AGENTS.md` / `CLAUDE.md` adapters: read the active intent before
+  editing. If a non-trivial change has no intent, draft `intent.md` and
+  wait for human accept. Do not skip to code.
+- Order of work is documented in `templates/sdlc/README.md`.
+
+## 2026-09-04 — agent-context is the canonical product-repo template home
+
+**Decision:** `Zero-State-LLC/agent-context` is the canonical home for
+multi-agent repo collab setup. Product repos copy from `templates/`. This pack
+stays team-context only.
+
+**Why:** Product `AGENTS.md` files grew into environment diaries (Noema is the
+example). Harnesses then forked the contract (`CLAUDE.md` vs `AGENTS.md`).
+Agents patched tests to stay green and invented skills or fleets. One short
+router plus a dated lock here stops that drift.
+
+**Implications:**
+
+- One `AGENTS.md` contract per product repo. `CLAUDE.md` / optional `CODEX.md`
+  are thin adapters only (`@AGENTS.md` or one line pointing at `AGENTS.md`).
+- Procedural `AGENTS.md` (about 80 lines; 12 KB ceiling). Long environment
+  notes move to `AGENT-GOTCHAS.md`.
+- `## Workflows` lives in the product `spec.md`: existing Grok Bot skills,
+  one owner specialist if it already exists, and GitHub Actions to reuse or
+  add. Defaults: `anti-slop-code`, `production-systems`,
+  `google-developer-style`.
+- **Escalation:** if CI or tests look wrong, open a labeled defect. Do not
+  patch tests to green.
+- No agent fleets. ECC is catalog-only — name existing skills, do not invent
+  new skills or bots.
+- Do not copy product deploy-worker or pin workflows into this repo.
 
 ## 2026-08-27 — D-007 retention/deletion (STAGING policy)
 

@@ -1,26 +1,40 @@
+# Pack CI for agent-context (markdown templates + team files).
+# Do not run product-repo checks against root AGENTS.md — that file is the
+# Zero State team contract and has no ## Escalation heading.
 name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  check-pack:
+    name: Check templates pack
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        # Add your project's dependencies here, e.g.:
-        # pip install -r requirements.txt
-    - name: Run tests
-      run: |
-        # Add your test command here, e.g.:
-        # pytest
+      - uses: actions/checkout@v4
+
+      - name: Require pack files
+        run: |
+          set -euo pipefail
+          required=(
+            templates/AGENTS.md.template
+            templates/CLAUDE.md.template
+            templates/intent.md.template
+            templates/AGENT-GOTCHAS.md.template
+            templates/spec-Workflows-section.md.template
+            templates/sdlc/README.md
+            templates/README.md
+            scripts/check-agents-md.sh
+          )
+          for f in "${required[@]}"; do
+            test -f "$f" || { echo "missing: $f" >&2; exit 1; }
+          done
+
+      - name: Lint product-repo AGENTS.md template
+        run: bash scripts/check-agents-md.sh templates/AGENTS.md.template

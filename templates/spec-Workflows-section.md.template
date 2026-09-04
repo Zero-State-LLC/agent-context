@@ -1,0 +1,27 @@
+## Workflows
+
+Name existing Grok Bot skills and GitHub Actions only. Do not invent new
+skills, bots, or agent fleets. ECC is catalog-only: if a skill is not already
+in the catalog, do not add it here.
+
+### Skills
+
+Defaults for scripts and docs:
+
+- `anti-slop-code`
+- `production-systems`
+- `google-developer-style`
+
+Owner specialist (must already exist; omit the row if none):
+
+- `{{OWNER_SPECIALIST}}`
+
+### GitHub Actions
+
+Reuse what this repo already runs. Add a workflow only when the product repo
+already owns that job. Do not copy another product's deploy or pin workflows
+into `Zero-State-LLC/agent-context`.
+
+| Workflow | Path | When to use |
+|---|---|---|
+| {{ACTION_NAME}} | `.github/workflows/{{ACTION_FILE}}` | {{ACTION_WHEN}} |
