@@ -1,6 +1,31 @@
 # Decisions
 
+## 2026-09-04 — agent-context is the canonical product-repo template home
 
+**Decision:** `Zero-State-LLC/agent-context` is the canonical home for
+multi-agent repo collab setup. Product repos copy from `templates/`. This pack
+stays team-context only.
+
+**Why:** Product `AGENTS.md` files grew into environment diaries (Noema is the
+example). Harnesses then forked the contract (`CLAUDE.md` vs `AGENTS.md`).
+Agents patched tests to stay green and invented skills or fleets. One short
+router plus a dated lock here stops that drift.
+
+**Implications:**
+
+- One `AGENTS.md` contract per product repo. `CLAUDE.md` / optional `CODEX.md`
+  are thin adapters only (`@AGENTS.md` or one line pointing at `AGENTS.md`).
+- Procedural `AGENTS.md` (about 80 lines; 12 KB ceiling). Long environment
+  notes move to `AGENT-GOTCHAS.md`.
+- `## Workflows` lives in the product `spec.md`: existing Grok Bot skills,
+  one owner specialist if it already exists, and GitHub Actions to reuse or
+  add. Defaults: `anti-slop-code`, `production-systems`,
+  `google-developer-style`.
+- **Escalation:** if CI or tests look wrong, open a labeled defect. Do not
+  patch tests to green.
+- No agent fleets. ECC is catalog-only — name existing skills, do not invent
+  new skills or bots.
+- Do not copy product deploy-worker or pin workflows into this repo.
 
 ## 2026-08-27 — D-007 retention/deletion (STAGING policy)
 

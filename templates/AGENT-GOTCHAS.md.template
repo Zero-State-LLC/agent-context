@@ -1,0 +1,42 @@
+# Agent gotchas — {{PRODUCT}}
+
+Environment notes that used to bloat `AGENTS.md`. Keep secrets out.
+If a gotcha is fixed, delete the row. Do not leave historical traps as current guidance.
+
+## Local environment
+
+| Trap | What happens | What to do |
+|---|---|---|
+| {{LOCAL_TRAP}} | {{LOCAL_EFFECT}} | {{LOCAL_FIX}} |
+
+Examples of rows that belong here: missing gitignored local secrets, Node/Python
+version skew vs CI, optional services that skip tests when unset.
+
+## CI and validators
+
+| Trap | What happens | What to do |
+|---|---|---|
+| {{CI_TRAP}} | {{CI_EFFECT}} | {{CI_FIX}} |
+
+Watch for suites that skip in CI while passing locally, workflows that only run
+on `main` (stacked PRs stay unvalidated), and pins that clone another repo at a
+stale commit so new fixtures never run.
+
+If a check looks green-but-inert, follow `AGENTS.md` **Escalation**. Do not
+patch the test to match the broken path.
+
+## Measurement traps
+
+| Looks like | Actually is |
+|---|---|
+| {{FALSE_DEFECT}} | {{REAL_CAUSE}} |
+
+Record only traps that have bitten someone. A measurement trap is not a product
+defect. Do not file one as a bug.
+
+## Do not put here
+
+- Architecture invariants (those stay in `AGENTS.md`)
+- Command tables (those stay in `AGENTS.md`)
+- Tokens, mailbox passwords, or live world IDs
+- Deploy runbooks (those stay in the product repo's ops docs)

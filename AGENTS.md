@@ -27,3 +27,10 @@ Before ending a session that changed team status, decisions, or work another per
 - Put secrets, tokens, or personal preferences here
 - Dump raw chat transcripts here
 - Duplicate a product repo's `graft/` or code conventions
+- Copy product deploy or pin workflows into this pack
+
+## Product-repo templates
+
+Reusable collab files for a product repo live in [`templates/`](templates/).
+This repo stays team-context only. Apply the pack there; do not grow this
+`AGENTS.md` into a product contract.
