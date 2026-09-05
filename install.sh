@@ -17,8 +17,23 @@ for arg in "$@"; do
   esac
 done
 
+reject_symlink_ancestors() {
+  local parent
+  parent="$(dirname "$1")"
+  # Do not canonicalize first: that would hide profile/skills redirects.
+  while :; do
+    if [[ -L "$parent" ]]; then
+      printf 'Refusing symlink ancestor: %s\n' "$parent" >&2
+      exit 1
+    fi
+    [[ "$parent" != / && "$parent" != . ]] || break
+    parent="$(dirname "$parent")"
+  done
+}
+
 link_file() {
   local src="$1" dest="$2"
+  reject_symlink_ancestors "$dest"
   if [[ -e "$dest" || -L "$dest" ]]; then
     if [[ -L "$dest" && "$(readlink "$dest")" == "$src" ]]; then
       printf 'already linked %s\n' "$dest"
@@ -32,6 +47,7 @@ link_file() {
     return
   fi
   mkdir -p "$(dirname "$dest")"
+  reject_symlink_ancestors "$dest"
   ln -s "$src" "$dest"
   echo "linked $dest"
 }
