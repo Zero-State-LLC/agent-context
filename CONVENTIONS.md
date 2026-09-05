@@ -13,7 +13,7 @@ If history matters, append a dated note to `DECISIONS.md` or the product repo in
 
 ## Pull before you write
 
-Someone else may have pushed. `git pull --ff-only` in `~/agent-context` before editing.
+Someone else may have pushed. Follow `skills/zero-state-context/SKILL.md` Safe shared-context workflow: clean-tree checks, confirmed upstream, freshness before and after drafting, reviewed named staging, authorized publication and exact remote read-back. Stop on divergence.
 
 ## Size
 

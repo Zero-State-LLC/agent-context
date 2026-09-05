@@ -27,14 +27,27 @@ gh repo clone Zero-State-LLC/agent-context ~/agent-context
 ~/agent-context/install.sh
 ```
 
-Then `git pull` in `~/agent-context` at the start of a working day. After a session that changed team status, update the files here and `git push`.
+Follow the [safe shared-context workflow](skills/zero-state-context/SKILL.md) before reading or drafting. Publication is separately authorized, reviewed, and verified; installation does not grant push authority.
 
-`install.sh` only **symlinks** the shared rule and skill into your local Grok / Claude / Cursor dirs (`alwaysApply` on the Cursor `.mdc`). It does not copy personal memory.
+`install.sh` only **symlinks** the shared rule and skill into your local Hermes / Grok / Claude / Cursor dirs (`alwaysApply` on the Cursor `.mdc`). It does not copy personal memory.
 
 Cursor Cloud VMs do not inherit `~/.cursor`. Clone this repo (or `gh repo clone Zero-State-LLC/agent-context ~/agent-context`) and read `HANDOFF.md` at session start.
+
+## Hermes only
+
+With Bash available, run `bash install.sh --hermes-only --dry-run` from the
+reviewed checkout, inspect the destination, then `bash install.sh --hermes-only`.
+The skill is linked at `${HERMES_HOME:-$HOME/.hermes}/skills/zero-state-context`.
+Keep the clone at its installed path; restart Hermes and load
+`skill_view(name="zero-state-context")`, checking its returned skill_dir.
+Existing unrelated destinations are refused, not overwritten. To migrate,
+review the old link/package and move it outside discovery before reinstalling.
+`--dry-run` works for the multi-host default too and writes nothing.
 
 ## What stays private
 
 - `~/.grok/memory/`, Claude/Cursor/OpenClaw session logs
 - Preferences, unfinished rabbit holes
 - Tokens, keys, `.env`, anything that could authenticate
+
+Skill source selection, migration and safe checks: [SKILL_PROVENANCE.md](SKILL_PROVENANCE.md).
