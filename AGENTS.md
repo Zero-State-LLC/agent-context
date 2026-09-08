@@ -20,7 +20,7 @@ Before ending a session that changed team status, decisions, or work another per
 1. Update `HANDOFF.md` (overwrite; keep it current, not a diary)
 2. Update `STATUS.md` if in-flight work changed
 3. Append to `DECISIONS.md` only for a real decision
-4. Commit and push this repo
+4. Follow `skills/zero-state-context/SKILL.md` Safe shared-context workflow: reconcile freshness, review named staged files for secrets, commit locally, and push only with explicit current authorization. Verify the exact remote commit afterward.
 
 ## Do not
 

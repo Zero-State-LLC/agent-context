@@ -9,15 +9,9 @@ Team knowledge for Zero State LLC lives in the git repo cloned at `~/agent-conte
 
 This rule applies in Cursor, Claude Code, Grok, Codex, and OpenClaw. Personal memory and chat logs are not the sync channel.
 
-At session start, when the task involves org status, a partner handoff, PLAY/Noema, or work another Zero State agent may have touched:
-
-1. `git -C ~/agent-context pull --ff-only` if the clone exists
-2. Read `~/agent-context/HANDOFF.md`
-3. Read `~/agent-context/STATUS.md`
-4. Read `DECISIONS.md` only if a prior choice affects the task
-
-If `~/agent-context` is missing: `gh repo clone Zero-State-LLC/agent-context ~/agent-context && ~/agent-context/install.sh`
-
-Before ending a session that changed team status, overwrite `HANDOFF.md`, update `STATUS.md`, append `DECISIONS.md` only for a real decision, then commit and push `~/agent-context`.
-
-Personal memory, session logs, and secrets do not go in that repo. Product code maps stay in each product repo's `graft/` and `AGENTS.md`.
+Use the [shared-context skill](../skills/zero-state-context/SKILL.md)'s
+Safe shared-context workflow: confirm repo/remote/branch, require a clean tree,
+fetch and fast-forward before reading/drafting, reconcile concurrent handoffs,
+review precisely staged files for secrets, and publish only with current user
+authorization. Verify the exact remote commit after an authorized push.
+Do not copy personal memory, raw transcripts, or secrets into team context.
