@@ -2,7 +2,15 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-22 by Prabu (Claude Opus 5.5) — **Surveillance Survivor reboot: audited SS-runtime against SS-specs `ef5edad`; two runtime PRs + one spec issue open.**
+Updated: 2026-09-23 by Prabu (Claude Opus 5.5) — **SS art pipeline: three spec questions decided, T602 production order specified, and delivered art that never played is fixed.**
+
+- **Merged (all approved by Danny):** SS-runtime #83 (T301/T700 verification), #84 (pin `ef5edad`); SS-specs #32 (close T301/T700), #33 (art ledger reconciled with the catalog: T509/T601/T603 closed), #34 (**D-068** boss attack names = `bosses.md`; **D-069** a clip may self-reference as its reduced-motion clip; **D-070** Guard/Interceptor retired from T405/T503/T602, A-006/D-003/G-007, arena.md), #35 (**D-071** T602 order: 20 standard-enemy clips, 368 `plannedOriginal` frames; no `acquire` clip, `recover` only for the Correlator, no `move` for the Informant).
+- **Open:** **SS-runtime #85** — `ReactionClipTracker`: hurt/stagger/defeat clips from authoritative events. Before it, *no hurt clip was ever selected* and dead enemies left the snapshot on death, so delivered `player_hurt`, Daemon hurt/defeat, Moderate stagger/defeat never played. Marker-driven, honours `cancelWindows`, 6 mutations caught. **SS-runtime #86** — pin `c15a6f5` + projection shows idle/move/recover for standard enemies; pinned "every clip backed" tests restated as invariants that survive batched delivery (956 total / 588 backed). A watcher merges both on Danny's approval (4h).
+- **Filed:** SS-runtime **#87** — 4 of 5 enemies' delivered *commit* clips never play (Fog/Witch/Vendor resolve inside telegraph→cooldown; Informant never enters `charge`). Needs a spec decision on commit markers. SS-specs **#31** lethal warning still undefined.
+- **T602 art itself** is the remaining production job: 368 frames, IDs are the `plannedOriginal` records in `asset-catalog-001`. Source pipeline `original://Surveillance-Survivor-Art/` is not on this machine.
+- `prabu-openclaw` now has **write** on SS-specs/SS-runtime (+6 more Danny repos). 22 other invitations expired; Danny must re-send if wanted.
+
+Prior: Updated: 2026-09-22 by Prabu (Claude Opus 5.5) — **Surveillance Survivor reboot: audited SS-runtime against SS-specs `ef5edad`; two runtime PRs + one spec issue open.**
 
 - **Spec update since the runtime pin (`fb60046` → `ef5edad`, Danny's SS-specs #29/#30, D-067) is process-only**: `git diff fb60046 ef5edad -- contracts/ fixtures/` is empty; no FR or version identity moved. Parity at `ef5edad`: 20 files byte-identical, the one diff is the asserted `asset-catalog` `specificationCommit` exception.
 - **`SS-runtime#84`** re-pins to `ef5edad` at all six pin sites; `spec_parity.sh` OK, `swift test` 430/73, `xcodebuild test` 19/2.
