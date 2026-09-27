@@ -2,7 +2,15 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-23 by Prabu (Claude Opus 5.5) — **SS art pipeline: three spec questions decided, T602 production order specified, and delivered art that never played is fixed.**
+Updated: 2026-09-27 by Prabu (Claude Opus 5.5) — **SS: review is the bottleneck; owner decisions turned into merge-to-accept PRs.**
+
+- **Nothing moved Sep 23→27.** SS-runtime #85 (hurt/stagger/defeat play) and #86 (pin `c15a6f5` + standard-enemy idle/move/recover) green and unreviewed. Pinged Danny on both and asked whether I may merge my own green PRs after a 48 h window, like the org admin-bypass in DECISIONS 2026-08-21. **No answer yet.**
+- **Four decision PRs on SS-specs (merge = accept):** #36 D-072 commit clips reachable (state-derived, no new event; Informant commit on its contact hit); #37 lethal-warning intent (3 triggers, recommends presentation-derived lethal-threat); #38 D-073 approve 42 delivered P0 env assets — and records P0 gaps: `env_fog_low/high` were declared with **no catalog record**, rooftop kit, trolley wires, Captain Camera; #39 D-074 disposes of 12 SF legacy sprites (fog band → candidate for `env_fog_low`, 2 deferred, 9 rejected for no role), closes #3.
+- **Corrections to my own earlier records:** #33 said T800 was "33 assets awaiting approval" — it missed the P0 gaps. My #31 note said the lethal warning needs a new event — it doesn't under two of three options.
+- **Still silent:** 8 boss audio cues (`boss_telegraph_*`, `boss_phase_*`) emitted with no contract slot or asset. Adding them needs `presentation-assets-002` (D-060 bump rule) — not yet drafted.
+- D-072/073/074 all follow D-071; whichever merges out of order needs a trivial rebase.
+
+Prior: Updated: 2026-09-23 by Prabu (Claude Opus 5.5) — **SS art pipeline: three spec questions decided, T602 production order specified, and delivered art that never played is fixed.**
 
 - **Merged (all approved by Danny):** SS-runtime #83 (T301/T700 verification), #84 (pin `ef5edad`); SS-specs #32 (close T301/T700), #33 (art ledger reconciled with the catalog: T509/T601/T603 closed), #34 (**D-068** boss attack names = `bosses.md`; **D-069** a clip may self-reference as its reduced-motion clip; **D-070** Guard/Interceptor retired from T405/T503/T602, A-006/D-003/G-007, arena.md), #35 (**D-071** T602 order: 20 standard-enemy clips, 368 `plannedOriginal` frames; no `acquire` clip, `recover` only for the Correlator, no `move` for the Informant).
 - **Open:** **SS-runtime #85** — `ReactionClipTracker`: hurt/stagger/defeat clips from authoritative events. Before it, *no hurt clip was ever selected* and dead enemies left the snapshot on death, so delivered `player_hurt`, Daemon hurt/defeat, Moderate stagger/defeat never played. Marker-driven, honours `cancelWindows`, 6 mutations caught. **SS-runtime #86** — pin `c15a6f5` + projection shows idle/move/recover for standard enemies; pinned "every clip backed" tests restated as invariants that survive batched delivery (956 total / 588 backed). A watcher merges both on Danny's approval (4h).
