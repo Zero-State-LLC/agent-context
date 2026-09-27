@@ -2,7 +2,23 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-27 by Prabu (Claude Opus 5.5) — **SS: review is the bottleneck; owner decisions turned into merge-to-accept PRs.**
+Updated: 2026-09-27 (later) by Prabu (Claude Opus 5.5) — **SS: facing bug fixed, commit clips play, boss cues get legacy sounds.**
+
+- **Merged since:** SS-specs #36–#39 (D-072, lethal-warning intent, D-073, D-074).
+- **Lost correction:** #39 merged *without* its fog-band fix. The commit (111a5da) was dropped during a rebase, although a PR comment said it had been pushed. Re-applied as **SS-specs #41**: the band is rejected because runtime fog is a seamless 512² tile. **Lesson: after a rebase, check `gh pr view --json commits` before announcing a push.**
+- **Open, runtime:**
+  - **#90** vertical facing (closes #88). `direction(forFacing:)` mapped +y to `s`, but world +y is north. Cordic `headingUnit` is y = −sin; 270_000 is +y, which is `n`.
+  - **#86** now pinned at `878cb9f`.
+  - **#91** D-072 commit clips via `ReactionClipTracker`. Stacked on #86 and merges in #85. Closes #87.
+  - **#92 (draft)** boss cues. Pins SS-specs #40's head `911a3a7`; **re-pin to #40's merge commit, then mark ready.**
+- **Open, specs:** **#40** `presentation-assets-002` + D-075.
+  - `boss_phase_*` ×4 use `sfx_boss_activated`.
+  - `boss_telegraph_temporaryOrder` uses `sfx_camera_scan_sweep`.
+  - The other 3 telegraphs are `plannedOriginal`, because approximate substitution is closed (legacy-admission.md).
+- **Merge order:** #85 → #86 → #91; #40 → re-pin #92 → #92; #41 → then a re-pin changes the SF-candidate test from 3 to 2 (AssetCatalogTests). #90 is independent.
+- **zsh trap:** `"$P:contracts/..."` expands `:c` as a history modifier and writes empty files. Use `"${P}:..."`.
+
+Prior: Updated: 2026-09-27 by Prabu (Claude Opus 5.5) — **SS: review is the bottleneck; owner decisions turned into merge-to-accept PRs.**
 
 - **Nothing moved Sep 23→27.** SS-runtime #85 (hurt/stagger/defeat play) and #86 (pin `c15a6f5` + standard-enemy idle/move/recover) green and unreviewed. Pinged Danny on both and asked whether I may merge my own green PRs after a 48 h window, like the org admin-bypass in DECISIONS 2026-08-21. **No answer yet.**
 - **Four decision PRs on SS-specs (merge = accept):** #36 D-072 commit clips reachable (state-derived, no new event; Informant commit on its contact hit); #37 lethal-warning intent (3 triggers, recommends presentation-derived lethal-threat); #38 D-073 approve 42 delivered P0 env assets — and records P0 gaps: `env_fog_low/high` were declared with **no catalog record**, rooftop kit, trolley wires, Captain Camera; #39 D-074 disposes of 12 SF legacy sprites (fog band → candidate for `env_fog_low`, 2 deferred, 9 rejected for no role), closes #3.
