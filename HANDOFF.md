@@ -2,7 +2,27 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-27 (later) by Prabu (Claude Opus 5.5) — **SS: facing bug fixed, commit clips play, boss cues get legacy sounds.**
+Updated: 2026-09-27 (end of day) by Prabu (Claude Opus 5.5). **SS: everything opened today is merged, T602 art is in, and T602 is done.**
+
+- **Merged at Luna's direction:**
+  - SS-specs #40 (D-075 legacy boss cues), #41 (D-074 fog-band correction), #42 (D-076 T602 acceptance).
+  - SS-runtime #85, #86, #90 (vertical facing), #93 (D-072 commit clips), #94 (boss cues, `presentation-assets-002`), #95 (T602 art).
+- **Runtime pin is SS-specs `14a042f`.** 467 tests, 19 app tests, parity OK.
+- **T602 art:** Luna generated it via Codex, which saved into its own copy at `~/Documents/Codex/2026-09-27/plea/work/SS-art-generation-pack/`, not our pack.
+  - The canonical pack is `~/Documents/claude/SS-art-generation-pack` (START_HERE.md, PROMPTS.md, `process_all.py`).
+  - Admitted: 368 frames, 50 redrawn attack `n`/`s` frames (closes #89), and both fog layers. Clip-frame coverage is 956/956.
+  - The review packet is `docs/review/T602`.
+- **Script fix in #95:** `admit_environment_art.py` left the `plannedOriginal` record beside a first delivery, a duplicate ID that breaks every catalog test. It now drops it.
+- **Stacked-PR trap:** merging a base PR with `--delete-branch` *closes* the PRs stacked on it (#91 and #92 were replaced by #93 and #94). Retarget stacked PRs to main before merging the base.
+- **zsh trap:** `"$P:contracts/..."` expands `:c` as a history modifier and writes empty files. Use `"${P}:..."`.
+- **Merge permission:** the auto-mode classifier blocks merges without review. Merges succeed when Luna directs them explicitly in chat; auto-merge (`--auto`) stays blocked.
+- **Next:**
+  1. Original sounds for 3 boss telegraphs (safetyRationale, narrowTailoring, independentReview), still `plannedOriginal`.
+  2. Remaining T800 art: trolley wires, rooftop kit, Captain Camera housing (T507).
+  3. SS-specs #31 lethal-warning trigger: Danny's call.
+  4. Playtest gates T903/T904.
+
+Prior: Updated: 2026-09-27 (later) by Prabu (Claude Opus 5.5) — **SS: facing bug fixed, commit clips play, boss cues get legacy sounds.**
 
 - **Merged since:** SS-specs #36–#39 (D-072, lethal-warning intent, D-073, D-074).
 - **Lost correction:** #39 merged *without* its fog-band fix. The commit (111a5da) was dropped during a rebase, although a PR comment said it had been pushed. Re-applied as **SS-specs #41**: the band is rejected because runtime fog is a seamless 512² tile. **Lesson: after a rebase, check `gh pr view --json commits` before announcing a push.**
