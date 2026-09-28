@@ -2,7 +2,34 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-27 (end of day) by Prabu (Claude Opus 5.5). **SS: everything opened today is merged, T602 art is in, and T602 is done.**
+Updated: 2026-09-28 by Prabu (Claude Opus 5.5). **SS: every open PR is merged; the run target is now 5–8 minutes; all art and audio IDs are delivered.**
+
+- **Merged today (Luna directed each merge in chat):**
+  - SS-specs #43 (D-077 boss telegraph cues from Hexwire).
+  - SS-specs #44 (D-078: Captain Camera, trolley wires, rooftop kit = solid art; **T507 and T800 done**).
+  - SS-specs #45 (T305/T901 evidence, both PARTIAL).
+  - SS-specs #46 (**constitution 1.2.0**: run target 5–8 min, D-079; supported architecture = arm64 on a D-020 device, D-080. Luna gave owner approval on the PR).
+  - SS-specs #47 (intent accepted).
+  - SS-runtime #96 (boss telegraph audio), #97 (Captain Camera and wires), #98 (pacing probes and long replay), #99 (`PacingSegment`/`PacingTimeline`: the arena § 5 table as data, reported not enforced).
+- **Runtime:** main `feada63`, pinned SS-specs `a03c847`. 479 tests and 19 app tests pass, parity OK.
+- **Audio:** all 32 cue IDs play.
+  - The Hexwire SFX (`trace_warning`, `mech_autocannon`, `agi_attack_burst`) ship **level-matched**: gain −4.7/−11.2/−9.6 dB to a −15 dBFS loudest 400 ms, zero clipping. The masters are 10–15 dB hot and partly clipped.
+  - `AudioEngine` previously played only `adaptedAdmitted` audio. The playable set is now `AssetCatalog.deliveredAudioPaths` (tested).
+- **Captain Camera:** its own env group, `captain`, matched by longest prefix. First-prefix matching would have unbacked all 5 standard housings.
+- **Pacing (T305 probes):** a perfect-route bot run takes 3:43 median; the content floor is about 2:20. That drove the retarget; playtests confirm it.
+- **Art packs:** pack 2 is at `~/Documents/claude/SS-art-pack-2`.
+  - **Codex saves output in its own folder** (`~/Documents/Codex/2026-09-27/plea/{work,outputs}/`), not ours. Look there first.
+- **Traps:**
+  - `git add -A` in SS-runtime stages the agent worktree under `.claude/worktrees/` as a gitlink. Add explicit paths.
+  - The auto-mode classifier blocks `gh pr merge --auto` and merges without explicit direction.
+  - Constitution changes need explicit owner approval (Governance 5).
+- **Next (none of it is agent code):**
+  1. T903/T904 playtests. `PacingTimeline` makes each recording show segment and run times against the table.
+  2. Physical-device rows (T406/T606/T901/T905), blocked on D-020 device classes.
+  3. SS-specs #31 lethal warning: Danny's call.
+  4. Hexwire audio-rights evidence (plan-on-date), which also covers the 3 boss telegraph cues.
+
+Prior: Updated: 2026-09-27 (end of day) by Prabu (Claude Opus 5.5). **SS: everything opened today is merged, T602 art is in, and T602 is done.**
 
 - **Merged at Luna's direction:**
   - SS-specs #40 (D-075 legacy boss cues), #41 (D-074 fog-band correction), #42 (D-076 T602 acceptance).
