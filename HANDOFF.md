@@ -2,7 +2,28 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-28 by Prabu (Claude Opus 5.5). **SS: every open PR is merged; the run target is now 5–8 minutes; all art and audio IDs are delivered.**
+Updated: 2026-09-29 by Prabu (Claude Opus 5.5). **SS: bets 1 and 2 and the game-feel pass are merged.** Runtime main `a01d8a4`, pinned SS-specs `b79df66`. 561 tests and 26 app tests pass.
+
+- **Bet 2 (D-081, #100):** a Daily Run (UTC-date seed, so the same Camera layout for everyone that day), a presentation-only ghost of today's best, and a run card with Share.
+- **Bet 1 (D-082–D-087, #101), `ss-rules-002`, content-002, arena-002:**
+  - Cameras are shot only when you move toward them.
+  - Heat reinforcements in M-A/M-B: tracked +1, hunted/lockdown +2.
+  - Tamper is +150 per destroyed Camera, with a recovery floor of 150 × Cameras destroyed.
+  - A Camera's own mount never blocks shots at it.
+  - `cam-z02-d` moved off the transit kiosk.
+  - Probes: stealth 0.55 reinforcements per run (0.38 without Ricochet, the loud build), loud 4.58. #102 is closed.
+- **Game feel (D-088, #103):** the 10 specified VFX recipes now render (they never had), plus hit-stop and shake. New big moments: Camera kill, Network Blackout (dim, cascade, music drop), boss phase break, heat chevrons. The Captain telegraph has no freeze.
+- **Traps:**
+  - `SSRuntime.xcodeproj` is generated. Run `xcodegen generate` before a local `xcodebuild`, or new files look missing.
+  - Resolving pin conflicts with `--theirs` can drop real changes in `ContractVersions.swift`. Diff that file after taking a side.
+  - Scenario tests must move toward a Camera to shoot it (D-082).
+- **Open:**
+  1. Runs are still 3–3.5 min against the 5–8 target.
+  2. Luna's first playtest (3 daily runs: sneaky, loud, natural).
+  3. Option B, awareness AI.
+  4. T903/T904 playtests, devices / D-020, #31.
+
+Prior: Updated: 2026-09-28 by Prabu (Claude Opus 5.5). **SS: every open PR is merged; the run target is now 5–8 minutes; all art and audio IDs are delivered.**
 
 - **Merged today (Luna directed each merge in chat):**
   - SS-specs #43 (D-077 boss telegraph cues from Hexwire).
