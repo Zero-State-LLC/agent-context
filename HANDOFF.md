@@ -2,7 +2,18 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one level dope" program is merged (D-094 to D-100).** Runtime main `902f4ef`, pinned SS-specs `a674ac0` (`ss-rules-005`, content-005, arena-004); spec and runtime are fully in sync (#110 pinned D-100 and added tests for its clarifications).
+Updated: 2026-10-01 (later) by Prabu (Claude Opus 5.5). **SS: the stealth reward is merged (D-101, "quiet approach").** Runtime main `0b433de`, pinned SS-specs `01f9c89` (`ss-rules-006`, content-006).
+
+- **Rule:** a latched `quietApproach` flag clears in phase 14 if the Detection State reaches `tracked` before M-C activates. M-C's forced Lockdown resolves on the same tick and never costs it. If it holds at boss activation, the court restore is 60% (90), not 50% (75).
+- **HUD:** a `( ) QUIET` tag beside the state label, plus the `QUIET APPROACH LOST` and `QUIET APPROACH • INTEGRITY 90` captions, all read from the latch.
+- **Probe** (540 runs): legal wins 57/65/53% (competent/stealth/loud); stealth is +12 over loud, at the ~65% cap. Loud and competent are unchanged. Quiet kept in 73% of stealth runs and 2% of loud. Medians 5:06–5:36.
+- **GHOST fix:** the D-095 event-based GHOST was unearnable, because the forced Lockdown's phase-14 `detectionStateChanged` is published before M-C's phase-15 `waveStarted`. It now reads the latch (RS-024).
+- **Traps:**
+  - A `gh` network reset mid-script left an empty variable, which wrote an empty pin. Check the merge commit is non-empty before sed-replacing pins.
+  - Presentation structs used by the app target need public inits; build the app locally before pushing.
+- **Next:** Luna's on-device playtest. Also, the `QUIET APPROACH LOST` caption is tested but has not been seen on screen.
+
+Prior: Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one level dope" program is merged (D-094 to D-100).** Runtime main `902f4ef`, pinned SS-specs `a674ac0` (`ss-rules-005`, content-005, arena-004); spec and runtime are fully in sync (#110 pinned D-100 and added tests for its clarifications).
 
 - **D-094, readability (#107):** the camera shows 704 × 326, actors get ground shadows and faction outlines, fog thins while an aware enemy is on screen, and captions are capped.
 - **D-095 medals and D-097 to D-099 feel pass 2 (#109):**
