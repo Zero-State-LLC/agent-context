@@ -2,7 +2,22 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-29 by Prabu (Claude Opus 5.5). **SS: bets 1 and 2 and the game-feel pass are merged.** Runtime main `a01d8a4`, pinned SS-specs `b79df66`. 561 tests and 26 app tests pass.
+Updated: 2026-09-30 by Prabu (Claude Opus 5.5). **SS: awareness, pacing and the Transit Patrol are merged; the build is ready for Luna's first playtest.** Runtime main `f635be4`, pinned SS-specs `92460a2` (`ss-rules-004`, content-004, arena-003).
+
+- **D-089, awareness and ambush:** enemies start unaware; the first hit is an ambush (now ×3); surveillance (`tracked`+) alerts everyone.
+- **D-090, pacing:** sight 320, unaware drift 25%, enemy Integrity ×1.5 (boss 1600), the Player takes 50% damage (exact remainder carried). The § 5 windows fit the arena as built (it crosses in about 10 s).
+- **D-091 to D-093, Transit Patrol:** three members in Z-02 with visible 45°/240-unit cones and 200% Integrity. They are targeted only within 240 units and only while the Player moves toward them, so walking past holds fire. Fairness is proven over one hour of joint simulation for every legal Camera subset. Player Integrity is 150.
+- **Final probe** (540 runs): competent wins have a median of 5:07; win rates are about 40%; stealth's ambush share is 35% against loud's 2%; sight causes 34–54% of alerts.
+  - Short: the stealth win rate is roughly equal to loud's, and the stealth pilot cannot slip past the patrol.
+  - Luna accepted merging and judging these by playtest (recorded in D-093).
+- **CI fix (#104):** the SwiftPM job runs on Xcode 26.3. The runner default (Xcode 16.4 / Swift 6.1) needed over 5× the debug stack and crashed Swift Testing workers with SIGBUS.
+- **Traps:**
+  - Long-running subagents stall on 10-minute silent tool calls. Run sweeps in the background and poll; checkpoint-push often.
+  - Git identity is set repo-locally in the SS repos, because hostname detection broke.
+  - **Specs first, then runtime** (standing owner rule).
+- **Next:** Luna plays daily runs (sneaky, loud, natural), then tuning from feel; T903/T904 external playtests; devices / D-020.
+
+Prior: Updated: 2026-09-29 by Prabu (Claude Opus 5.5). **SS: bets 1 and 2 and the game-feel pass are merged.** Runtime main `a01d8a4`, pinned SS-specs `b79df66`. 561 tests and 26 app tests pass.
 
 - **Bet 2 (D-081, #100):** a Daily Run (UTC-date seed, so the same Camera layout for everyone that day), a presentation-only ghost of today's best, and a run card with Share.
 - **Bet 1 (D-082–D-087, #101), `ss-rules-002`, content-002, arena-002:**
