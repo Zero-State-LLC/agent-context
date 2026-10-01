@@ -2,7 +2,34 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-09-30 by Prabu (Claude Opus 5.5). **SS: awareness, pacing and the Transit Patrol are merged; the build is ready for Luna's first playtest.** Runtime main `f635be4`, pinned SS-specs `92460a2` (`ss-rules-004`, content-004, arena-003).
+Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one level dope" program is merged (D-094 to D-100).** Runtime main `be78c56`, pinned SS-specs `4218fc1` (`ss-rules-005`, content-005, arena-004). SS-specs main is `a674ac0` (D-100 is doc-only, so no re-pin is needed until the next runtime PR).
+
+- **D-094, readability (#107):** the camera shows 704 × 326, actors get ground shadows and faction outlines, fog thins while an aware enemy is on screen, and captions are capped.
+- **D-095 medals and D-097 to D-099 feel pass 2 (#109):**
+  - medals GHOST, SHADOW, BLACKOUT, SURGICAL and SWIFT, stored per day, on the run card and the title;
+  - takedowns (hit-stop, desaturating ring, pitched impact, streak);
+  - patrol near-miss edges, in the cone's blue, never pickup gold;
+  - a 2 s intro with no tick, and tutorial lines one at a time;
+  - a daily grade, fog and headline.
+  - All presentation only; a test proves digests and receipts are identical with and without it.
+- **D-096, Captain Court climax (#108):**
+  - on boss activation the Player is raised to at least 50% Integrity (75);
+  - boss contact damage is 10 DPS;
+  - each phase gets its own court lighting, and telegraphs get countdown rings.
+  - **Final probe** (540 runs): legal wins 56/52/53%, medians 5:32/5:03/5:35. Boss-fight damage is cone 64–67%, bolts 27–29%, contact 6–9%.
+  - The first probe at 60% won 58/68/66%, over the ~65% cap. The D-093 "contact 32%" figure had included cone hits; the probe now books them apart.
+- **D-100 (SS-specs #58):** the spec records 7 choices #109 made where D-097 to D-099 were silent.
+- **Process:** Danny's Cursor agent superseded SS-specs #55 with #57 (rebased, but still at 60%). I pushed the 50% commit and the probe onto #57 and merged it.
+- **Traps:**
+  - **A background sweep's `git checkout` can abort on local edits and silently test the old build.** Check `git log -1` in the sweep tree before trusting a sweep.
+  - App CI uses an older Swift with stricter actor checks than local Xcode 26. SpriteKit node builders in static helpers need `@MainActor`.
+  - Agents killing `xcodebuild` or `swift-frontend` by pattern can kill another agent's build.
+- **Next:**
+  1. Luna's on-device playtest. This is the evidence for the stealth targets D-093 left open: stealth should win more than loud, and stealth should slip past the patrol.
+  2. Art pack 2 (Captain Camera, trolley wires) is waiting on Codex generation.
+  3. A stealth reward, if the playtest confirms stealth doesn't pay.
+
+Prior: Updated: 2026-09-30 by Prabu (Claude Opus 5.5). **SS: awareness, pacing and the Transit Patrol are merged; the build is ready for Luna's first playtest.** Runtime main `f635be4`, pinned SS-specs `92460a2` (`ss-rules-004`, content-004, arena-003).
 
 - **D-089, awareness and ambush:** enemies start unaware; the first hit is an ambush (now ×3); surveillance (`tracked`+) alerts everyone.
 - **D-090, pacing:** sight 320, unaware drift 25%, enemy Integrity ×1.5 (boss 1600), the Player takes 50% damage (exact remainder carried). The § 5 windows fit the arena as built (it crosses in about 10 s).
