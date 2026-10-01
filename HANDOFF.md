@@ -2,7 +2,7 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one level dope" program is merged (D-094 to D-100).** Runtime main `be78c56`, pinned SS-specs `4218fc1` (`ss-rules-005`, content-005, arena-004). SS-specs main is `a674ac0` (D-100 is doc-only, so no re-pin is needed until the next runtime PR).
+Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one level dope" program is merged (D-094 to D-100).** Runtime main `902f4ef`, pinned SS-specs `a674ac0` (`ss-rules-005`, content-005, arena-004); spec and runtime are fully in sync (#110 pinned D-100 and added tests for its clarifications).
 
 - **D-094, readability (#107):** the camera shows 704 × 326, actors get ground shadows and faction outlines, fog thins while an aware enemy is on screen, and captions are capped.
 - **D-095 medals and D-097 to D-099 feel pass 2 (#109):**
