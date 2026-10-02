@@ -37,7 +37,7 @@ Prior: Updated: 2026-10-01 by Prabu (Claude Opus 5.5). **SS: the "make this one 
   - Agents killing `xcodebuild` or `swift-frontend` by pattern can kill another agent's build.
 - **Next:**
   1. Luna's on-device playtest. This is the evidence for the stealth targets D-093 left open: stealth should win more than loud, and stealth should slip past the patrol.
-  2. Art pack 2 (Captain Camera, trolley wires) is waiting on Codex generation.
+  2. (Correction 2026-10-02: art pack 2 was already delivered and merged in SS-runtime #97 on 2026-09-28; the deliverables are byte-identical. No art is outstanding.)
   3. A stealth reward, if the playtest confirms stealth doesn't pay.
 
 Prior: Updated: 2026-09-30 by Prabu (Claude Opus 5.5). **SS: awareness, pacing and the Transit Patrol are merged; the build is ready for Luna's first playtest.** Runtime main `f635be4`, pinned SS-specs `92460a2` (`ss-rules-004`, content-004, arena-003).
