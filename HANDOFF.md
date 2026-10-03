@@ -11,6 +11,7 @@ Updated: 2026-10-01 (later) by Prabu (Claude Opus 5.5). **SS: the stealth reward
 - **Traps:**
   - A `gh` network reset mid-script left an empty variable, which wrote an empty pin. Check the merge commit is non-empty before sed-replacing pins.
   - Presentation structs used by the app target need public inits; build the app locally before pushing.
+- **Patrol slip (#113):** a beam search over real `Simulation` copies (`PatrolSlipSearch`, run with `SS_PATROL_SLIP=1`) slips the patrol on seeds 1–10 and at every loop phase in about 4 s. A naive dash never slips. CI replays a seed-1 route that earns SHADOW. Debug hold `-SSHoldOnFeel quietLost` captured `QUIET APPROACH LOST` on screen.
 - **Tracker audit (#112, merged `7c293ac`):** every probe run now cross-checks the presentation trackers against authoritative truth. Across 540 runs: takedowns 3,615 = 3,615, heat caption 1,889 = 1,889, GHOST = latch. SHADOW is earned 0 times because no pilot slips all three patrol members, but a real-event test proves it is earnable. Whether a human can slip the patrol is the open D-093 question.
 - **Next:** Luna's on-device playtest. Also, the `QUIET APPROACH LOST` caption is tested but has not been seen on screen.
 
