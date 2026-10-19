@@ -1,0 +1,19 @@
+# Rule-file injection allowlist
+#
+# HIDDEN findings always fail and cannot be listed here: zero-width
+# characters, bidi controls, HTML comments with imperative or install
+# wording, invisible HTML/CSS, and lines over 400 characters.
+#
+# INSTRUCTION and UNKNOWN_PKG fail unless one line matches all four fields.
+# Tab-separated:
+#
+#   path    rule    pattern    reason
+#
+# path     Repo-relative path, "*" for any scanned file, or an fnmatch pattern.
+# rule     INSTRUCTION or UNKNOWN_PKG.
+# pattern  Python regex searched against the finding text. Required.
+# reason   Why this mention is legitimate. Required.
+#
+# This pack has no install directives in scanned rule files, so there are
+# no active entries. Example, kept commented:
+# skills/example/SKILL.md	INSTRUCTION	install-directive	test runner named in that skill

@@ -31,6 +31,7 @@ jobs:
             templates/sdlc/README.md
             templates/README.md
             scripts/check-agents-md.sh
+            scripts/check-rule-files.py
           )
           for f in "${required[@]}"; do
             test -f "$f" || { echo "missing: $f" >&2; exit 1; }
@@ -38,3 +39,6 @@ jobs:
 
       - name: Lint product-repo AGENTS.md template
         run: bash scripts/check-agents-md.sh templates/AGENTS.md.template
+
+      - name: Check rule files for injection
+        run: make check-rule-files
