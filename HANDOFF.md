@@ -2,7 +2,7 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit plus PRs.** Merged: runtime #143–#146, specs #67 (D-105) and #68 (D-106, merged at the owner's direction). Open: runtime #142 (T1050, re-pinned to SS-specs `a2119c93`), specs #69–#72 draft intents. Runtime main was `5b36566` at audit time. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
+Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit plus PRs.** Merged: runtime #142–#147 (#142 is T1050, pinned to SS-specs `a2119c93`) and specs #67 (D-105) and #68 (D-106), each merged at the owner's direction. Open: specs #69–#72 draft intents. New defect: runtime #148. Runtime main was `5b36566` at audit time. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
 
 - **Facts first:**
   - The 2026-10-13 device QA failed twice (runtime `docs/review/device-qa/`), and there has been no phone run since.
@@ -26,8 +26,12 @@ Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit p
   - #67 D-105: device checks no longer wait for the D-104 art review.
   - #68 D-106: interruptions.
   - Draft intents, which need an owner to set `accepted`: #69 live Exposure in the Court, #70 no dominant upgrade, #71 rehearse the Court, #72 lock the projection and palette. On #72: the latest shared-scene capture is about 59% brighter and 2.6× more saturated than the approved concept, and the BP-001 projection choice is unrecorded.
+- **New defect, runtime #148:**
+  - `combat-content-006`'s `upgrades` block is never loaded; all upgrade numbers are compiled in. A range-120 Ricochet variant gave identical digests in all 90 runs.
+  - Fix on branch `claude/upgrades-contract-parity`: the load fails closed when the contract and the code differ. No behaviour change.
+  - Tune upgrades (#70) in code and contract together.
 - **Next:**
-  1. Owner merges runtime #142 after CI.
+  1. Review the #148 fix PR.
   2. Put a Release build on the iPhone 17 Pro with `-SSQA` after #143.
   3. Accept or redirect #69–#72.
   4. Get a device Instruments trace before any audio or texture performance work. The only trace blames the SpriteKit renderer.
