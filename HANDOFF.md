@@ -2,7 +2,7 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit plus PRs.** Merged: runtime #142–#147 (#142 is T1050, pinned to SS-specs `a2119c93`) and specs #67 (D-105) and #68 (D-106), each merged at the owner's direction. Open: specs #69–#72 draft intents. New defect: runtime #148. Runtime main was `5b36566` at audit time. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
+Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit plus PRs.** Merged: runtime #142–#147 and #149 (#142 is T1050, pinned to SS-specs `a2119c93`; #149 fixes defect #148) and specs #67 (D-105) and #68 (D-106), each merged at the owner's direction. Open: specs #69–#72 draft intents, with scratch-probe evidence posted on #69, #70 and #71. Runtime main was `5b36566` at audit time. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
 
 - **Facts first:**
   - The 2026-10-13 device QA failed twice (runtime `docs/review/device-qa/`), and there has been no phone run since.
@@ -26,12 +26,16 @@ Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit p
   - #67 D-105: device checks no longer wait for the D-104 art review.
   - #68 D-106: interruptions.
   - Draft intents, which need an owner to set `accepted`: #69 live Exposure in the Court, #70 no dominant upgrade, #71 rehearse the Court, #72 lock the projection and palette. On #72: the latest shared-scene capture is about 59% brighter and 2.6× more saturated than the approved concept, and the BP-001 projection choice is unrecorded.
-- **New defect, runtime #148:**
-  - `combat-content-006`'s `upgrades` block is never loaded; all upgrade numbers are compiled in. A range-120 Ricochet variant gave identical digests in all 90 runs.
-  - Fix on branch `claude/upgrades-contract-parity`: the load fails closed when the contract and the code differ. No behaviour change.
-  - Tune upgrades (#70) in code and contract together.
+- **Defect #148, fixed by #149:**
+  - `combat-content-006`'s `upgrades` block was never loaded; the upgrade numbers are compiled in.
+  - The load now fails closed when the contract and the code differ.
+  - Tune upgrades in code **and** contract together.
+- **Decision evidence** (scratch probes; bots, not players):
+  - **#69 (live Court):** lifting the latch alone changes nothing, because Lockdown has no Court cost. An Emergency Order from M-C sockets fires in 19% of Courts and costs nothing either. Any cost needs Court-local spawns (the unused `extractionPressureSockets`) or a direct boss effect.
+  - **#70 (upgrades):** Ricochet's edge is M-C clearing: 94 s against 138 s, and it enters the Court at 89 Integrity against 66–68. Range 120 brings it to parity; continuation damage 7 does not.
+  - **#71 (rehearsal):** snapshot the run at `bossActivated`. A copy takes about 0.03 ms; re-simulating takes about 3 s.
 - **Next:**
-  1. Review the #148 fix PR.
+  1. Owner decides #69–#72 using the posted evidence.
   2. Put a Release build on the iPhone 17 Pro with `-SSQA` after #143.
   3. Accept or redirect #69–#72.
   4. Get a device Instruments trace before any audio or texture performance work. The only trace blames the SpriteKit renderer.
