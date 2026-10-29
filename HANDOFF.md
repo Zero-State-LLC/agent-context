@@ -2,7 +2,40 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-01 (later) by Prabu (Claude Opus 5.5). **SS: the stealth reward is merged (D-101, "quiet approach").** Runtime main `0b433de`, pinned SS-specs `01f9c89` (`ss-rules-006`, content-006).
+Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit, plus PRs that need owner review. Nothing merged.** Runtime main `5b36566`, pinned SS-specs `d602775`. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
+
+- **Facts first:**
+  - The 2026-10-13 device QA failed twice (runtime `docs/review/device-qa/`), and there has been no phone run since.
+  - T903/T904 and Luna's playtest never ran.
+  - Since 10-14 the shipping build has not changed visually; the work has been test-only Player art.
+- **Probe** (540 legal runs, `heatD083StyleSweep` at `5b36566`, re-run on Linux; reproduces D-101 within ~3 points):
+  - Ricochet wins 68.9% against 55% for each other upgrade; loud + Jammer wins 38%.
+  - 194 of 218 failures die in the Court, after a median 3:55 to reach it and 0:54 survived there.
+  - Lockdown latches Exposure at 1000 at a median 1:29, for 72% of a winning run.
+  - Vendor mines are 8.8% of player damage. The probe used to call them "unattributed".
+- **Runtime PRs:**
+  - #143 is a real bug. Run-end evidence fired at the *upgrade gate* (`!= .playing`), so:
+    - T905's three-run counter never passed 0;
+    - the `-SSQA` damage export stopped at M-A;
+    - the fixed counter would otherwise have run a ~1.9 s profile synchronously at run end.
+  - #142 (draft) is the interruption pause, audio and Reduced Motion change, D-106. It waits on SS-specs #68.
+  - #144: Linux build, and release probes compile again.
+  - #145: the App Store privacy manifest.
+  - #146: `scripts/probe_summary.py` and the mine attribution fix.
+- **Specs PRs:**
+  - #67 D-105: device checks no longer wait for the D-104 art review.
+  - #68 D-106: interruptions.
+  - Draft intents, which need an owner to set `accepted`: #69 live Exposure in the Court, #70 no dominant upgrade, #71 rehearse the Court, #72 lock the projection and palette. On #72: the latest shared-scene capture is about 59% brighter and 2.6× more saturated than the approved concept, and the BP-001 projection choice is unrecorded.
+- **Next:**
+  1. Owner reviews and merges.
+  2. Put a Release build on the iPhone 17 Pro with `-SSQA` after #143.
+  3. Accept or redirect #69–#72.
+  4. Get a device Instruments trace before any audio or texture performance work. The only trace blames the SpriteKit renderer.
+- **Traps:**
+  - GraphQL is blocked in Claude Code cloud sessions. Create PRs with `gh api -X POST repos/{o}/{r}/pulls`.
+  - On Linux, `swift test` needs Swift 6.2+ (`swift:6.2-noble`). The `ArtSources/` tree must be present for `AssetIntakeTests`.
+
+Prior: Updated: 2026-10-01 (later) by Prabu (Claude Opus 5.5). **SS: the stealth reward is merged (D-101, "quiet approach").** Runtime main `0b433de`, pinned SS-specs `01f9c89` (`ss-rules-006`, content-006).
 
 - **Rule:** a latched `quietApproach` flag clears in phase 14 if the Detection State reaches `tracked` before M-C activates. M-C's forced Lockdown resolves on the same tick and never costs it. If it holds at boss activation, the court restore is 60% (90), not 50% (75).
 - **HUD:** a `( ) QUIET` tag beside the state label, plus the `QUIET APPROACH LOST` and `QUIET APPROACH • INTEGRITY 90` captions, all read from the latch.
