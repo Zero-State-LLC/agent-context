@@ -2,7 +2,7 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit, plus PRs that need owner review. Nothing merged.** Runtime main `5b36566`, pinned SS-specs `d602775`. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
+Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit plus PRs.** Merged: runtime #143–#146, specs #67 (D-105) and #68 (D-106, merged at the owner's direction). Open: runtime #142 (T1050, re-pinned to SS-specs `a2119c93`), specs #69–#72 draft intents. Runtime main was `5b36566` at audit time. Aaron's art brief (`SS-specs/docs/review/aaron-continuation-2026-10-25.md`) is unchanged.
 
 - **Facts first:**
   - The 2026-10-13 device QA failed twice (runtime `docs/review/device-qa/`), and there has been no phone run since.
@@ -13,7 +13,7 @@ Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit, 
   - 194 of 218 failures die in the Court, after a median 3:55 to reach it and 0:54 survived there.
   - Lockdown latches Exposure at 1000 at a median 1:29, for 72% of a winning run.
   - Vendor mines are 8.8% of player damage. The probe used to call them "unattributed".
-- **Runtime PRs:**
+- **Runtime PRs** (#143–#146 merged; #142 open):
   - #143 is a real bug. Run-end evidence fired at the *upgrade gate* (`!= .playing`), so:
     - T905's three-run counter never passed 0;
     - the `-SSQA` damage export stopped at M-A;
@@ -22,12 +22,12 @@ Updated: 2026-10-29 by Claude (Claude Code session for the owner). **SS: audit, 
   - #144: Linux build, and release probes compile again.
   - #145: the App Store privacy manifest.
   - #146: `scripts/probe_summary.py` and the mine attribution fix.
-- **Specs PRs:**
+- **Specs PRs** (#67 and #68 merged; #69–#72 open):
   - #67 D-105: device checks no longer wait for the D-104 art review.
   - #68 D-106: interruptions.
   - Draft intents, which need an owner to set `accepted`: #69 live Exposure in the Court, #70 no dominant upgrade, #71 rehearse the Court, #72 lock the projection and palette. On #72: the latest shared-scene capture is about 59% brighter and 2.6× more saturated than the approved concept, and the BP-001 projection choice is unrecorded.
 - **Next:**
-  1. Owner reviews and merges.
+  1. Owner merges runtime #142 after CI.
   2. Put a Release build on the iPhone 17 Pro with `-SSQA` after #143.
   3. Accept or redirect #69–#72.
   4. Get a device Instruments trace before any audio or texture performance work. The only trace blames the SpriteKit renderer.
