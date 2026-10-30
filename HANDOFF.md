@@ -2,7 +2,26 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-30 by Claude (Claude Code session for the owner). **SS: upgrade parity (D-113) shipped; the results screen works with VoiceOver; the extraction finale was tried and dropped.**
+Updated: 2026-10-30 (later) by Claude (Claude Code session for the owner). **SS: D-114 corner pursuit shipped; D-115 and D-116 wait on Danny's code-owner review.**
+
+- **New gate:** Danny added CODEOWNERS to SS-specs (`* @scrimshawlife-ctrl`, code-owner review required, 2026-10-30 03:27 UTC). Every specs merge needs his approval. Do not bypass it. SS-runtime has no protection, but a ruleset runtime PR must pin a merged specs commit, so it waits too.
+- **Merged:**
+  - runtime #158–#160: the results surface with VoiceOver (F-007), reflow at accessibility text sizes, and VoiceOver announcements during play (F-013);
+  - specs #81 and #82, with runtime #161: D-114 corner pursuit, `ss-rules-011`. Stalls fell from 29 to 2.
+- **Awaiting Danny**, in this order:
+  - specs #84: intent, the Captain goes round solids. Accepted by the user; no leash.
+  - specs #83: D-115, Jammer cancels heat reinforcements, `combat-content-008`, `ss-rules-012`. Runtime branch `claude/jammer-cancels-heat`, rebased on main, 837 tests.
+  - specs #85: D-116, Captain corner pursuit, `ss-rules-013`. Stacked on #83: after #83 merges, rebase it onto main and retarget it. Runtime branch `claude/captain-corners`, 839 tests.
+  - specs #86: status, closes T1051–T1054; T1050 becomes PARTIAL.
+- **After each specs merge:** pin the runtime (six places, see `SPEC_BASELINE.md`), open the PR and merge it when green.
+- **Findings:**
+  - Bot-measured upgrade parity is noisy at about ±5 points per upgrade. A Court-only change moved the split several points, so stop bot-tuning parity; T903/T904 decide.
+  - D-116's recorded limit: the Captain still jams in the 52-unit gap under `solid-06` beside `mount-cam-z04-b` when the Player hugs that corner (BO-026). A body-width test was tried and dropped: it oscillates without path memory.
+- **Traps:**
+  - BP-010's `testCaptureCameraFieldsInReplayableEncounter` depends on the seed-1 autopilot route. After D-114 it runs with Ghost Step. Re-check it after any steering change.
+  - CI logs and artifacts are on `productionresultssa31.blob.core.windows.net`, which the cloud network policy blocks. Reproduce app-test conditions on Linux instead.
+
+Prior: Updated: 2026-10-30 by Claude (Claude Code session for the owner). **SS: upgrade parity (D-113) shipped; the results screen works with VoiceOver; the extraction finale was tried and dropped.**
 
 - **Merged, specs:**
   - #77–#79: D-110 Tamper floor marker, D-111 Captain/Daemon caption copy, D-112 Share as an incident report.
