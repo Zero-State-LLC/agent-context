@@ -2,7 +2,34 @@
 
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
-Updated: 2026-10-29 (later) by Claude (Claude Code session for the owner). **SS: the four accepted intents are specified and mostly shipped.**
+Updated: 2026-10-30 by Claude (Claude Code session for the owner). **SS: upgrade parity (D-113) shipped; the results screen works with VoiceOver; the extraction finale was tried and dropped.**
+
+- **Merged, specs:**
+  - #77–#79: D-110 Tamper floor marker, D-111 Captain/Daemon caption copy, D-112 Share as an incident report.
+  - #80, D-113: upgrade parity, ruleset **`ss-rules-010`**, content `civic-seam-content-007`, `combat-content-007` (`upgrades-002`).
+- **Merged, runtime:**
+  - #154–#156: D-110 to D-112.
+  - #157: D-113, pinned SS-specs `1cb5383`.
+  - #158: results surface with VoiceOver (F-007).
+  - #159 (results reflow at accessibility text sizes) merges when CI is green.
+- **D-113 rules:**
+  - Ricochet continues from an enemy hit only when the hit defeats it. Camera hits are unchanged.
+  - Signal Jammer gives one fewer heat reinforcement per M-A/M-B wave, minimum 0, and the caption shows the reduced count.
+  - Both values are contract data, validated against the simulation constants.
+  - Fixtures came from the independent method (SS-specs `docs/review/D113.md`); the full Linux suite passed, 819 tests.
+- **D-113 probe** (shipped code, 540 legal runs, all replays valid; posted on SS-specs #70):
+  - Ricochet / Ghost / Jammer: 57.8 / 56.1 / 53.9%, against 62.8 / 56.1 / 51.7% before. Overall 55.9%.
+  - Loud play with Jammer: 45%, against 38%.
+  - SWIFT now comes on 35–50% of wins for every upgrade, against 98% for Ricochet before. The planned SWIFT tiering is dropped.
+- **Tried and dropped: extraction pressure.**
+  - Informants every 240 ticks after arming, at `extractionPressureSockets`.
+  - Win rate fell from 56.9% to 20.6%; 64% of armed runs died, against 0%.
+  - Runs reach extraction at median Integrity 23, so the calm walk out reads as the cool-down. No intent was written.
+- **For the owner:** Danny's runtime defects #119–#122 and #124–#130 look fixed in the code; several fixes cite the issue in a comment. They are still open; ask Danny before closing.
+- **Still open:** the device QA retest (no phone run since 10-13), T903/T904 human playtests, and a device VoiceOver pass for F-007.
+- **Trap:** do not `git checkout origin/main -- .` inside a feature worktree to "look at main". It overwrites the branch's files. Use a separate detached worktree.
+
+Prior: Updated: 2026-10-29 (later) by Claude (Claude Code session for the owner). **SS: the four accepted intents are specified and mostly shipped.**
 
 - **Merged, specs:**
   - #73, D-107: Court rehearsal (run-shell § 14).
