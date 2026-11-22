@@ -26,7 +26,7 @@ Before ending a session that changed team status, decisions, or work another per
 
 - Put secrets, tokens, or personal preferences here
 - Dump raw chat transcripts here
-- Duplicate a product repo's `graft/` or code conventions
+- Duplicate a product repo's `.trail/`, `graft/`, or code conventions
 - Copy product deploy or pin workflows into this pack
 
 ## Product-repo templates

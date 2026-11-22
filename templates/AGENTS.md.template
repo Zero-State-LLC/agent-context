@@ -29,9 +29,11 @@ Fill the table from this repo's README or package scripts. Do not invent command
 - Do not put secrets, tokens, or live credentials in the tree.
 - Do not invent product behavior the spec does not name.
 
-## Graft and docs
+## Code map and docs
 
-If `graft/` exists, run `graft ask "<task>" --source` before grepping.
+If `.trail/cache/` exists (Trail-code's map), run
+`trail ask "<task>" --source` before grepping.
+If `graft/` exists instead, run `graft ask "<task>" --source`.
 Otherwise start at `{{DOCS_ENTRY}}` (usually `README.md` or `spec.md`).
 Do not copy a code map into this file.
 
