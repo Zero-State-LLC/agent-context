@@ -14,7 +14,7 @@ This repo is the **team** layer. Personal notes, raw chat logs, and secrets stay
 | [AGENTS.md](AGENTS.md) | Contract any agent must follow in this repo |
 | [templates/](templates/) | Canonical copy-pack: `intent.md` (SDLC stage-0), slim `AGENTS.md`, Claude adapter, gotchas, spec Workflows |
 
-Code structure still lives in each product repo (`AGENTS.md` + `graft/`). Do not copy code maps here.
+Code structure still lives in each product repo (`AGENTS.md` + `.trail/` or `graft/`). Do not copy code maps here.
 
 This repo is also the **canonical template home** for multi-agent collab setup.
 Copy from [`templates/`](templates/) into a product repo. Do not dump product
