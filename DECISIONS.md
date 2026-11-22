@@ -1,5 +1,29 @@
 # Decisions
 
+## 2026-11-21 — Homer exception: Pocock `/to-tickets` and `/implement-spec`
+
+**Decision:** In `Zero-State-LLC/Homer` only, Matt Pocock's `/to-tickets`
+writes Tasks to Linear team ZER directly, and `/implement-spec` may run
+implementer subagents in parallel without asking. Danny ruled this on
+2026-11-21. Everywhere else the team rules stand: FORGE owns plan and
+tasks, and no agent fleets.
+
+**Why:** Homer adopted Pocock's engineering skills (`mattpocock-skills`)
+under its accepted intent `docs/intent/agent-workflow.md`. Danny chose to
+let those skills file Tasks and run implementers at once rather than wait
+on FORGE or a yes for each run.
+
+**Implications:**
+
+- FORGE still owns Homer's plan. Tasks from `/to-tickets` carry Linear
+  "blocked by" relations and the `ready-for-agent` label.
+- `/implement-spec` subagents merge only into the spec's integration
+  branch. That branch reaches `main` through a normal pull request under
+  the software-factory merge contract.
+- The details live in Homer's `docs/agents/issue-tracker.md`. Do not copy
+  them here.
+- Another repo that wants either exception needs its own dated entry.
+
 ## 2026-09-04 — this pack's CI is team-context only
 
 **Decision:** `.github/workflows/` in this repo is pack CI only. Keep
