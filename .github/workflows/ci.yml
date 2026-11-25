@@ -30,6 +30,8 @@ jobs:
             templates/spec-Workflows-section.md.template
             templates/sdlc/README.md
             templates/README.md
+            templates/versioning.md
+            templates/CHANGELOG.md.template
             scripts/check-agents-md.sh
             scripts/check-rule-files.py
           )

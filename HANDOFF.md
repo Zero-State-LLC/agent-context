@@ -1,5 +1,7 @@
 # Handoff
 
+**2026-11-24 — versioning rule (pointer only; not the baton).** Every product repo follows [`templates/versioning.md`](templates/versioning.md) from its next release: one SemVer version, a CHANGELOG section for every version (release candidates included), human-only tags. Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
+
 **2026-09-04 — templates canon (pointer only; not the baton).** Product-repo collab files live in [`templates/`](templates/) (`intent.md` stage-0, slim `AGENTS.md`, Workflows). Dated lock in `DECISIONS.md`. Live team baton below is unchanged.
 
 Updated: 2026-10-30 (later) by Claude (Claude Code session for the owner). **SS: D-114 corner pursuit shipped; D-115 and D-116 wait on Danny's code-owner review.**
