@@ -16,6 +16,8 @@ runbooks. Do not dump another repo's Worker deploy or pin workflows here.
 | [`CLAUDE.md.template`](CLAUDE.md.template) | Thin adapter. Claude reads this and follows `AGENTS.md`. |
 | [`AGENT-GOTCHAS.md.template`](AGENT-GOTCHAS.md.template) | Long environment notes. Not the contract. |
 | [`spec-Workflows-section.md.template`](spec-Workflows-section.md.template) | `## Workflows` lock for `spec.md`. |
+| [`versioning.md`](versioning.md) | The versioning rule every product repo follows: one SemVer version, a CHANGELOG section per version, human-only tags. |
+| [`CHANGELOG.md.template`](CHANGELOG.md.template) | A starting `CHANGELOG.md` in Keep a Changelog form. |
 
 Codex and Cursor already read `AGENTS.md`. If a harness still wants its own
 file, copy the same one-liner as `CLAUDE.md` (for example `CODEX.md`).
@@ -49,7 +51,10 @@ Then in the product repo:
    Add one owner specialist only if that skill already exists. Name Actions
    this repo already runs or will add; do not invent bots.
 6. Read [`sdlc/README.md`](sdlc/README.md) before specifying or implementing.
-7. Optional size check:
+7. Adopt the [versioning rule](versioning.md): copy
+   [`CHANGELOG.md.template`](CHANGELOG.md.template) to `CHANGELOG.md` if
+   there is none, and add the CI check the rule names.
+8. Optional size check:
 
    ```bash
    cp ~/agent-context/scripts/check-agents-md.sh "$DEST/scripts/"
@@ -71,3 +76,6 @@ The check fails if `AGENTS.md` is missing, larger than 12 KB, or has no
   spend, and legal.
 - If CI or tests look wrong, open a labeled defect. Do not patch tests to green.
 - No agent fleets. ECC catalog-only: name existing skills, do not invent them.
+- One SemVer product version per repo, and a CHANGELOG section for every
+  version, release candidates included ([`versioning.md`](versioning.md)).
+  Only a human tags.

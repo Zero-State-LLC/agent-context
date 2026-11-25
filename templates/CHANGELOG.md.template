@@ -1,0 +1,12 @@
+# Changelog
+
+All notable changes to {{PRODUCT}} are recorded here. Format:
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions:
+[SemVer](https://semver.org/). Rules: the Zero State versioning rule
+(`Zero-State-LLC/agent-context`, `templates/versioning.md`).
+
+## Unreleased
+
+### Added
+
+- {{FIRST_CHANGE}}

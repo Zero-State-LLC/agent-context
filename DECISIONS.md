@@ -1,5 +1,28 @@
 # Decisions
 
+## 2026-11-24 — One versioning rule for every product repo
+
+**Decision:** Every Zero State product repository has one SemVer product
+version and a Keep a Changelog `CHANGELOG.md` with a section for every
+version, release candidates included. A release is a pull request, only a
+human tags, and release notes come from the CHANGELOG. Danny ruled this on
+2026-11-24. The rule is [`templates/versioning.md`](templates/versioning.md).
+
+**Why:** Homer's audit of `main` found no versions, tags or releases, so
+nothing could say which code was running. Danny accepted Homer's versioning
+spec (Homer #74, #75), then ruled that a release candidate gets its own
+CHANGELOG section and that this is the rule for every repository.
+
+**Implications:**
+
+- Each repository adopts it at its next release, with a CI check in its own
+  tooling. Tags and history are not rewritten.
+- Homer is the worked example: `specs/versioning/spec.md`, ADR 012, and
+  `scripts/check-versions.mjs`. Do not copy its scripts into this pack.
+- Repository-specific versioning, such as build metadata or a version
+  endpoint, goes in that repository's spec.
+- An exception needs its own dated entry here.
+
 ## 2026-11-21 — Homer exception: Pocock `/to-tickets` and `/implement-spec`
 
 **Decision:** In `Zero-State-LLC/Homer` only, Matt Pocock's `/to-tickets`
